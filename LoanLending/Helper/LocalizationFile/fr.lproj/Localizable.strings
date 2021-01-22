@@ -1,0 +1,65 @@
+/* 
+  Localizable.strings
+  LoanLending
+
+  Created by Subhash on 12/01/21.
+  
+*/
+"login" = "S'identifier";
+"signup" = "S'inscrire";
+"mobileNo" = "Numéro de portable";
+"enterNumber" = "Entrer un nombre";
+"password"  = "Mot de passe";
+"remember" = "Souviens-toi de moi";
+"forgotPassword" = "Mot de passe oublié?";
+"dont_have_an_Account" = "Vous n'avez pas de compte?";
+"verificationCode" = "Code de vérification";
+"confirm" = "Confirmer";
+"NotReceivedOTP" = "Vous ne recevez pas l'OTP?";
+"pleaseEnterOTP" = "Veuillez saisir les 4 chiffres OTP envoyés à";
+"chooseLanguage" = "Choisissez la langue";
+"proceed" = "Procéder";
+"staffID" = "ID du personnel ";
+"fullName" = "Nom complet";
+"gender" = "Le sexe";
+"male" = "Mâle";
+"female" = "Femme";
+"compnayName" = "Nom de la compagnie";
+"enterCompanyName" = "Entrez le nom de l'entreprise";
+"enterName" = "Entrez le nom";
+"enterHere" = "Entrer ici";
+"next" = "Prochain";
+"enterMblNo" = "Entrez le numéro de mobile";
+"city" = "Ville";
+"enterCity" = "Entrez la ville";
+"enterPasswrd" = "Entrer le mot de passe";
+"emailID" = "ID e-mail";
+"enterEmail" = "Entrez l'ID de messagerie";
+"uploadID" = "ID de téléversement";
+"uploadImage" = "Télécharger l'image";
+"uploadIDDetail" = "(Carte d'identité nationale, passeport, permis de conduire, carte d'électeur)";
+"uplaodImage" = "Taille du passeport";
+"iAccpet" = "J'accepte";
+"termAcondition" = "termes et conditions";
+"alreadyHaveAccount" = "Vous avez déjà un compte?";
+"resendOTP" = "Renvoyer OTP";
+"uploadDocs" = "Importer des documents";
+"home" = "Accueil";
+"My Loans" = "Mes prêts";
+"history" = "L'histoire";
+"account" = "Compte";
+"Valid_NUMBER" = "Veuillez saisir un numéro de mobile valide.";
+"correctPassword" = "Veuillez saisir au moins 6 mots";
+"Please enter full name" = "Veuillez entrer le nom complet.";
+"Please enter password" = "Veuillez entrer le mot de passe.";
+"Please enter mobile number"  = "Veuillez saisir le numéro de portable";
+"Please Enter your City" = "Veuillez entrer votre ville.";
+"You don't have permission to access gallery" = "You don't have permission to access gallery";
+"Warning" = "Attention";
+"Loan History" = "Historique des prêts";
+"Notifications" = "Notifications";
+"More" = "Plus";
+"Logout" = "Se déconnecter";
+"All Lenders" = "Tous les prêteurs";
+"All Loans" = "Tous les prêts";
+"Calculate EMI" = "Calculer EMI"

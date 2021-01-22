@@ -1,0 +1,80 @@
+PODS:
+  - ActionSheetPicker-3.0 (2.7.1)
+  - Alamofire (5.4.1)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
+  - Alertift (3.2)
+  - BiometricAuthentication (3.1.2)
+  - FAPanels (2.0.1)
+  - IQKeyboardManagerSwift (6.0.4)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - MBProgressHUD (1.2.0)
+  - RangeSeekSlider (1.8.0)
+  - SDWebImage (5.10.0):
+    - SDWebImage/Core (= 5.10.0)
+  - SDWebImage/Core (5.10.0)
+  - SVPinView (1.0.11)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (5.0.0)
+  - Toast (3.1.0)
+  - Toast-Swift (3.0.1)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - AlamofireImage
+  - Alertift
+  - BiometricAuthentication
+  - FAPanels
+  - IQKeyboardManagerSwift (= 6.0.4)
+  - Kingfisher
+  - MBProgressHUD
+  - RangeSeekSlider
+  - SDWebImage
+  - SVPinView
+  - SVProgressHUD
+  - SwiftyJSON
+  - Toast (~> 3.1.0)
+  - Toast-Swift (~> 3.0.0)
+
+SPEC REPOS:
+  trunk:
+    - ActionSheetPicker-3.0
+    - Alamofire
+    - AlamofireImage
+    - Alertift
+    - BiometricAuthentication
+    - FAPanels
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - MBProgressHUD
+    - RangeSeekSlider
+    - SDWebImage
+    - SVPinView
+    - SVProgressHUD
+    - SwiftyJSON
+    - Toast
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  Alertift: df0df24a557e47360180092f5f3fceb675c96b51
+  BiometricAuthentication: 36445f3ab77699489f91995bed887be89890afac
+  FAPanels: 050291ef601a1dc00fad888f83e74284cb86dd52
+  IQKeyboardManagerSwift: 36dbe324b4f9793f5f41ba5227f3e7c76dfefd50
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
+  SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
+  SVPinView: 9b538d0ba68cdb092afe4f0f67ec84cbed079466
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
+
+PODFILE CHECKSUM: 5c5e61c16ecedcae088a6ed1259dea904501edb6
+
+COCOAPODS: 1.10.0

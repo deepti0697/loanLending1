@@ -1,0 +1,64 @@
+/* 
+  Localizable.strings
+  LoanLending
+
+  Created by Subhash on 12/01/21.
+  
+*/
+"login" = "Login";
+"signup" = "Sign up";
+"mobileNo" = "Mobile No.";
+"enterNumber" = "Enter Number";
+"password"  = "Password";
+"remember" = "Remember me";
+"forgotPassword" = "Forgot Password?";
+"dont_have_an_Account" = "Don't have an account?";
+"resendOTP" = "Resend OTP";
+"verificationCode" = "Verification Code";
+"confirm" = "Confirm";
+"pleaseEnterOTP" = "Please enter the 4 digit OTP Sent to";
+"chooseLanguage" = "Choose Language";
+"Proceed" = "Procéder";
+"staffID" = "Staff ID ";
+"fullName" = "Full Name";
+"gender" = "Gender";
+"male" = "Male";
+"female" = "Female";
+"compnayName" = "Company Name";
+"enterCompanyName" = "Enter Company Name";
+"enterName" = "Enter Name";
+"enterHere" = "Enter Here";
+"next" = "Next";
+"enterMblNo" = "Enter Mobile No";
+"city" = "City";
+"enterCity" = "Enter City";
+"enterPasswrd" = "Enter Password";
+"emailID" = "Email ID";
+"enterEmail" = "Enter Email ID";
+"uploadID" = "Upload ID";
+"uploadImage" = "Upload Image";
+"uploadDocs" = "Upload Docs";
+"uploadIDDetail" = "(National ID,Passport,Driver's License,Voter's ID)";
+"uplaodImage" = "Passport Size";
+"iAccept" = "I Accept";
+"termAcondition" = "Terms & Conditions";
+"alreadyHaveAccnt" = "Already have an account?";
+"home" = "Home";
+"My Loans" = "My Loans";
+"history" = "History";
+"account" = "Account";
+"Valid_NUMBER" = "Please enter valid mobile number.";
+"correctPassword" = "Please enter atleast 6 words";
+"Please enter full name" = "Please enter full name.";
+"Please enter password" = "Please enter password.";
+"Please enter mobile number" = "Please enter mobile number";
+"Please Enter your City" = "Please Enter your City.";
+"You don't have permission to access gallery" = "You don't have permission to access gallery";
+"Warning" = "Warning";
+"Loan History" = "Loan History";
+"Notifications" = "Notifications";
+"More" = "More";
+"Logout" = "Logout";
+"All Lenders" = "All Lenders"
+"All Loans" = "All Loans";
+"Calculate EMI" = "Calculate EMI"

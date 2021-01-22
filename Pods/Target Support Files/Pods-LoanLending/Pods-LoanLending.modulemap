@@ -1,0 +1,6 @@
+framework module Pods_LoanLending {
+  umbrella header "Pods-LoanLending-umbrella.h"
+
+  export *
+  module * { export * }
+}
