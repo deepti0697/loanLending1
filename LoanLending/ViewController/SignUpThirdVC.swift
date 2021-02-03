@@ -10,6 +10,8 @@ import MobileCoreServices
 import UniformTypeIdentifiers
 import SwiftyJSON
 class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIDocumentPickerDelegate {
+    
+    
     @IBOutlet weak var remeberMeImageView: UIImageView!
     @IBOutlet weak var alreadyHaveAnAccountLbl: UILabel!
     @IBOutlet weak var loginBtm: UIButton!
@@ -26,6 +28,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
     @IBOutlet weak var uploadIdLbl: UILabel!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var emailIDLbl: UILabel!
+   
     var isAcceptTermCondition = false
     var imageData = Data()
     var staffID:String?
@@ -36,10 +39,9 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
     var mobile:String?
     var password:String?
     var document = Data()
-//    @IBOutlet weak var vw1: UIView!
-//    @IBOutlet weak var vw2: UIView!
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     var isDocImageView = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocalized()
@@ -63,14 +65,13 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
     }
     func setUP(){
        
-//        vw1.addDashedBorder()
-//        vw2.addDashedBorder()
+
     }
     @IBAction func backButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     override func viewDidLayoutSubviews() {
-//        setUP()
+
     }
     func setupLocalized()
     {
@@ -263,27 +264,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
 }
 
 
-extension UIView {
-    func addDashedBorder() {
-        let color = UIColor.white.cgColor
-        
-        let shapeLayer:CAShapeLayer = CAShapeLayer()
-        let frameSize = self.frame.size
-        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
-        
-        shapeLayer.bounds = shapeRect
-        shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = color
-        shapeLayer.lineWidth = 2
-        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
-        shapeLayer.lineDashPattern = [6,3]
-        shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 4).cgPath
-        
-        self.layer.addSublayer(shapeLayer)
-    }
-    
-}
+
 extension SignUpThirdVC:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTxt {

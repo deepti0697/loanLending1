@@ -6,11 +6,16 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class LoanVC: UIViewController {
 
     @IBOutlet weak var aTableView: UITableView!
     var sectionArray = ["Paid Loans","Cancelled Loans","Declined Loans"]
+    var loanSectionArray = [MyLoanSection](){
+        didSet {
+            aTableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +23,8 @@ class LoanVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false) 
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        myLoanData()
     }
     override func viewDidAppear(_ animated: Bool) {
 //        if appdelegate.isComingFromSideMenu{
@@ -45,36 +51,22 @@ extension LoanVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LoanTableViewCell") as! LoanTableViewCell
         cell.calculateEMI.setTitleColor(.white, for: .normal)
-        if indexPath.section == 0 {
-            cell.calculateEMI.isHidden = true
-        }
-        else if indexPath.section == 1 {
-            cell.calculateEMI.isHidden = false
-            cell.calculateEMI.setTitle("Cancel", for: .normal)
-            cell.calculateEMI.backgroundColor = UIColor(red: 191/255, green: 147/255, blue: 75/255, alpha: 1)
-            cell.calculateEMI.layer.borderColor = UIColor(red: 191/255, green: 147/255, blue: 75/255, alpha: 1).cgColor
-            
-        }
-        else if indexPath.section == 2 {
-            cell.calculateEMI.isHidden = false
-            cell.calculateEMI.setTitle("Declined", for: .normal)
-            cell.calculateEMI.backgroundColor = UIColor(red: 251/255, green: 49/255, blue: 59/255, alpha: 1)
-            cell.calculateEMI.layer.borderColor = UIColor(red: 251/255, green: 49/255, blue: 59/255, alpha: 1).cgColor
-            
-        }
+        cell.calculateEMI.isHidden = true
+        cell.confirgureCell(response: self.loanSectionArray[indexPath.section].loans[indexPath.row])
+       
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
       
-            return 3
+        return self.loanSectionArray.count
         
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-           return 2
+        return self.loanSectionArray[section].loans.count
                 
         }
         
@@ -90,7 +82,7 @@ extension LoanVC: UITableViewDelegate, UITableViewDataSource {
             }
             customView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 70)
             headerView.addSubview(customView)
-            customView.configureCell(category: sectionArray[section])
+            customView.configureCell(category: loanSectionArray[section])
             return headerView
        
         
@@ -112,4 +104,33 @@ extension LoanVC: UITableViewDelegate, UITableViewDataSource {
        
         
     
+}
+extension LoanVC {
+    func myLoanData(){
+        let params =  [String : Any]()
+     
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceForMyLoanData(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+             //                let loanType = parseData["loan_types"].stringValue
+                self.loanSectionArray.removeAll()
+                for obj in parseData["data"].arrayValue {
+                   let comObj = MyLoanSection(fromJson:obj)
+                    self.loanSectionArray.append(comObj)
+                }
+                }
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+    }
 }

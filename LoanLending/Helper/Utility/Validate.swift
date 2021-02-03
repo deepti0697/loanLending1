@@ -41,7 +41,30 @@ class Validate: NSObject {
             else {
                 return true
             }
-        
+        }
+            /// validate Submit loan VC
+            
+            func validateSubmitLoanPage(vc:LoanRequestViewController) -> Bool {
+                if vc.purposeOfLoanTxxtfld.text?.trimmingCharacters(in: .whitespaces).count == 0  {
+                    self.showMessage(message: "Please Fill purpose of loan")
+               
+                  
+                    return false
+                } else if vc.bankNameTxtFld.text?.trimmingCharacters(in: .whitespaces).count == 0 {
+
+                    self.showMessage(message: "Please Fill your bank name")
+                 
+                    return false
+
+                }
+                else if !vc.isAcceptTermCondition {
+                    self.showMessage(message: Messages.TermAndCondition.rawValue)
+                    return false
+                }
+                else {
+                    return true
+                }
+            
 
     //Validate Forgot form
 //    func validateForgotPassword(vc:ForgotPasswordViewController) -> Bool {

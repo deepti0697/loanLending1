@@ -66,7 +66,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
             }
             customView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 70)
             headerView.addSubview(customView)
-            customView.configureCell(category: sectionArray[section])
+            customView.configureCell2(category: sectionArray[section])
             return headerView
        
         

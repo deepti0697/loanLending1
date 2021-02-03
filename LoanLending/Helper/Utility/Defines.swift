@@ -87,6 +87,7 @@ struct ServiceUrls
     
     static let baseUrl = "http://192.168.1.134:7010/api"
     static let regiser_New_User = "/auth/register"
+    static let loan_Request = "/loan/request"
     static let check_Mobile_Registered = "/auth/email-mobile-exists"
 //    static let login = "v1/login"
     static let login = "/auth/login"
@@ -108,6 +109,7 @@ struct ServiceUrls
     static let register = "v1/register"
     static let loan_Types  = "/lender/loan_types"
     static let loan_lender = "/lender"
+    static let my_loan_list = "/loan/my_loans"
     static let register_new = "v1/register-new"
     
     

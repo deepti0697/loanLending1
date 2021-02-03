@@ -363,6 +363,86 @@ class ServiceClass: NSObject {
 
         }
         
+    func SingleDocimageUpload(_ urlString:String, params:[String : Any],doc:Data?,imageKey:String,fileName: String?,
+        pathExtension: String?, headers:HTTPHeaders, completion:@escaping completionBlockType){
+            
+            print(urlString)
+    //        print(params)
+    //        AF.upload(multipartFormData:{ multipartFormData in
+    ////            if let data1 = data {
+    //            multipartFormData.append(data ?? Data() , withName: imageKey, fileName: "file.jpg", mimeType: "image/jpg")
+    ////            }
+                hudShow()
+                                
+                    AF.upload(multipartFormData: { multipartFormData in
+    //                           if let data1 = data {
+    //                            multipartFormData.append(data1 , withName:  imageKey, fileName: "attachment", mimeType: "image/jpg")
+    //
+                        if let data = doc {
+                            multipartFormData.append(data, withName: "paySlips", fileName: "pdfDocuments.\(pathExtension!)", mimeType: "pdfDocuments.\(pathExtension!)")
+                        }
+                    
+                       
+                                   
+    //                    multipartFormData.append(data ?? Data() , withName:  "identified", fileName: "\(Date().timeIntervalSince1970).jpg", mimeType: "image/jpg")
+                                    
+                                    for (key, value) in params {
+                                   
+                                            let str = "\(value)"
+                                            multipartFormData.append(((str as AnyObject).data(using: String.Encoding.utf8.rawValue)!), withName: key)
+                                    }
+                       }, to: urlString, method: .post, headers: headers) .uploadProgress(queue: .main, closure: { progress in
+                           print("Upload Progress: \(progress.fractionCompleted)")
+                       }).responseJSON(completionHandler: { data in
+                           print("upload finished: \(data)")
+                       }).response { (response) in
+                        self.hudHide()
+                        switch response.result {
+                        case .success(let _):
+                            
+                                guard case .success(let rawJSON) = response.result else {
+                                    var errorDict:[String:Any] = [String:Any]()
+                                    errorDict[ServiceKeys.keyErrorCode] = ErrorCodes.errorCodeFailed
+                                    errorDict[ServiceKeys.keyErrorMessage] = "SomeThing wrong" + urlString
+                                    
+                                    completion(ResponseType.kResponseTypeFail,JSON(),errorDict as AnyObject);
+                                    
+                                    return
+                                }
+                            
+                                print(rawJSON ?? "")
+                
+                                if let rawJSN = rawJSON {
+                                    let json = try? JSON(data: rawJSN)
+                                   
+                                    if  json?["success"] == false{
+                                        
+                                        let errorData = json?["errors"]
+                                        for obj in json!["errors"].arrayValue {
+                                            var errorDict:[String:Any] = [String:Any]()
+                                            
+                                            errorDict[ServiceKeys.keyErrorCode] = ErrorCodes.errorCodeFailed
+                                            errorDict[ServiceKeys.keyErrorMessage] = obj["msg"].stringValue
+                                            
+                                            completion(ResponseType.kResponseTypeFail,JSON(),errorDict as AnyObject);
+                                            return
+                                        }
+//                                        print(errorData?["msg"].stringValue)
+                                       
+                                    }
+                                    
+                                    else {
+                                        completion(ResponseType.kresponseTypeSuccess,json ?? JSON(),nil)
+                                    }
+                                
+                            }
+                        case .failure(let encodingError):
+                            print(encodingError)
+                        }
+                    }
+
+        }
+        
         
         //multiple images upload
         func multipleImageUpload(_ urlString:String, params:[String : Any],data: [Data],identifiedImageData : Data,headers:HTTPHeaders, completion:@escaping completionBlockType){
@@ -628,6 +708,12 @@ class ServiceClass: NSObject {
         let headers: HTTPHeaders = [ "os" : "IOS","version":"1", "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
         self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
+    func hitServiceForMyLoanData(_ params:[String : Any], completion:@escaping completionBlockType)
+    {
+        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.my_loan_list)"
+        let headers: HTTPHeaders = [ "os" : "IOS","version":"1", "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsImV4cGlyZXNUaW1lIjoxNjEyNDIyNjgzNzI0fQ.D9O581xdeTKSwuhMc83S3CVzw7ZI_7rHJ6yrCQ7YVwM"]
+        self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+    }
     //MARK:- Product Like
     func hitServiceFor_prdLike(_ params:[String : Any], completion:@escaping completionBlockType)
     {
@@ -724,11 +810,21 @@ class ServiceClass: NSObject {
         self.imageUpload(urlString, params: params as [String : AnyObject], data: data, doc: document, imageKey: imageKey, fileName: imageKey, pathExtension: ".jpg", headers: headers, completion: completion)
           }
     
+    func hitServiceFor_SubmitLoanRequest(_ params:[String : Any],document:Data,imageKey:String="image", completion:@escaping completionBlockType)
+          {
+              let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.loan_Request)"
+             
+              let headers: HTTPHeaders = ["accept": "application/json","Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token), "os" : "IOS","version":"1" ]
+//               self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+            
+        self.SingleDocimageUpload(urlString, params: params as [String : AnyObject], doc: document, imageKey: imageKey, fileName: imageKey, pathExtension: ".jpg", headers: headers, completion: completion)
+          }
+    
     func hitServiceForcheckMobileREgistered(_ params:[String : Any], completion:@escaping completionBlockType)
           {
               let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.check_Mobile_Registered)"
              
-              let headers: HTTPHeaders = [ "Content-Type" : "application/json", "accept": "application/json"]
+              let headers: HTTPHeaders = [ "Content-Type" : "application/json", "accept": "application/json",]
               
                self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
           }

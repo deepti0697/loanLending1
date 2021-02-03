@@ -38,12 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else {
             if  (AppHelper.getStringForKey(ServiceKeys.token) != "") {
-                let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-                let vc1 = storyBoard.instantiateViewController(withIdentifier: "ToucIDAndTouchFaceVC") as! ToucIDAndTouchFaceVC
-                let nv4 = UINavigationController(rootViewController: vc1)
-              
-                self.window?.rootViewController = nv4
-                self.window?.makeKeyAndVisible()
+//                let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
+//                let vc1 = storyBoard.instantiateViewController(withIdentifier: "ToucIDAndTouchFaceVC") as! ToucIDAndTouchFaceVC
+//                let nv4 = UINavigationController(rootViewController: vc1)
+//
+//                self.window?.rootViewController = nv4
+//                self.window?.makeKeyAndVisible()
+                appdelegate.setHomeView()
 //                setHomeView()
             }
             else {

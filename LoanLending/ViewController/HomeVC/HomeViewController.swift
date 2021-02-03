@@ -120,6 +120,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         openViewController(controller: BankDetailViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+            vc.bankDetail = self.homeLoanData[indexPath.row]
     })
     }
     func homeLoanTypeAPI(){

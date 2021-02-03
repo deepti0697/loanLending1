@@ -27,7 +27,7 @@ class HomeTableCollectionViewCell: UITableViewCell {
     func configureCell(response:LoanList) {
         self.bankNamelbl.text = response.name
         self.rateOfIneterest.text = "\(response.interest ?? "")% Rate of Interest"
-        self.processingFeeLbl.text = "Processing fee: \(response.interest ?? "")$"
+        self.processingFeeLbl.text = "Processing fee: \(response.processingFee ?? "")$"
         if let imageStr = response.logo{
             print(imageStr)
            

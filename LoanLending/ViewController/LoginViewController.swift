@@ -144,8 +144,9 @@ class LoginViewController: UIViewController {
                 let getData = parseData["data"]
                 let token = getData["token"].stringValue
                 AppHelper.setStringForKey(token, key: ServiceKeys.token)
-                let userData = getData["user"]
-                let user = User(fromJson:userData)
+              
+               
+                let user = User(fromJson:getData)
                 print(user)
               
                AppHelper.setStringForKey(user.email, key: ServiceKeys.email)

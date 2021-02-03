@@ -62,4 +62,11 @@
 "Logout" = "Se déconnecter";
 "All Lenders" = "Tous les prêteurs";
 "All Loans" = "Tous les prêts";
-"Calculate EMI" = "Calculer EMI"
+"Calculate EMI" = "Calculer EMI";
+"Loan Amount & EMI" = "Loan Amount & EMI";
+"Loan ID" = "Loan ID";
+"Interest Rate" = "Interest Rate";
+"Purpose" = "Purpose";
+"Date of Loan" = "Date of Loan";
+"Tenure" = "Tenure";
+"Loan Type" = "Loan Type";

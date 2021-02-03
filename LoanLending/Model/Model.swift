@@ -40,7 +40,7 @@ class User{
             return
         }
         
-        let json            = parseData["data"]
+        let json            = parseData["user"]
        
         email               = json["email"].stringValue
         mobile              = json["mobile"].stringValue
@@ -95,6 +95,106 @@ class LanguageDTo {
         
     }
 }
+class MyLoanSection {
+    var status:String!
+    var loans = [MyLoanList]()
+    
+    init() {
+        
+    }
+    
+    init(fromJson parseData: JSON!){
+        
+        if parseData?.isEmpty ?? false{
+            return
+        }
+        let sortData = parseData["loans"].arrayValue
+        status = parseData["status"].stringValue
+        for value in sortData {
+            let sortByData = MyLoanList(fromJson: value)
+            self.loans.append(sortByData)
+        }
+}
+}
+class MyLoanType {
+    var id :String!
+    var fr_name:String!
+    init(fromJson parseData: JSON!){
+        
+        if parseData?.isEmpty ?? false{
+            return
+        }
+        id = parseData["id"].stringValue
+        fr_name = parseData["fr_name"].stringValue
+    
+}
+}
+class MyLender {
+    var name:String!
+    var processingFee:String!
+    var logo:String!
+    init(fromJson parseData: JSON!){
+        
+        if parseData?.isEmpty ?? false{
+            return
+        }
+        name = parseData["name"].stringValue
+        processingFee = parseData["processingFee"].stringValue
+        logo = parseData["logo"].stringValue
+}
+}
+class MyLoanList {
+    var id: String!
+    var loanId:String!
+    var purpose:String!
+    var amount:String!
+    var tenure:String!
+    var intersest:String!
+    var processingFee:String!
+    var emi: String!
+    var bankAccount:String!
+    var wallet:String!
+    var paySlips:String!
+    var status:String!
+    var isArchived:String!
+    var created_at: String!
+    var updated_at:String!
+    var lender:  MyLender?
+    var loan_type: LoanType?
+    init() {
+        
+    }
+    
+    init(fromJson parseData: JSON!){
+        
+        if parseData?.isEmpty ?? false{
+            return
+        }
+        let getLenderData = parseData["lender"]
+        let getLoanData = parseData["loan_type"]
+        id = parseData["id"].stringValue
+        loanId = parseData["loanId"].stringValue
+        purpose = parseData["purpose"].stringValue
+        amount = parseData["amount"].stringValue
+        tenure = parseData["tenure"].stringValue
+        intersest = parseData["intersest"].stringValue
+        processingFee = parseData["processingFee"].stringValue
+        emi = parseData["emi"].stringValue
+        bankAccount = parseData["bankAccount"].stringValue
+        wallet = parseData["wallet"].stringValue
+        paySlips = parseData["paySlips"].stringValue
+        status = parseData["status"].stringValue
+        isArchived = parseData["isArchived"].stringValue
+        created_at = parseData["created_at"].stringValue
+        updated_at = parseData["updated_at"].stringValue
+       
+        lender = MyLender(fromJson: getLenderData)
+        
+  
+        loan_type = LoanType(fromJson: getLoanData)
+           
+        }
+    }
 
 class LoanList {
     var id: String!
@@ -118,6 +218,8 @@ class LoanList {
     var isArchived:String!
     var created_at:String!
     var updated_at:String!
+    var description:String!
+    
     var loanTypes = [LoanType]()
     init() {
         
@@ -150,6 +252,7 @@ class LoanList {
         isArchived = parseData["isArchived"].stringValue
         created_at = parseData["created_at"].stringValue
         created_at = parseData["created_at"].stringValue
+        description = parseData["description"].stringValue
         for value in sortData {
             let sortByData = LoanType(fromJson: value)
             self.loanTypes.append(sortByData)
@@ -209,295 +312,8 @@ class CategoryDTo {
     }
 }
 
-class TransactionDetailModel {
-    
-    var id               : String!
-    var order_id            : String!
-    var trans_id : String!
-    var title:String!
-    var buyer_user_id:String!
-    var seller_user_id:String!
-    var buyerusername:String!
-    var sellerusername:String!
-    var transactiondate:String!
-    var productimg:String!
-    var buyeruserimg:String!
-    var selleruserimg:String!
-    
-    init(fromJson parseData: JSON!){
-      
-        if parseData.isEmpty{
-            return
-        }
-        id             = parseData["id"].stringValue
-        order_id          = parseData["order_id"].stringValue
-        trans_id = parseData["trans_id"].stringValue
-        title = parseData["title"].stringValue
-        buyer_user_id = parseData["buyer_user_id"].stringValue
-        seller_user_id = parseData["seller_user_id"].stringValue
-        buyerusername = parseData["buyerusername"].stringValue
-        sellerusername = parseData["sellerusername"].stringValue
-        transactiondate = parseData["transactiondate"].stringValue
-        productimg = parseData["productimg"].stringValue
-        buyeruserimg = parseData["buyeruserimg"].stringValue
-        selleruserimg = parseData["selleruserimg"].stringValue
-    }
-}
 
 
-class HomeProductForGuest {
-    
-    var id               : String!
-    var total_like            : String!
-    var user_id : String!
-    var title : String!
-    var third_category_id : String!
-    var file_name : String!
-    var total_view : String!
-    var status : String!
-    var visibility : String!
-    var description : String!
-    var subcategory_id : String!
-    var created_at : String!
-    var category_id : String!
-    var likeornot:String!
-    var wishstatus:String!
-    
-    init(fromJson parseData: JSON!){
-      
-        if parseData.isEmpty{
-            return
-        }
-        total_like             = parseData["total_like"].stringValue
-        id          = parseData["id"].stringValue
-        user_id          = parseData["user_id"].stringValue
-        title          = parseData["title"].stringValue
-        third_category_id          = parseData["third_category_id"].stringValue
-        file_name          = parseData["file_name"].stringValue
-        total_view          = parseData["total_view"].stringValue
-        status          = parseData["status"].stringValue
-        visibility          = parseData["visibility"].stringValue
-        description          = parseData["description"].stringValue
-        subcategory_id          = parseData["subcategory_id"].stringValue
-        created_at          = parseData["created_at"].stringValue
-        category_id          = parseData["category_id"].stringValue
-        likeornot = parseData["likeornot"].stringValue
-        wishstatus = parseData["wishstatus"].stringValue
-    }
-}
-
-
-
-class HomeFilterModel {
-    
-    var sortByArr = [sortbyFilterData]()
-    var categoriesArr = [categoriesFilterData]()
-    
-    init(fromJson parseData: JSON!){
-      
-        if parseData.isEmpty{
-            return
-        }
-        let sortData = parseData["sortbyrec"].arrayValue
-        let categoriesData = parseData["categrec"].arrayValue
-        self.sortByArr.removeAll()
-        self.categoriesArr.removeAll()
-        
-        
-        for value in sortData{
-            let sortByData = sortbyFilterData(fromJson: value)
-            self.sortByArr.append(sortByData)
-        }
-        
-        for value in categoriesData{
-            let categoriesData = categoriesFilterData(fromJson: value)
-            self.categoriesArr.append(categoriesData)
-        }
-        
-    }
-    
-    
-    struct sortbyFilterData{
-        var id:String!
-        var value:String!
-        var title:String!
-        
-        
-        init(fromJson parseData: JSON!){
-          
-            if parseData.isEmpty{
-                return
-            }
-            
-            self.id = parseData["id"].stringValue
-            self.value = parseData["value"].stringValue
-            self.title = parseData["title"].stringValue
-            
-        }
-    }
-    
-    struct categoriesFilterData {
-        var id:String!
-        var cat_name:String?
-        var is_select:String?
-        var slug:String?
-        init(fromJson parseData: JSON!){
-          
-            if parseData.isEmpty{
-                return
-            }
-          self.id = parseData["id"].stringValue
-            self.cat_name = parseData["cat_name"].stringValue
-            self.is_select = parseData["is_select"].stringValue
-            self.slug = parseData["slug"].stringValue
-            
-        }
-    }
-    
-    
-}
-
-
-
-class QueriesDTo {
-    
-    
-    var query_id                  : String!
-    var user_id                   : String!
-    var query                     : String!
-    var label                     : String!
-    var is_active                 : String!
-    var is_public                 : String!
-    var views                     : String!
-    var replies                   : String!
-    var upvote                    : String!
-    var downvote                  : String!
-    var created_at                : String!
-    var query_by                  : String!
-    var user_profile              : String!
-    
-    init() { }
-    init(fromJson parseData: JSON!){
-       
-        if parseData.isEmpty{
-            return
-        }
-        
-        query_id                    = parseData["query_id"].stringValue
-        user_id                     = parseData["user_id"].stringValue
-        query                       = parseData["query"].stringValue
-        label                       = parseData["label"].stringValue
-        is_active                   = parseData["is_active"].stringValue
-        is_public                   = parseData["is_public"].stringValue
-        views                       = parseData["views"].stringValue
-        replies                     = parseData["replies"].stringValue
-        upvote                      = parseData["upvote"].stringValue
-        downvote                    = parseData["downvote"].stringValue
-        created_at                  = parseData["created_at"].stringValue
-        query_by                    = parseData["query_by"].stringValue
-        user_profile                = parseData["user_profile"].stringValue.replacingOccurrences(of: "//", with: "/")
-    }
-    
-    
-    
-}
-
-class PostedDTo {
-
-       var query_id                  : String!
-       var reply_text                : String!
-       var query_by                  : String!
-       var downvote                  : String!
-       var is_active                 : String!
-       var is_public                 : String!
-       var views                     : String!
-       var replies                   : String!
-       var upvote                    : String!
-       var created_at                : String!
-       var user_profile              : String!
-       
-       
-       init(fromJson parseData: JSON!){
-          
-           if parseData.isEmpty{
-               return
-        }
-        
-        query_id                    = parseData["query_id"].stringValue
-        reply_text                  = parseData["reply_text"].stringValue
-        is_active                   = parseData["is_active"].stringValue
-        is_public                   = parseData["is_public"].stringValue
-        views                       = parseData["views"].stringValue
-        replies                     = parseData["replies"].stringValue
-        upvote                      = parseData["upvote"].stringValue
-        downvote                    = parseData["downvote"].stringValue
-        created_at                  = parseData["created_at"].stringValue
-        query_by                    = parseData["query_by"].stringValue
-        user_profile                = parseData["user_profile"].stringValue.replacingOccurrences(of: "//", with: "/")
-       }
-
-}
-
-
-class DoctorDTo {
-
-    var other_details                   : [String]!
-    var phones                          : String!
-    var society_details                 : [String]!
-    var address                         : String!
-    var img_url                         : String!
-    var emails                          : String!
-    var university                      : [String]!
-    var languages                       : String!
-    var name                            : String!
-    
-    
-    
-    
-    init(fromJson parseData: JSON!){
-        
-        if parseData.isEmpty{
-            return
-        }
-        
-        other_details                    = parseData["other_details"].array?.compactMap({ $0.string })
-        university                       = parseData["university"].array?.compactMap({ $0.string })
-        society_details                  = parseData["society_details"].array?.compactMap({ $0.string })
-        phones                           = parseData["phones"].stringValue
-        address                          = parseData["address"].stringValue
-        img_url                          = parseData["img_url"].stringValue.replacingOccurrences(of: "//", with: "/")
-        emails                           = parseData["emails"].stringValue
-        languages                        = parseData["languages"].stringValue
-        name                             = parseData["name"].stringValue
-        
-    }
-
-}
-
-
-class NotificationDTo {
-
-    
-
-    var notification_message                          : String!
-    var notification_title                       : String!
-    var created_at                            : String!
-    
-    
-    
-    init(fromJson parseData: JSON!){
-        
-        if parseData.isEmpty{
-            return
-        }
-        
-        notification_message                    = parseData["notification_message"].stringValue
-        notification_title                       = parseData["notification_title"].stringValue
-        created_at                             = parseData["created_at"].stringValue
-        
-    }
-
-}
 
 
 

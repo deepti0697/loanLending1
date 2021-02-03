@@ -20,7 +20,19 @@ class ContestCategoryTableHeaderView: UITableViewCell {
         super.awakeFromNib()
         
     }
-    func configureCell(category: String) {
+    func configureCell(category: MyLoanSection) {
+        
+        aTitleLabel.text = category.status
+//        if let imageUrl = category.contest_type_image {
+//            let urlString = imageUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//            let imageUrl = URL(string: urlString ?? "")
+//            aImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "sample"), options: .continueInBackground) { (img, err, cacheType, url) in
+//            }
+//
+//        }
+    }
+   
+    func configureCell2(category: String) {
         
         aTitleLabel.text = category
 //        if let imageUrl = category.contest_type_image {
@@ -31,7 +43,5 @@ class ContestCategoryTableHeaderView: UITableViewCell {
 //
 //        }
     }
-   
-    
   
 }
