@@ -714,6 +714,12 @@ class ServiceClass: NSObject {
         let headers: HTTPHeaders = [ "os" : "IOS","version":"1", "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsImV4cGlyZXNUaW1lIjoxNjEyNDIyNjgzNzI0fQ.D9O581xdeTKSwuhMc83S3CVzw7ZI_7rHJ6yrCQ7YVwM"]
         self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
+    func hitServiceFoHisstoryData(_ params:[String : Any], completion:@escaping completionBlockType)
+    {
+        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.my_History)"
+        let headers: HTTPHeaders = [ "os" : "IOS","version":"1", "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsImV4cGlyZXNUaW1lIjoxNjEyNDIyNjgzNzI0fQ.D9O581xdeTKSwuhMc83S3CVzw7ZI_7rHJ6yrCQ7YVwM"]
+        self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+    }
     //MARK:- Product Like
     func hitServiceFor_prdLike(_ params:[String : Any], completion:@escaping completionBlockType)
     {

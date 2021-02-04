@@ -10,7 +10,7 @@ import SwiftyJSON
 class LoanVC: UIViewController {
 
     @IBOutlet weak var aTableView: UITableView!
-    var sectionArray = ["Paid Loans","Cancelled Loans","Declined Loans"]
+   
     var loanSectionArray = [MyLoanSection](){
         didSet {
             aTableView.reloadData()
@@ -51,7 +51,15 @@ extension LoanVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LoanTableViewCell") as! LoanTableViewCell
         cell.calculateEMI.setTitleColor(.white, for: .normal)
+        if self.loanSectionArray[indexPath.section].status == "DECLINE" {
+            cell.calculateEMI.isHidden = false
+            cell.calculateEMI.backgroundColor = UIColor(red: 250/255, green: 50/255, blue: 59/255, alpha: 1)
+            cell.calculateEMI.layer.borderColor = UIColor(red: 250/255, green: 50/255, blue: 59/255, alpha: 1).cgColor
+           
+        }
+        else  {
         cell.calculateEMI.isHidden = true
+        }
         cell.confirgureCell(response: self.loanSectionArray[indexPath.section].loans[indexPath.row])
        
         return cell

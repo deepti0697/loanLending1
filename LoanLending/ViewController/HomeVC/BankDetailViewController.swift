@@ -53,6 +53,7 @@ class BankDetailViewController: UIViewController {
     }
     @IBAction func openEMICalculaoatr(_ sender: Any) {
         openViewController(controller: CalculateEMIViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+            vc.getLoanData = self.bankDetail
     
                  })
     }

@@ -12,7 +12,7 @@ import UIKit
 class Validate: NSObject {
     static let  shared =  Validate()
     var validation = Validation()
- 
+    var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     
     func showMessage(message:String){
      
@@ -23,19 +23,19 @@ class Validate: NSObject {
     //Validate login form
         func validateLogin(vc:SignUpThirdVC) -> Bool {
             if vc.emailTxt.text?.trimmingCharacters(in: .whitespaces).count == 0  {
-                self.showMessage(message: Messages.EMAIL_EMPTY.rawValue)
+                self.showMessage(message: "enterEmail".localized(lang))
            
               
                 return false
             } else if ( !validation.emailValidation(txtFieledEmail: vc.emailTxt.text!) ) {
 
-                self.showMessage(message: Messages.EMAIL_INVALID.rawValue)
+                self.showMessage(message: "EMAIL_INVALID".localized(lang))
              
                 return false
 
             }
             else if !vc.isAcceptTermCondition {
-                self.showMessage(message: Messages.TermAndCondition.rawValue)
+                self.showMessage(message:"AcceptTermAndCondition")
                 return false
             }
             else {
@@ -46,19 +46,19 @@ class Validate: NSObject {
             
             func validateSubmitLoanPage(vc:LoanRequestViewController) -> Bool {
                 if vc.purposeOfLoanTxxtfld.text?.trimmingCharacters(in: .whitespaces).count == 0  {
-                    self.showMessage(message: "Please Fill purpose of loan")
+                    self.showMessage(message: "Enter purpose of loan".localized(lang))
                
                   
                     return false
                 } else if vc.bankNameTxtFld.text?.trimmingCharacters(in: .whitespaces).count == 0 {
 
-                    self.showMessage(message: "Please Fill your bank name")
+                    self.showMessage(message: "Enter your bank name".localized(lang))
                  
                     return false
 
                 }
                 else if !vc.isAcceptTermCondition {
-                    self.showMessage(message: Messages.TermAndCondition.rawValue)
+                    self.showMessage(message: "AcceptTermAndCondition".localized(lang))
                     return false
                 }
                 else {

@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3HQ-PC-UqL">
-                        <rect key="frame" x="10" y="10" width="320" height="50"/>
+                        <rect key="frame" x="15" y="10" width="310" height="50"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Reh-Fi-FJ0">
                                 <rect key="frame" x="3" y="5" width="40" height="40"/>
@@ -63,9 +63,9 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="3HQ-PC-UqL" secondAttribute="trailing" constant="10" id="ELE-dP-yvO"/>
+                    <constraint firstAttribute="trailing" secondItem="3HQ-PC-UqL" secondAttribute="trailing" constant="15" id="ELE-dP-yvO"/>
                     <constraint firstItem="3HQ-PC-UqL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GSC-hL-Gol"/>
-                    <constraint firstItem="3HQ-PC-UqL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="IYP-iy-EpV"/>
+                    <constraint firstItem="3HQ-PC-UqL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="IYP-iy-EpV"/>
                     <constraint firstAttribute="bottom" secondItem="3HQ-PC-UqL" secondAttribute="bottom" constant="10" id="r4h-9f-unV"/>
                 </constraints>
             </tableViewCellContentView>

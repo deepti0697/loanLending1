@@ -111,7 +111,7 @@ struct ServiceUrls
     static let loan_lender = "/lender"
     static let my_loan_list = "/loan/my_loans"
     static let register_new = "v1/register-new"
-    
+    static let my_History = "/loan/loan_history"
     
     static let enterregistrationcode = "patient/enter_registration_code"
     static let createpassword = "patient/create_password"

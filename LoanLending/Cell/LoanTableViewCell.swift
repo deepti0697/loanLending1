@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 class LoanTableViewCell: UITableViewCell {
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var tenureLbl: UILabel!
@@ -50,11 +50,19 @@ class LoanTableViewCell: UITableViewCell {
         self.bankNameLbl.text = "\(response.lender?.name ?? "")"
         self.loanAmountAndEMiLbl.text = "\(response.amount ?? ""), \(response.tenure ?? "") EMI"
         self.loanIDLbl.text = response.loanId ?? ""
-        self.interestLbl.text = "\(response.intersest ?? "")%"
+        self.interestLbl.text = "\(response.interest ?? "")%"
         self.puproseLbl.text = response.purpose ?? ""
 //        setReleaseTime(releaseDateString: response.created_at ?? "")
         self.tenureLbl.text = response.tenure
         loanTypeLbl.text = response.loan_type?.fr_name
+        if let imageStr = response.lender?.logo{
+            print(imageStr)
+           
+            let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let imageUrl = URL(string: urlString ?? "")
+            imageLogo?.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "ino-image"), options: .continueInBackground) { (img, err, cacheType, url) in
+            }
+        }
     
     }
     
@@ -62,8 +70,7 @@ class LoanTableViewCell: UITableViewCell {
         self.loanAmountLocLbl.text = "Loan Amount & EMI ".localized(lang)
         self.loanIDLocLbl.text = "Loan ID".localized(lang)
         self.interestLocLbl.text  = "Interest Rate".localized(lang)
-        self.interestLocLbl.text =
-            "Purpose".localized(lang)
+        
         self.dobLocLbl.text = "Date of Loan".localized(lang)
         self.tenureLocLbl.text = "Tenure".localized(lang)
         self.loanTypeLocLbl.text = "Loan Type".localized(lang)

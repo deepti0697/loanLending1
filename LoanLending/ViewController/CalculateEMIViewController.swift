@@ -20,16 +20,35 @@ class CalculateEMIViewController: UIViewController {
     @IBOutlet weak var tenureSlider: UISlider!
     @IBOutlet weak var interestSlider: UISlider!
    
+    @IBOutlet weak var doneOutltLoc: UIButton!
+    @IBOutlet weak var tenureLocLbl: UILabel!
+    @IBOutlet weak var interestLocLbl: UILabel!
+    @IBOutlet weak var loanAmountLocLbl: UILabel!
     @IBOutlet weak var totalAmountLbl: UILabel!
     @IBOutlet weak var totalInterestLbl: UILabel!
     @IBOutlet weak var totalEmiLbl: UILabel!
     //    var slider = MDCSlider()
+    @IBOutlet weak var loanEMILocLbl: UILabel!
+    var getLoanData:LoanList?
+    @IBOutlet weak var totalAmountPaybleLocLbl: UILabel!
+    @IBOutlet weak var totalInterstPayableLocLbl: UILabel!
+    var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     override func viewDidLoad() {
         super.viewDidLoad()
       
       SliderLabels()
         
 
+    }
+    
+    func setuplocalizable(){
+        loanEMILocLbl.text = "Loan EMI".localized(lang)
+        totalAmountPaybleLocLbl.text = "Total Amount Payable".localized(lang)
+        totalInterstPayableLocLbl.text = "Total Interest Payable".localized(lang)
+        loanAmountLocLbl.text = "Loan Amount".localized(lang)
+        interestLocLbl.text = "Loan Amount".localized(lang)
+        tenureLocLbl.text =  "Tenure".localized(lang)
+        doneOutltLoc.setTitle("Apply Loan".localized(lang), for: .normal)
     }
 
     func SliderLabels(){
@@ -117,6 +136,9 @@ class CalculateEMIViewController: UIViewController {
     }
 
     @IBAction func doneAmount(_ sender: Any) {
+        openViewController(controller: LoanRequestViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+            vc.loaninfo = self.getLoanData
+        })
       
     }
     func calculateEmi(loanAmount : Double, loanTenure : Double, interestRate : Double)  {

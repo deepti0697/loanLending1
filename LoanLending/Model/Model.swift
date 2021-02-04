@@ -116,6 +116,28 @@ class MyLoanSection {
         }
 }
 }
+
+class LoanHistory {
+    var id:String!
+    var lender:MyLender?
+    var amount:String!
+    var status:String!
+    var updated_at:String!
+    
+    
+    init(fromJson parseData: JSON!){
+        
+        if parseData?.isEmpty ?? false{
+            return
+        }
+    let getLenderData = parseData["lender"]
+        id = parseData["id"].stringValue
+        amount = parseData["amount"].stringValue
+        status = parseData["status"].stringValue
+        updated_at = parseData["updated_at"].stringValue
+        lender = MyLender(fromJson: getLenderData)
+}
+}
 class MyLoanType {
     var id :String!
     var fr_name:String!
@@ -133,6 +155,11 @@ class MyLender {
     var name:String!
     var processingFee:String!
     var logo:String!
+    var id:String!
+    var email:String!
+    var interest:String!
+  
+  
     init(fromJson parseData: JSON!){
         
         if parseData?.isEmpty ?? false{
@@ -141,6 +168,9 @@ class MyLender {
         name = parseData["name"].stringValue
         processingFee = parseData["processingFee"].stringValue
         logo = parseData["logo"].stringValue
+        id = parseData["id"].stringValue
+        email = parseData["email"].stringValue
+        interest = parseData["interest"].stringValue
 }
 }
 class MyLoanList {
@@ -149,7 +179,7 @@ class MyLoanList {
     var purpose:String!
     var amount:String!
     var tenure:String!
-    var intersest:String!
+    var interest:String!
     var processingFee:String!
     var emi: String!
     var bankAccount:String!
@@ -177,7 +207,7 @@ class MyLoanList {
         purpose = parseData["purpose"].stringValue
         amount = parseData["amount"].stringValue
         tenure = parseData["tenure"].stringValue
-        intersest = parseData["intersest"].stringValue
+        interest = parseData["interest"].stringValue
         processingFee = parseData["processingFee"].stringValue
         emi = parseData["emi"].stringValue
         bankAccount = parseData["bankAccount"].stringValue

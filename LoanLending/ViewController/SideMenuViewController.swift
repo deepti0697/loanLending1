@@ -88,5 +88,52 @@ extension SideMenuViewController : UITableViewDelegate,UITableViewDataSource {
 //                    })
 //        }
         }
+        if indexPath.row == 4 {
+//            displayAlert()
+            appDelegate.islogout = true
+            panel?.closeLeft()
+            appdelegate.setHomeView()
+        }
+    }
+    func displayAlert() {
+       
+        let alert = UIAlertController(title: kAppName, message: "Are you sure you want to log out", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction((UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
+            alert.dismiss(animated: true, completion: nil)
+        })))
+        alert.addAction((UIAlertAction(title: "Proceed", style: .default, handler: { (action) -> Void in
+            self.logoutAction()
+        })))
+        
+        
+    }
+    func logoutAction() {
+        
+               
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.user_id)
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.token)
+//        panel?.closeLeft()
+        appdelegate.initalViewController()
+//        UserDefaults.standard.removeObject(forKey: ServiceKeys.)
+//                       UserDefaults.standard.removeObject(forKey: kMobileNumber)
+//                       UserDefaults.standard.removeObject(forKey: kReferCode)
+//                       UserDefaults.standard.removeObject(forKey: kTeamName)
+//                       UserDefaults.standard.removeObject(forKey: kPanCardNo)
+//                       UserDefaults.standard.removeObject(forKey: kBankAccountNo)
+//                       UserDefaults.standard.removeObject(forKey: kInviteReferCode)
+//                       UserDefaults.standard.set(false, forKey: kLoggedIn)
+                  
+                                                                 
+                                                                 
+                                                                 // Get Login User Data
+//
+//                               if let googleSignIn = GIDSignIn.sharedInstance() {
+//                           googleSignIn.signOut()
+//                       }
+//                       LoginManager().logOut()
+//                       APP_DEL.openInitialViewController()
+          
+       
+       
     }
 }

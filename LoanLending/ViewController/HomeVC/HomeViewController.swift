@@ -39,13 +39,14 @@ class HomeViewController: UIViewController {
         collctionView.delegate = self
         collctionView.dataSource = self
         let collectionLayout = UICollectionViewFlowLayout()
-        collectionLayout.itemSize = CGSize(width: self.view.frame.width/4, height: self.view.frame.width/4)
+        collectionLayout.itemSize = CGSize(width: 125, height: 80)
               collectionLayout.minimumInteritemSpacing = 1 
         collectionLayout.scrollDirection = .horizontal
         collctionView.collectionViewLayout = collectionLayout
         homeLoanTypeAPI()
         // Do any additional setup after loading the view.
     }
+    
     func setupLocalized(){
         self.allLendersLabel.text = "All Lenders".localized(lang)
         self.allLoansLabel.text = "All Loans".localized(lang)
@@ -54,10 +55,53 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
          self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = false
+        if appdelegate.islogout {
+            self.displayAlert()
+        }
 //        UITabBar.appearance().barTintColor = UIColor.black
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    func displayAlert() {
+        AppManager().showAlertMulti(withHandler: "Sign Out", message: "Are you sure you want to Sign Out?", buttonTitle1: "Cancel", buttonTitle2: "Yes") {
+//                Constants.kUserDefaults.set(0, forKey: "SessionOut")
+//                UserDefaults.standard.removeObject(forKey: "user")
+//                Constants.kAppDelegate.user = nil
+//                self.switchLoginVC()
+            self.logoutAction()
+        }
+//
+    }
+    func logoutAction() {
+        
+               
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.user_id)
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.token)
+        appdelegate.initalViewController()
+//        UserDefaults.standard.removeObject(forKey: ServiceKeys.)
+//                       UserDefaults.standard.removeObject(forKey: kMobileNumber)
+//                       UserDefaults.standard.removeObject(forKey: kReferCode)
+//                       UserDefaults.standard.removeObject(forKey: kTeamName)
+//                       UserDefaults.standard.removeObject(forKey: kPanCardNo)
+//                       UserDefaults.standard.removeObject(forKey: kBankAccountNo)
+//                       UserDefaults.standard.removeObject(forKey: kInviteReferCode)
+//                       UserDefaults.standard.set(false, forKey: kLoggedIn)
+                  
+                                                                 
+                                                                 
+                                                                 // Get Login User Data
+//
+//                               if let googleSignIn = GIDSignIn.sharedInstance() {
+//                           googleSignIn.signOut()
+//                       }
+//                       LoginManager().logOut()
+//                       APP_DEL.openInitialViewController()
+          
+       
+       
+    }
     @IBAction func openSideMenu(_ sender: Any) {
         
         panel?.openLeft(animated: true)
@@ -106,6 +150,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
         cell.calulateEMI = {[weak self]  in
                        if let strongSelf = self {
                         strongSelf.openViewController(controller: CalculateEMIViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+                            vc.getLoanData = self?.homeLoanData[indexPath.row]
                         })
                         
                        }

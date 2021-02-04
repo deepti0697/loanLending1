@@ -9,6 +9,11 @@ import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var imageCheck: UIImageView!
+    @IBOutlet weak var amountLbl: UILabel!
+    @IBOutlet weak var accountNoLbl: UILabel!
+    @IBOutlet weak var bankNameLbl: UILabel!
+    @IBOutlet weak var loanAmountRcvdLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +28,6 @@ class HistoryTableViewCell: UITableViewCell {
             super.layoutSubviews()
             
             contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
-        }
+ 
+}
 }

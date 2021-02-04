@@ -21,6 +21,10 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     var initalValue = 0
     var walletType  = ["Bank","Cash","Cheque"]
     @IBOutlet weak var termAndCondtionLbl: UIButton!
+    
+    @IBOutlet weak var upload3MonthPaySlip: UILabel!
+    @IBOutlet weak var selectMobileWalletLocLbl: UILabel!
+    @IBOutlet weak var enterBankAccountLocLbl: UILabel!
     @IBOutlet weak var iAcceptLbl: UILabel!
     @IBOutlet weak var nextBtnOutlt: UIButton!
     @IBOutlet weak var selectMobileWalletTxt: UITextField!
@@ -39,6 +43,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     @IBOutlet weak var loanAmountSlider: UISlider!
     @IBOutlet weak var tenureSlider: UISlider!
     
+    @IBOutlet weak var acceptImageView: UIImageView!
     @IBOutlet weak var uploadDocBtn: UIButton!
     var document = Data()
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
@@ -78,6 +83,23 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         self.maximumMotnhSliderLbl.text = "\(self.loaninfo?.max_tenure ?? "") Months"
         self.tenureSlider.minimumValue = Float(self.loaninfo?.min_tenure ?? "") ?? 0.0
         self.tenureSlider.maximumValue = Float(self.loaninfo?.max_tenure ?? "") ?? 0.0
+    }
+    
+    func localizableSetup(){
+        loanReqLocLbl.text = "Request for a Loan".localized(lang)
+        TotalTimeLocLbl.text = "How much do you want to borrow and for how long".localized(lang)
+        
+        purposeOfLoanLocLbl.text = "Purpose for loan".localized(lang)
+        purposeOfLoanTxxtfld.placeholder = "enterHere".localized(lang)
+        clcEMILocLbl.text = "Total Interest Payable".localized(lang)
+        interestAmountLocLbl.text = "Total Interest Payable".localized(lang)
+        
+        enterBankAccountLocLbl.text = "Enter Bank Account".localized(lang)
+        selectMobileWalletLocLbl.text = "Select mobile wallet".localized(lang)
+        upload3MonthPaySlip.text = "Upload 3 months Pay slip".localized(lang)
+        iAcceptLbl.text = "iAccpet".localized(lang)
+        termAndCondtionLbl.setTitle("termAcondition".localized(lang), for: .normal)
+        nextBtnOutlt.setTitle("Submit".localized(lang), for: .normal)
     }
     @IBAction func oWallet(_ sender: Any) {
     showTimeSheet(textField: selectMobileWalletTxt)
@@ -182,7 +204,17 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     @IBAction func backButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+    @IBAction func remeberMeAction(_ sender: UIButton) {
+        if sender.isSelected {
+            
+            self.acceptImageView.image = #imageLiteral(resourceName: "uncheck")
+        }
+        else {
+            isAcceptTermCondition = true
+            self.acceptImageView.image = #imageLiteral(resourceName: "check")
+        }
+        sender.isSelected = !sender.isSelected
+    }
     @IBAction func nextAction(_ sender: Any) {
         submitLoanRequest()
     }

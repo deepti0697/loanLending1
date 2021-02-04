@@ -45,6 +45,7 @@
 		F2B676F125ADA30500CA7C52 /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B676F025ADA30500CA7C52 /* UITextField+fixCaretPosition.swift */; };
 		F2B676F625ADA31700CA7C52 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B676F525ADA31700CA7C52 /* SkyFloatingLabelTextFieldWithIcon.swift */; };
 		F2B6771E25ADAA6A00CA7C52 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6771D25ADAA6A00CA7C52 /* AppManager.swift */; };
+		F2B9587125CA84C500902080 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9587025CA84C500902080 /* Utility.swift */; };
 		F2C39DD725AD6472005CBA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C39DD625AD6472005CBA0A /* AppDelegate.swift */; };
 		F2C39DDB25AD6472005CBA0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C39DDA25AD6472005CBA0A /* ViewController.swift */; };
 		F2C39DDE25AD6472005CBA0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C39DDC25AD6472005CBA0A /* Main.storyboard */; };
@@ -135,6 +136,7 @@
 		F2B676F025ADA30500CA7C52 /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
 		F2B676F525ADA31700CA7C52 /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
 		F2B6771D25ADAA6A00CA7C52 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		F2B9587025CA84C500902080 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		F2C39DD325AD6472005CBA0A /* LoanLending.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoanLending.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C39DD625AD6472005CBA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C39DDA25AD6472005CBA0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 			children = (
 				F22D6C6E25B837EF00882B58 /* Validation.swift */,
 				F22D6C7325B837FD00882B58 /* Validate.swift */,
+				F2B9587025CA84C500902080 /* Utility.swift */,
 				F2F7304325AEBBAA003B6DBD /* Messages.swift */,
 				F213DD5825B7F1A10078C03A /* ServiceClass.swift */,
 				F213DD5325B7F1570078C03A /* Defines.swift */,
@@ -693,6 +696,7 @@
 				F22D6C7425B837FD00882B58 /* Validate.swift in Sources */,
 				F2F7314C25AEEE0D003B6DBD /* SignUPFirstVC.swift in Sources */,
 				F22D6C6F25B837EF00882B58 /* Validation.swift in Sources */,
+				F2B9587125CA84C500902080 /* Utility.swift in Sources */,
 				F20B2BB925B5AAF400620F6A /* HistoryTableViewCell.swift in Sources */,
 				F25FA6A025B5C2C1000FFEEC /* MyOrderVC.swift in Sources */,
 				F28F78DC25B18F8000FA9EC1 /* HomeViewController.swift in Sources */,
