@@ -51,6 +51,10 @@ extension LoanVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LoanTableViewCell") as! LoanTableViewCell
         cell.calculateEMI.setTitleColor(.white, for: .normal)
+        let view = UIView()
+        view.backgroundColor = .clear
+        cell.selectedBackgroundView = view
+            
         if self.loanSectionArray[indexPath.section].status == "DECLINE" {
             cell.calculateEMI.isHidden = false
             cell.calculateEMI.backgroundColor = UIColor(red: 250/255, green: 50/255, blue: 59/255, alpha: 1)

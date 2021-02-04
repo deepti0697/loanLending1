@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
         collectionLayout.scrollDirection = .horizontal
         collctionView.collectionViewLayout = collectionLayout
         homeLoanTypeAPI()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -130,9 +131,19 @@ extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.homeLoanData(loanID: self.homeLoanArray[indexPath.row].id)
-    }
+         let selectedCell = collctionView.cellForItem(at: indexPath) as? HomeVCCollectionViewCell
+//               selectedCell.viewBG.backgroundColor =
+        selectedCell?.loanTypeLabel.textColor = UIColor(red: 26/155, green: 178/255, blue: 241/255, alpha: 1)
+            self.homeLoanData(loanID: self.homeLoanArray[indexPath.row].id)
+          
     
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let selectedCell = collctionView.cellForItem(at: indexPath) as? HomeVCCollectionViewCell
+//               selectedCell.viewBG.backgroundColor =
+        selectedCell?.loanTypeLabel.textColor = UIColor(red: 108/155, green: 111/255, blue: 143/255, alpha: 1)
+//           self.homeLoanData(loanID: self.homeLoanArray[indexPath.row].id)
+    }
 }
 extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -145,7 +156,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
         cell.calculateEMIOtlt.setTitle("Calculate EMI".localized(lang), for: .normal)
         let view = UIView()
         view.backgroundColor = .clear
-            cell.selectedBackgroundView = view
+        cell.selectedBackgroundView = view
             
         cell.calulateEMI = {[weak self]  in
                        if let strongSelf = self {

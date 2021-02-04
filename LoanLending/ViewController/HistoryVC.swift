@@ -42,7 +42,10 @@ class HistoryVC: UIViewController {
 extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell") as! HistoryTableViewCell
-       
+        let view = UIView()
+        view.backgroundColor = .clear
+        cell.selectedBackgroundView = view
+        cell.bankNameLbl.text = stringToDate(date: getLoanHistory[indexPath.row].updated_at)
         if getLoanHistory[indexPath.row].status == "PAID"{
             cell.loanAmountRcvdLbl.text = "Amount Received by \(getLoanHistory[indexPath.row].lender?.name ?? "")"
             cell.amountLbl.text = "$ \(getLoanHistory[indexPath.row].amount ?? "")"
@@ -60,7 +63,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
             cell.loanAmountRcvdLbl.text = "Completed"
             cell.amountLbl.text = "$ \(getLoanHistory[indexPath.row].amount ?? "")"
             cell.amountLbl.textColor = .black
-            cell.imageCheck.image = #imageLiteral(resourceName: "Incomplete@1")
+            cell.imageCheck.image = #imageLiteral(resourceName: "completeDisebal@1")
         }
         return cell
     }
@@ -141,4 +144,38 @@ extension HistoryVC {
             }
         })
     }
+    func stringToDate(date: String)->String  {
+        let formatter = DateFormatter()
+
+        let splitedDate = date.components(separatedBy: "T")
+        if splitedDate.count > 0 {
+            formatter.dateFormat = "yyyy/MM/dd"
+//            if let parsedDate = formatter.date(from: splitedDate[0]) {
+                return "\(splitedDate[0])"
+//            }
+        }
+        // Format 1
+//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        if let parsedDate = formatter.date(from: date) {
+//            return parsedDate
+//        }
+//
+//        // Format 2
+//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:SSSZ"
+//        if let parsedDate = formatter.date(from: date) {
+//            return parsedDate
+//        }
+
+        // Couldn't parsed with any format. Just get the date
+      
+
+        // Nothing worked!
+       return String()
+    }
 }
+
+
+
+
+
+

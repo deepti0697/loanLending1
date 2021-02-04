@@ -74,7 +74,7 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.34509803919999998" green="0.74117647060000003" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="0.10196078431372549" green="0.69803921568627447" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -3399,7 +3399,7 @@
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qs3-mI-RdC">
                                                                                 <rect key="frame" x="15" y="72" width="98" height="20"/>
                                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
-                                                                                <color key="textColor" red="0.42352941176470588" green="0.43529411764705883" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="textColor" red="0.50980392156862742" green="0.52087312939999997" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
@@ -3437,6 +3437,7 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <size key="customSize" width="128" height="100"/>
                                                             <connections>
+                                                                <outlet property="backgroundViewC" destination="0Yb-3k-S6B" id="PLI-WF-nW5"/>
                                                                 <outlet property="loanTypeLabel" destination="Qs3-mI-RdC" id="diJ-hI-8lD"/>
                                                                 <outlet property="topImgView" destination="ks2-Mz-HI1" id="0z7-BZ-eZS"/>
                                                             </connections>
@@ -3482,14 +3483,14 @@
                                         <rect key="frame" x="0.0" y="224" width="384" height="189"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1RE-3n-36i" id="VWt-qr-oB9">
-                                            <rect key="frame" x="10" y="10" width="364" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="189"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vAu-J7-mTh">
                                                     <rect key="frame" x="10" y="0.0" width="364" height="112"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag@1" translatesAutoresizingMaskIntoConstraints="NO" id="cV2-w7-IQh">
-                                                            <rect key="frame" x="10" y="54.5" width="80" height="80"/>
+                                                            <rect key="frame" x="10" y="44.5" width="80" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="80" id="IOb-2V-Y8R"/>
                                                                 <constraint firstAttribute="width" constant="80" id="xgy-MI-tYq"/>
@@ -3507,19 +3508,19 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10% Rate Of Interest " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdz-xf-yQl">
-                                                            <rect key="frame" x="105" y="38" width="162" height="17"/>
+                                                            <rect key="frame" x="105" y="38" width="142" height="17"/>
                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
                                                             <color key="textColor" red="0.54117647058823526" green="0.5490196078431373" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10% Rate Of Interest " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AU8-WM-s7K">
-                                                            <rect key="frame" x="105" y="57" width="162" height="17"/>
+                                                            <rect key="frame" x="105" y="57" width="142" height="17"/>
                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
                                                             <color key="textColor" red="0.54117647059999996" green="0.54901960780000003" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9Y-H1-75O">
-                                                            <rect key="frame" x="272" y="78.5" width="102" height="32"/>
+                                                            <rect key="frame" x="252" y="68.5" width="102" height="32"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="102" id="LPG-8F-WL6"/>
                                                             </constraints>
@@ -5894,7 +5895,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="404" height="146"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BFt-nC-W2I" id="gyl-Si-P66">
-                                            <rect key="frame" x="10" y="5" width="384" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="146"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJd-kG-mVc">
@@ -6309,7 +6310,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="404" height="146"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J6S-nj-EzG" id="A7U-xH-I2h">
-                                            <rect key="frame" x="10" y="5" width="384" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="146"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sz1-Nx-6ov">
@@ -6343,10 +6344,10 @@
                                                             <rect key="frame" x="10" y="27" width="85" height="92"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag@1" translatesAutoresizingMaskIntoConstraints="NO" id="39h-y8-9mK">
-                                                                    <rect key="frame" x="17.5" y="21" width="50" height="50"/>
+                                                                    <rect key="frame" x="25" y="28.5" width="35" height="35"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="50" id="ike-fe-Hzy"/>
-                                                                        <constraint firstAttribute="width" constant="50" id="xA1-fP-IbU"/>
+                                                                        <constraint firstAttribute="height" constant="35" id="ike-fe-Hzy"/>
+                                                                        <constraint firstAttribute="width" constant="35" id="xA1-fP-IbU"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

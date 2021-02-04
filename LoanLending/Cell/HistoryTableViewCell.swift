@@ -30,4 +30,5 @@ class HistoryTableViewCell: UITableViewCell {
             contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
  
 }
+    
 }

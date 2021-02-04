@@ -39,7 +39,7 @@ class ChooseLanguageVc: BaseViewController {
 //        self.langTxtFeild.layer.borderColor = UIColor.white.cgColor
 //        self.langTxtFeild.layer.borderWidth = 1
         self.langTxtFeild.text = "English"
-        AppHelper.setStringForKey("en", key: ServiceKeys.languageType)
+//        AppHelper.setStringForKey("en", key: ServiceKeys.languageType)
     }
  
     func showActionSheet(textField : UITextField) {
@@ -78,6 +78,9 @@ class ChooseLanguageVc: BaseViewController {
     */
 
     @IBAction func proceedAction(_ sender: Any) {
+        if AppHelper.getStringForKey(ServiceKeys.languageType) == "" {
+            AppHelper.setStringForKey("en", key: ServiceKeys.languageType)
+        }
         self.openViewController(controller: ViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
            })
         

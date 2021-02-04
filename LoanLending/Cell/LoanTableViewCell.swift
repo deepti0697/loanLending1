@@ -28,6 +28,8 @@ class LoanTableViewCell: UITableViewCell {
     @IBOutlet weak var bankNameLbl: UILabel!
     @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var calculateEMI: UIButton!
+    
+    var countdownTimer = Timer()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -52,7 +54,9 @@ class LoanTableViewCell: UITableViewCell {
         self.loanIDLbl.text = response.loanId ?? ""
         self.interestLbl.text = "\(response.interest ?? "")%"
         self.puproseLbl.text = response.purpose ?? ""
-//        setReleaseTime(releaseDateString: response.created_at ?? "")
+        if let time = response.created_at {
+          stringToDate(date: time)
+        }
         self.tenureLbl.text = response.tenure
         loanTypeLbl.text = response.loan_type?.fr_name
         if let imageStr = response.lender?.logo{
@@ -79,15 +83,20 @@ class LoanTableViewCell: UITableViewCell {
     }
     fileprivate func setReleaseTime(releaseDateString: String) {
         let releaseDateFormatter = DateFormatter()
-        releaseDateFormatter.dateFormat =  "yyyy-MM-dd HH:mm:ss"
-        releaseDate = releaseDateFormatter.date(from: releaseDateString)! as NSDate
-        
+        releaseDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+        releaseDateFormatter.dateFormat =  "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        guard let date = releaseDateFormatter.date(from: releaseDateString) else {
+           fatalError("ERROR: Date conversion failed due to mismatched format.")
+        }
+        releaseDate = date as NSDate
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
     @objc func updateTime() {
         let currentDate = Date()
         let calendar = Calendar.current
-        let diffDateComponents = calendar.dateComponents([.year,.month,.day], from: currentDate, to: releaseDate! as Date)
+        let diffDateComponents = calendar.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: releaseDate! as Date)
         var year = diffDateComponents.year ?? 00
         var month = diffDateComponents.month ?? 00
         var day = diffDateComponents.day ?? 00
@@ -106,10 +115,35 @@ class LoanTableViewCell: UITableViewCell {
         dobLbl.text = countdown
        
     }
+    func stringToDate(date: String)  {
+        let formatter = DateFormatter()
+
+        let splitedDate = date.components(separatedBy: "T")
+        if splitedDate.count > 0 {
+            formatter.dateFormat = "yyyy/MM/dd"
+//            if let parsedDate = formatter.date(from: splitedDate[0]) {
+                self.dobLbl.text = "\(splitedDate[0])"
+//            }
+        }
+        // Format 1
+//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        if let parsedDate = formatter.date(from: date) {
+//            return parsedDate
+//        }
+//
+//        // Format 2
+//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:SSSZ"
+//        if let parsedDate = formatter.date(from: date) {
+//            return parsedDate
+//        }
+
+        // Couldn't parsed with any format. Just get the date
+      
+
+        // Nothing worked!
+       
+    }
 }
-
-
-
 
 
 

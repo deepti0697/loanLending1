@@ -227,6 +227,7 @@ class MyLoanList {
     }
 
 class LoanList {
+    
     var id: String!
     var name:String!
     var email:String!
@@ -316,7 +317,7 @@ class LoanList {
         isArchived  = parseData["isArchived"].stringValue
         created_at  = parseData["created_at"].stringValue
         updated_at  = parseData["updated_at"].stringValue
-        logo        = parseData["logo"].stringValue
+        logo        = parseData["image"].stringValue
 }
 }
 
