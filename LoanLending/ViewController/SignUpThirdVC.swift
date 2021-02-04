@@ -156,13 +156,11 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
            
             if isDocImageView {
-                self.uploadDocBtn.setTitle("", for: .normal)
-                self.uploadDocBtn.setImage(UIImage(named: ""), for: .normal)
+               
                 self.docImageView.image = pickedImage
             }
             else {
-                self.uploadImageBtn.setTitle("", for: .normal)
-                self.uploadImageBtn.setImage(UIImage(named: ""), for: .normal)
+              
                 self.uploadImageView.image = pickedImage
                
                

@@ -27,6 +27,7 @@ class HomeTableCollectionViewCell: UITableViewCell {
             contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         }
     
+    
     func configureCell(response:LoanList) {
         self.bankNamelbl.text = response.name
         self.rateOfIneterest.text = "\(response.interest ?? "")% Rate of Interest"

@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
         collectionLayout.scrollDirection = .horizontal
         collctionView.collectionViewLayout = collectionLayout
         homeLoanTypeAPI()
+      
         
         // Do any additional setup after loading the view.
     }
@@ -126,6 +127,11 @@ extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeVCCollectionViewCell", for: indexPath) as! HomeVCCollectionViewCell
+//        if indexPath.row == 0 {
+//            cell.loanTypeLabel.textColor =   UIColor(red: 26/155, green: 178/255, blue: 241/255, alpha: 1)
+//            cell.backgroundViewC?.layer.borderColor =  UIColor(red: 26/155, green: 178/255, blue: 241/255, alpha: 1).cgColor
+//            cell.backgroundViewC.layer.borderWidth =  2
+//        }
         cell.configureCell(response: homeLoanArray[indexPath.row])
         
         return cell
@@ -133,6 +139,7 @@ extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
          let selectedCell = collctionView.cellForItem(at: indexPath) as? HomeVCCollectionViewCell
 //               selectedCell.viewBG.backgroundColor =
+        
         selectedCell?.loanTypeLabel.textColor = UIColor(red: 26/155, green: 178/255, blue: 241/255, alpha: 1)
             self.homeLoanData(loanID: self.homeLoanArray[indexPath.row].id)
           
