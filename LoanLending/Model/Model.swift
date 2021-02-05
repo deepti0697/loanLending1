@@ -11,7 +11,7 @@ import SwiftyJSON
 import Photos
 
 class User{
-    
+  
     var country_code  : String!
     var language:String!
     var staffId:String!
@@ -24,6 +24,7 @@ class User{
     var id   : String!
     var verificationId:String!
     var email:String!
+   
     var password:String!
     var token:String!
     var status:String!
@@ -35,12 +36,12 @@ class User{
 
     init() { }
     
-    init(fromJson parseData: JSON!){
-        if parseData.isEmpty{
+    init(fromJson json: JSON!){
+        if json.isEmpty{
             return
         }
         
-        let json            = parseData["user"]
+      
        
         email               = json["email"].stringValue
         mobile              = json["mobile"].stringValue

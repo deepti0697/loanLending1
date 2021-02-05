@@ -125,7 +125,39 @@ class Common: NSObject {
         
         Common.getTopViewController()?.present(alertController, animated: true, completion: nil)
     }
-    
+//    / MARK: - Start Activity Indicator on table background
+        public class func startActivityIndicator(baseView : UIView)
+            {
+                DispatchQueue.main.async {
+                    if #available(iOS 13.0, *) {
+                        let activityIndicator = UIActivityIndicatorView(style: .large)
+                        activityIndicator.color = UIColor.lightGray
+                        activityIndicator.center = CGPoint(x: baseView.frame.size.width/2, y: baseView.frame.size.height/2)
+                        activityIndicator.startAnimating()
+                        activityIndicator.hidesWhenStopped = true
+                        activityIndicator.tag = 999999
+                        baseView.addSubview(activityIndicator)
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                   
+                }
+
+            }
+
+        // MARK: - Stop Activity Indicator on table background
+        public class func stopActivityIndicator(baseView : UIView)
+        {
+            DispatchQueue.main.async {
+                if let activityIndicator = baseView.subviews.filter(
+                    { $0.tag == 999999}).first as? UIActivityIndicatorView {
+                    activityIndicator.stopAnimating()
+                    activityIndicator.removeFromSuperview()
+                }
+            }
+            
+
+        }
     
     // MARK:- PREFERANCE
     /*static func getUserInfo() -> RegisterModel? {

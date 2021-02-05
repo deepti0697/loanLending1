@@ -69,12 +69,12 @@ enum Messages : String {
     case TermAndCondition      = "Please Accept Term & Conditions. "
     
 }
-let moreTitlesArray = ["About Us",
+let moreTitlesArray = ["Edit Profile","Change Passoword","About Us",
                        "Contact us",
                        "FAQ's",
                        "T & C",
                        "Privacy policy",]
-let moreImagesArray = [ "abouticon",
+let moreImagesArray = ["loanmenu@1","abouticon","abouticon",
                      "mail",
                        "faq",
                        "ordersmenu",

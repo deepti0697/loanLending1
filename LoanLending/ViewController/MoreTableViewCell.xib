@@ -21,13 +21,13 @@
                         <rect key="frame" x="15" y="10" width="310" height="50"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Reh-Fi-FJ0">
-                                <rect key="frame" x="3" y="5" width="40" height="40"/>
+                                <rect key="frame" x="15" y="5" width="40" height="40"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1rR-92-7QX">
-                                        <rect key="frame" x="7.5" y="7.5" width="25" height="25"/>
+                                        <rect key="frame" x="10" y="10" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="1jb-JH-eFK"/>
-                                            <constraint firstAttribute="width" constant="25" id="pe2-U0-Lz0"/>
+                                            <constraint firstAttribute="height" constant="20" id="1jb-JH-eFK"/>
+                                            <constraint firstAttribute="width" constant="20" id="pe2-U0-Lz0"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -45,7 +45,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUB-nQ-hrw">
-                                <rect key="frame" x="53" y="15" width="41.5" height="20.5"/>
+                                <rect key="frame" x="65" y="15" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.28627450980392155" green="0.29411764705882354" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Reh-Fi-FJ0" firstAttribute="centerY" secondItem="3HQ-PC-UqL" secondAttribute="centerY" id="1Fe-G9-owQ"/>
-                            <constraint firstItem="Reh-Fi-FJ0" firstAttribute="leading" secondItem="3HQ-PC-UqL" secondAttribute="leading" constant="3" id="35m-u0-M25"/>
+                            <constraint firstItem="Reh-Fi-FJ0" firstAttribute="leading" secondItem="3HQ-PC-UqL" secondAttribute="leading" constant="15" id="35m-u0-M25"/>
                             <constraint firstAttribute="height" constant="50" id="3Sg-Ux-uMO"/>
                             <constraint firstItem="fUB-nQ-hrw" firstAttribute="centerY" secondItem="1rR-92-7QX" secondAttribute="centerY" id="8mp-Rq-SZq"/>
                             <constraint firstItem="fUB-nQ-hrw" firstAttribute="leading" secondItem="Reh-Fi-FJ0" secondAttribute="trailing" constant="10" id="gn1-36-JAq"/>

@@ -39,12 +39,17 @@ class MoreViewController: UIViewController {
     }
     
     func openProfile() {
-       
+        openViewController(controller: ProfileOneVC.self, storyBoard: .mainStoryBoard) { (vc) in
+      
+              }
         
     }
     
-    func openReferEarn() {
-       
+    func openChangePassword() {
+        
+        openViewController(controller: ChangePasswordViewController.self, storyBoard: .mainStoryBoard) { (vc) in
+      //            vc.isFromMore = true
+              }
     }
     
     func openVerifyAccount() {
@@ -103,9 +108,7 @@ class MoreViewController: UIViewController {
 //        }
     }
     
-    func openChangePassword() {
-        
-    }
+   
     
     func logoutAction() {
 
@@ -145,7 +148,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
          openProfile()
         case 1:
-             openReferEarn()
+            openChangePassword()
         case 2:
             openVerifyAccount()
         case 3:

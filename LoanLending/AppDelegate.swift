@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //  nv3.restorationIdentifier = "communityViewController"
         
         
-        let vc4 = storyBoard.instantiateViewController(withIdentifier: "AccountViewController") as! AccountViewController
+        let vc4 = storyBoard.instantiateViewController(withIdentifier: "MoreViewController") as! MoreViewController
         let nv4 = UINavigationController(rootViewController: vc4)
         //   nv4.restorationIdentifier = "chatsListViewController"
         
@@ -163,5 +163,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
         self.window?.rootViewController = nv4
         self.window?.makeKeyAndVisible()
+    }
+    func applogout() {
+        if islogout {
+            displayAlert()
+        }
+    }
+    func displayAlert() {
+        AppManager().showAlertMulti(withHandler: "Sign Out", message: "Are you sure you want to Sign Out?", buttonTitle1: "Cancel", buttonTitle2: "Yes") {
+//                Constants.kUserDefaults.set(0, forKey: "SessionOut")
+//                UserDefaults.standard.removeObject(forKey: "user")
+//                Constants.kAppDelegate.user = nil
+//                self.switchLoginVC()
+            self.logoutAction()
+        }
+//
+    }
+    func logoutAction() {
+        
+               
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.user_id)
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.token)
+        appdelegate.initalViewController()
+//        UserDefaults.standard.removeObject(forKey: ServiceKeys.)
+//                       UserDefaults.standard.removeObject(forKey: kMobileNumber)
+//                       UserDefaults.standard.removeObject(forKey: kReferCode)
+//                       UserDefaults.standard.removeObject(forKey: kTeamName)
+//                       UserDefaults.standard.removeObject(forKey: kPanCardNo)
+//                       UserDefaults.standard.removeObject(forKey: kBankAccountNo)
+//                       UserDefaults.standard.removeObject(forKey: kInviteReferCode)
+//                       UserDefaults.standard.set(false, forKey: kLoggedIn)
+                  
+                                                                 
+                                                                 
+                                                                 // Get Login User Data
+//
+//                               if let googleSignIn = GIDSignIn.sharedInstance() {
+//                           googleSignIn.signOut()
+//                       }
+//                       LoginManager().logOut()
+//                       APP_DEL.openInitialViewController()
+          
+       
+       
     }
 }

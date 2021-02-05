@@ -142,11 +142,12 @@ class LoginViewController: UIViewController {
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 let getData = parseData["data"]
+                let Userform = getData["user"]
                 let token = getData["token"].stringValue
                 AppHelper.setStringForKey(token, key: ServiceKeys.token)
               
                
-                let user = User(fromJson:getData)
+                let user = User(fromJson:Userform)
                 print(user)
               
                AppHelper.setStringForKey(user.email, key: ServiceKeys.email)

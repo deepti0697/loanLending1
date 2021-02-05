@@ -15,7 +15,7 @@ class SideMenuViewController: BaseViewController {
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var tblMenu: UITableView!
     
-    let menuArr = [("My Loans","user"),("Loan History","loanHistorymenu"),("Notifications","notificationsmenu"),("More","moremenu"),("Logout","logoutmenu")]
+    let menuArr = [("My Loans","user"),("Loan History","loanHistorymenu"),("About Us","abouticon"),("Contact us","mail"),("FAQ's", "faq"),("T & C", "ordersmenu"),("Privacy policy","privacypolicy"),("Logout","logoutmenu")]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,12 +44,12 @@ extension SideMenuViewController : UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sideMenuTableViewCell", for: indexPath) as! SideMenuTableViewCell
         cell.lblName.text = menuArr[indexPath.row].0.localized(lang)
         cell.imgKey.image = UIImage(named: menuArr[indexPath.row].1)
-        if indexPath.row == 3 {
-            cell.arrowImageView?.isHidden = false
-        }
-        else {
+//        if indexPath.row == 3 {
+//            cell.arrowImageView?.isHidden = false
+//        }
+//        else {
             cell.arrowImageView?.isHidden = true
-        }
+//        }
         return cell
     }
     
@@ -79,20 +79,21 @@ extension SideMenuViewController : UITableViewDelegate,UITableViewDataSource {
 //            self.tabBarController?.selectedIndex = 2
         }
         else if indexPath.row == 3 {
-              panel?.closeLeft()
-            print(appdelegate.tabBarController.selectedIndex)
-            appdelegate.setupMore()
+             
 //            appdelegate.isComingFromSideMenu = true
 ////            appdelegate.tabBarController.selectedIndex = appdelegate.tabBarController.selectedIndex
 //            openViewController(controller: MoreViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
 //                    })
 //        }
         }
-        if indexPath.row == 4 {
+        if indexPath.row == 7 {
 //            displayAlert()
+           
             appDelegate.islogout = true
             panel?.closeLeft()
-            appdelegate.setHomeView()
+            appdelegate.applogout()
+            
+          
         }
     }
     func displayAlert() {

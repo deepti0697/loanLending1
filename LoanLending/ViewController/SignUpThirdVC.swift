@@ -70,9 +70,11 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
     @IBAction func backButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     override func viewDidLayoutSubviews() {
 
     }
+    
     func setupLocalized()
     {
         self.signUpLbl.text = ("signup".localized(lang))
@@ -115,6 +117,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
         self.docImageView.image = drawPDFfromURL(url: myURL)
         self.docImageView.image = UIImage().imagetAccodingToExtension(extensionStr: path)
     }
+    
     func drawPDFfromURL(url: URL) -> UIImage? {
         guard let document = CGPDFDocument(url as CFURL) else { return nil }
         guard let page = document.page(at: 1) else { return nil }
@@ -151,6 +154,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
         }
         sender.isSelected = !sender.isSelected
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -259,6 +263,8 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
                 openViewController(controller: LoginViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
             })
     }
+    
+  
 }
 
 
