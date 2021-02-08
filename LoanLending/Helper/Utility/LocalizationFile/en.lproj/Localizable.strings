@@ -49,7 +49,8 @@
 "account" = "Account";
 "Valid_NUMBER" = "Please enter valid mobile number.";
 "correctPassword" = "Please enter atleast 6 words";
-"Please enter full name" = "Please enter full name.";
+"newPassword" = "Please enter your new Password";
+"Please enter full name" = "Please enter your name.";
 "Please enter password" = "Please enter password.";
 "Please enter mobile number" = "Please enter mobile number";
 "Please Enter your City" = "Please Enter your City.";
@@ -84,3 +85,5 @@
 "AcceptTermAndCondition" = "Please Accept Term & Conditions. ";
 "Enter purpose of loan" = "Enter purpose of loan";
 "Enter your bank name" = "Enter your bank name";
+"Profile Picture" = "Profile Picture"
+

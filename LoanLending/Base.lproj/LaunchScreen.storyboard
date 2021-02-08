@@ -20,13 +20,20 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-1" translatesAutoresizingMaskIntoConstraints="NO" id="ih9-rN-fbB">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo@1" translatesAutoresizingMaskIntoConstraints="NO" id="YAd-sQ-XSu">
+                                <rect key="frame" x="114" y="336" width="186" height="224"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ih9-rN-fbB" secondAttribute="trailing" id="2Dg-2w-igz"/>
+                            <constraint firstItem="YAd-sQ-XSu" firstAttribute="width" secondItem="ih9-rN-fbB" secondAttribute="width" multiplier="0.45" id="H6p-2v-td9"/>
                             <constraint firstItem="ih9-rN-fbB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="QMh-yM-mjh"/>
+                            <constraint firstItem="YAd-sQ-XSu" firstAttribute="height" secondItem="ih9-rN-fbB" secondAttribute="height" multiplier="0.25" id="SV3-K4-2Z1"/>
                             <constraint firstItem="ih9-rN-fbB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="cv8-tS-edf"/>
+                            <constraint firstItem="YAd-sQ-XSu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pdK-xo-ari"/>
+                            <constraint firstItem="YAd-sQ-XSu" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="xBb-MA-NqW"/>
                             <constraint firstAttribute="bottom" secondItem="ih9-rN-fbB" secondAttribute="bottom" id="zsi-Aa-zuT"/>
                         </constraints>
                     </view>
@@ -37,6 +44,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo@1" width="91" height="96"/>
         <image name="splash-1" width="281" height="608.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

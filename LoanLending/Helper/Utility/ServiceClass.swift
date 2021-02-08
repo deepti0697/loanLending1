@@ -824,7 +824,7 @@ class ServiceClass: NSObject {
           {
               let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.upate_Password)"
              
-              let headers: HTTPHeaders = [ "Content-Type" : "application/json", "accept": "application/json",]
+              let headers: HTTPHeaders = [ "Content-Type" : "application/json", "accept": "application/json","Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token), "os" : "IOS","version":"1"]
               
                self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
           }

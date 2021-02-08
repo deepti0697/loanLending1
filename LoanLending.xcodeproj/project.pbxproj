@@ -23,11 +23,14 @@
 		F21C505325B1B1C8008A9C84 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21C505225B1B1C7008A9C84 /* MoreTableViewCell.xib */; };
 		F21C505825B1B299008A9C84 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21C505725B1B299008A9C84 /* MoreTableViewCell.swift */; };
 		F21C506F25B1C211008A9C84 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21C506E25B1C211008A9C84 /* AccountViewController.swift */; };
+		F226925C25D1440000982FF1 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226925B25D143FF00982FF1 /* ForgotPasswordViewController.swift */; };
 		F22D6C2425B8079A00882B58 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F22D6C2325B8079A00882B58 /* Reachability.m */; };
 		F22D6C6F25B837EF00882B58 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D6C6E25B837EF00882B58 /* Validation.swift */; };
 		F22D6C7425B837FD00882B58 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D6C7325B837FD00882B58 /* Validate.swift */; };
 		F247C76025B6B6D1004376D8 /* CalculateEMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247C75F25B6B6D1004376D8 /* CalculateEMIViewController.swift */; };
 		F247C79025B70B38004376D8 /* LoanRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247C78F25B70B36004376D8 /* LoanRequestViewController.swift */; };
+		F24C310C25CD16AA005BAAAD /* ProfileOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C310B25CD16AA005BAAAD /* ProfileOneVC.swift */; };
+		F25365C025CD6C2E00C8F867 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25365BF25CD6C2E00C8F867 /* ChangePasswordViewController.swift */; };
 		F257CBC625B55012007CDEC8 /* HomeVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F257CBC525B55012007CDEC8 /* HomeVCCollectionViewCell.swift */; };
 		F25FA6A025B5C2C1000FFEEC /* MyOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25FA69F25B5C2C1000FFEEC /* MyOrderVC.swift */; };
 		F25FA6A525B5C301000FFEEC /* MyOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25FA6A425B5C301000FFEEC /* MyOrderTableViewCell.swift */; };
@@ -111,6 +114,7 @@
 		F21C505225B1B1C7008A9C84 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
 		F21C505725B1B299008A9C84 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
 		F21C506E25B1C211008A9C84 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		F226925B25D143FF00982FF1 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		F22D6C2225B8079900882B58 /* LoanLending-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoanLending-Bridging-Header.h"; sourceTree = "<group>"; };
 		F22D6C2325B8079A00882B58 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		F22D6C2B25B807A000882B58 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 		F22D6C7325B837FD00882B58 /* Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		F247C75F25B6B6D1004376D8 /* CalculateEMIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateEMIViewController.swift; sourceTree = "<group>"; };
 		F247C78F25B70B36004376D8 /* LoanRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanRequestViewController.swift; sourceTree = "<group>"; };
+		F24C310B25CD16AA005BAAAD /* ProfileOneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOneVC.swift; sourceTree = "<group>"; };
+		F25365BF25CD6C2E00C8F867 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		F257CBC525B55012007CDEC8 /* HomeVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCCollectionViewCell.swift; sourceTree = "<group>"; };
 		F25FA69F25B5C2C1000FFEEC /* MyOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderVC.swift; sourceTree = "<group>"; };
 		F25FA6A425B5C301000FFEEC /* MyOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderTableViewCell.swift; sourceTree = "<group>"; };
@@ -275,9 +281,11 @@
 				F2882E5225B5958600809617 /* Loan */,
 				F28F78DA25B18F4500FA9EC1 /* HomeVC */,
 				F2C39DDA25AD6472005CBA0A /* ViewController.swift */,
+				F24C310B25CD16AA005BAAAD /* ProfileOneVC.swift */,
 				F21C504825B1B1B9008A9C84 /* MoreViewController.swift */,
 				F2B676E125AD9D1800CA7C52 /* LoginViewController.swift */,
 				F2F7301F25AEBA51003B6DBD /* BaseViewController.swift */,
+				F25365BF25CD6C2E00C8F867 /* ChangePasswordViewController.swift */,
 				F27AEE1125B176F30052AB17 /* SideMenuViewController.swift */,
 				F2F572EA25ADD005002C6663 /* OTPVerificationVC.swift */,
 				F21C505225B1B1C7008A9C84 /* MoreTableViewCell.xib */,
@@ -374,8 +382,8 @@
 		F2C39E1725AD6E81005CBA0A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F226925B25D143FF00982FF1 /* ForgotPasswordViewController.swift */,
 				F2F7303025AEBAD7003B6DBD /* Utility */,
-				F2F5729E25ADC71D002C6663 /* LocalizationFile */,
 				F2B676EA25ADA2DC00CA7C52 /* FloatingTextField */,
 				F2C39E2E25AD74AF005CBA0A /* Fonts */,
 				F2C39E1825AD6EA3005CBA0A /* CustomViewHelper.swift */,
@@ -409,6 +417,7 @@
 		F2F7303025AEBAD7003B6DBD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F2F5729E25ADC71D002C6663 /* LocalizationFile */,
 				F22D6C6E25B837EF00882B58 /* Validation.swift */,
 				F22D6C7325B837FD00882B58 /* Validate.swift */,
 				F2B9587025CA84C500902080 /* Utility.swift */,
@@ -689,6 +698,7 @@
 				F247C79025B70B38004376D8 /* LoanRequestViewController.swift in Sources */,
 				F2882E2525B58C0500809617 /* BankDetailViewController.swift in Sources */,
 				F213DD3425B7EC810078C03A /* CustomView.swift in Sources */,
+				F25365C025CD6C2E00C8F867 /* ChangePasswordViewController.swift in Sources */,
 				F2F7303225AEBAE4003B6DBD /* Common.swift in Sources */,
 				F2F7304425AEBBAA003B6DBD /* Messages.swift in Sources */,
 				F22D6C2425B8079A00882B58 /* Reachability.m in Sources */,
@@ -720,7 +730,9 @@
 				F2C39DDB25AD6472005CBA0A /* ViewController.swift in Sources */,
 				F27AEE2325B1770D0052AB17 /* SideMenuTableViewCell.swift in Sources */,
 				F20B2BB425B59B4200620F6A /* LoanTableViewCell.swift in Sources */,
+				F24C310C25CD16AA005BAAAD /* ProfileOneVC.swift in Sources */,
 				F2C39DD725AD6472005CBA0A /* AppDelegate.swift in Sources */,
+				F226925C25D1440000982FF1 /* ForgotPasswordViewController.swift in Sources */,
 				F2B676EC25ADA2EF00CA7C52 /* SkyFloatingLabelTextField.swift in Sources */,
 				F213DD5425B7F1570078C03A /* Defines.swift in Sources */,
 				F247C76025B6B6D1004376D8 /* CalculateEMIViewController.swift in Sources */,

@@ -24,6 +24,9 @@ class HomeViewController: UIViewController {
             if homeLoanArray.count > 0 {
                 
                     self.homeLoanData(loanID: self.homeLoanArray[0].id)
+                let myIndexPath = IndexPath(row: 0, section: 0)
+                let selectedCell = collctionView.cellForItem(at: myIndexPath) as? HomeVCCollectionViewCell
+                selectedCell?.isSelected = true
                 }
             }
         
@@ -44,7 +47,7 @@ class HomeViewController: UIViewController {
         collectionLayout.scrollDirection = .horizontal
         collctionView.collectionViewLayout = collectionLayout
         
-      
+        homeLoanTypeAPI()
         
         // Do any additional setup after loading the view.
     }
@@ -57,13 +60,14 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
          self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = false
-        homeLoanTypeAPI()
+      
       
 //        UITabBar.appearance().barTintColor = UIColor.black
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+      
+//        self.collctionView.selectItem(at: myIndexPath, animated: true, scrollPosition: .top)
     }
    
     @IBAction func openSideMenu(_ sender: Any) {
@@ -160,6 +164,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 let getData = parseData["data"]
 //                let loanType = parseData["loan_types"].stringValue
+                self.homeLoanArray.removeAll()
                 for obj in getData["loan_types"].arrayValue {
                    let comObj = LoanType(fromJson:obj)
                     self.homeLoanArray.append(comObj)
@@ -182,7 +187,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
     func homeLoanData(loanID:String){
         let params =  [String : Any]()
      
-        Common.startActivityIndicator(baseView: collctionView)
+        Common.startActivityIndicator(baseView: aTableView)
         ServiceClass.sharedInstance.hitServiceForHomeLoanData(params, loanType: loanID, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")
             Common.stopActivityIndicator(baseView: self.aTableView)

@@ -11,10 +11,12 @@ import SwiftyJSON
 import SDWebImage
 let reuseIdentifier = "btnCell"
 class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIDocumentPickerDelegate{
-    
+  
+    var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
+    @IBOutlet weak var profilePictureLocLbl: UILabel!
     @IBOutlet weak var userNameLocLbl: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
-    var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
+  
    
     @IBOutlet weak var heightFeetView: UIView!
    
@@ -23,6 +25,12 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
     var imageData = Data()
     @IBOutlet weak var btnSave: UIButton!
    
+    @IBOutlet weak var btnSaveOutlt: UIButton!
+    @IBOutlet weak var cityLblLOC: UILabel!
+    @IBOutlet weak var lblCompanyLOC: UILabel!
+    @IBOutlet weak var genderlocLbl: UIView!
+    @IBOutlet weak var fullNameLocLbl: UILabel!
+    @IBOutlet weak var mblLocLbl: UILabel!
     @IBOutlet weak var staffIDTxtFld: UITextField!
     @IBOutlet weak var txtMbl: UITextField!
     @IBOutlet weak var txtUsername: UITextField!
@@ -73,14 +81,36 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
        
        
         // Input the data into the array
-      
-      
-        
+        staffIDTxtFld.delegate = self
+        self.txtUsername.delegate = self
+        self.txtCity.delegate = self
+        self.txtMbl.delegate = self
+        self.txtFullName.delegate = self
+        self.txtCompanyName.delegate = self
+        userImageView.layer.borderWidth = 1.0
+        userImageView.contentMode =  UIView.ContentMode.scaleAspectFill
+        userImageView.layer.borderColor = UIColor(red: 247/255, green: 247/255, blue: 238/255, alpha: 1).cgColor
+        userImageView.layer.cornerRadius = userImageView.frame.size.height/2
+        userImageView.clipsToBounds = true
         self.viewTextStep()
        // self.setupTYHeightPicker()
         self.dataSetup()
         myUserData()
         // Do any additional setup after loading the view.
+        
+    }
+    
+    func localizstionSetUp(){
+        self.profilePictureLocLbl.text = "Profile Picture".localized(lang)
+        self.userNameLocLbl.text = "emailID".localized(lang)
+        self.txtUsername.placeholder = "Username".localized(lang)
+        self.mblLocLbl.text = "mobileNo".localized(lang)
+        self.txtMbl.placeholder = "mobileNo".localized(lang)
+        self.fullNameLocLbl.text = "Full Name".localized(lang)
+        self.txtFullName.placeholder = "fullName".localized(lang)
+        self.staffIDTxtFld.placeholder  = "staffID".localized(lang)
+        self.txtCompanyName.placeholder = "compnayName".localized(lang)
+        
         
     }
     
@@ -289,4 +319,39 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         
     }
     
+}
+extension ProfileOneVC:UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField ==  txtUsername{
+           textField.resignFirstResponder()
+            txtMbl.becomeFirstResponder()
+        } else if textField == txtMbl {
+           textField.resignFirstResponder()
+         txtFullName.becomeFirstResponder()
+        }
+        else if textField == txtFullName {
+           textField.resignFirstResponder()
+            staffIDTxtFld.becomeFirstResponder()
+        }
+        
+        else if textField == staffIDTxtFld {
+           textField.resignFirstResponder()
+         txtCompanyName.becomeFirstResponder()
+        }
+        else if textField == txtCompanyName {
+           textField.resignFirstResponder()
+         txtCity.becomeFirstResponder()
+            
+        }
+        else if textField == txtCity {
+            textField.resignFirstResponder()
+        }
+       return true
+      }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (string == " ") {
+            return false
+        }
+        return true
+    }
 }

@@ -17,7 +17,6 @@ class ChangePasswordViewController: UIViewController {
    
     @IBOutlet weak var confirmPassowrdTxtFld: UITextField!
     @IBOutlet weak var newPassowrdTxtFld: UITextField!
-    
     @IBOutlet weak var oldPassowrdTextField: UITextField!
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var txt_Password: UITextField!
@@ -25,10 +24,18 @@ class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
         self.confirmPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
         self.newPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
         self.oldPassowrdTextField.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
-        // Do any additional setup after loading the view.
+        self.confirmPassowrdTxtFld.textColor = .black
+        self.newPassowrdTxtFld.textColor = .black
+        self.oldPassowrdTextField.textColor = .black
+        self.oldPassowrdTextField.delegate = self
+        self.newPassowrdTxtFld.delegate = self
+        self.confirmPassowrdTxtFld.delegate = self
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,8 +58,9 @@ class ChangePasswordViewController: UIViewController {
     @IBAction func savePasswordBtn(_ sender: Any) {
         if  oldPassowrdTextField.text !=  "" {
 //
-                if (newPassowrdTxtFld.text?.count)! > 5 {
-//                    / login()
+                if newPassowrdTxtFld.text != "" {
+                    
+                    if (newPassowrdTxtFld.text?.count)! > 5 {
                     if confirmPassowrdTxtFld.text != newPassowrdTxtFld.text {
                         AppManager.init().showAlertSingle(kAppName, message:"Please match new Password with Confirm Passowrd", buttonTitle: "Ok") {
 
@@ -63,16 +71,22 @@ class ChangePasswordViewController: UIViewController {
                     }
                     
                 }
+                    else {
+                        AppManager.init().showAlertSingle(kAppName, message:"Please enter atleast 6 digit password", buttonTitle: "Ok") {
+
+                                    }
+                    }
+                }
         
 
                  else {
-                    AppManager.init().showAlertSingle(kAppName, message:"correctPassword".localized(lang), buttonTitle: "Ok") {
+                    AppManager.init().showAlertSingle(kAppName, message:"newPassword".localized(lang), buttonTitle: "Ok") {
 
                                 }
 
                 }
             } else {
-                AppManager.init().showAlertSingle(kAppName, message:"Please Enter Valid Passowrd", buttonTitle: "Ok") {
+                AppManager.init().showAlertSingle(kAppName, message:"Please Enter your Old Passowrd", buttonTitle: "Ok") {
 
                             }
                
@@ -107,14 +121,14 @@ class ChangePasswordViewController: UIViewController {
     }
     @IBAction func btn_ShowNewPasswordAction(_ sender: UIButton) {
         if sender.isSelected {
-            oldPassowrdTextField.isSecureTextEntry = false
-            self.oldPassowrdTextField.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
+            newPassowrdTxtFld.isSecureTextEntry = false
+            self.newPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
             btn_ShowPassword.tag = 2
         }
         else {
           
-            oldPassowrdTextField.isSecureTextEntry = true
-            self.oldPassowrdTextField.RightViewImage(#imageLiteral(resourceName: "icons8-eye-48"))
+            newPassowrdTxtFld.isSecureTextEntry = true
+            self.newPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-eye-48"))
             
             btn_ShowPassword.tag = 1
             
@@ -123,14 +137,14 @@ class ChangePasswordViewController: UIViewController {
     }
     @IBAction func btn_ShowConfirmPasswordAction(_ sender: UIButton) {
         if sender.isSelected {
-            oldPassowrdTextField.isSecureTextEntry = false
-            self.oldPassowrdTextField.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
+            confirmPassowrdTxtFld.isSecureTextEntry = false
+            self.confirmPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
             btn_ShowPassword.tag = 2
         }
         else {
           
-            oldPassowrdTextField.isSecureTextEntry = true
-            self.oldPassowrdTextField.RightViewImage(#imageLiteral(resourceName: "icons8-eye-48"))
+            confirmPassowrdTxtFld.isSecureTextEntry = true
+            self.confirmPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-eye-48"))
             
             btn_ShowPassword.tag = 1
             
@@ -170,3 +184,21 @@ func update_Profile(){
 
 }
 
+extension ChangePasswordViewController:UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == oldPassowrdTextField {
+           textField.resignFirstResponder()
+            newPassowrdTxtFld.becomeFirstResponder()
+        } else if textField == newPassowrdTxtFld {
+           textField.resignFirstResponder()
+         confirmPassowrdTxtFld.becomeFirstResponder()
+        }
+       return true
+      }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (string == " ") {
+            return false
+        }
+        return true
+    }
+}

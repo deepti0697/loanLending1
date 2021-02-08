@@ -112,8 +112,8 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
            print("import result : \(myURL)")
         let path:String = myURL.path
         self.document = try! Data(contentsOf:myURL)
-        self.uploadDocBtn.setTitle("", for: .normal)
-        self.uploadDocBtn.setImage(UIImage(named: ""), for: .normal)
+//        self.uploadDocBtn.setTitle("", for: .normal)
+//        self.uploadDocBtn.setImage(UIImage(named: ""), for: .normal)
         self.docImageView.image = drawPDFfromURL(url: myURL)
         self.docImageView.image = UIImage().imagetAccodingToExtension(extensionStr: path)
     }
@@ -195,7 +195,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
         var params =  [String : Any]()
         params["email"] = self.emailTxt.text ?? ""
         params["name"] = self.fullName
-        params["language"] = "english"
+        params["language"] = AppHelper.getStringForKey(ServiceKeys.languageType)
         params["country_code"] = "91"
         params["staffId"] = self.staffID
         params["mobile"]  = self.mobile

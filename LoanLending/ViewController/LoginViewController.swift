@@ -84,7 +84,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func btn_ShowPasswordAction(_ sender: UIButton) {
-        if btn_ShowPassword.tag == 1 {
+        if btn_ShowPassword.tag == 101 {
             txt_Password.isSecureTextEntry = false
             self.txt_Password.RightViewImage(UIImage.init(named: "password_icon-1"))
             btn_ShowPassword.tag = 2
@@ -93,7 +93,7 @@ class LoginViewController: UIViewController {
             self.txt_Password.RightViewImage(UIImage.init(named: "password-view-1"))
             txt_Password.isSecureTextEntry = true
             
-            btn_ShowPassword.tag = 1
+            btn_ShowPassword.tag = 101
             
         }
     }

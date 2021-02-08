@@ -106,7 +106,7 @@ class SignUPFirstVC: UIViewController {
             })
             }
             else{
-                AppManager.init().showAlertSingle(kAppName, message:  "fullName".localized(lang), buttonTitle: "Ok") {
+                AppManager.init().showAlertSingle(kAppName, message:  "Please enter full name".localized(lang), buttonTitle: "Ok") {
                 }
             }
         }
