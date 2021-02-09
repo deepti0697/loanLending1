@@ -92,7 +92,7 @@ class ToucIDAndTouchFaceVC: UIViewController {
     }
     
     func showErrorAlert(message: String) {
-        AppManager.init().showAlertSingle(kAppName, message: "Login successful", buttonTitle: "Error") {
+        AppManager.init().showAlertSingle(kAppName, message: "Login Failed", buttonTitle: "Error") {
         }
         
     }

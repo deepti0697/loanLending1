@@ -10,7 +10,7 @@ import UIKit
 
 
 class MoreViewController: UIViewController {
-    
+    var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak private var aTableView: UITableView!
     
     override func viewDidLoad() {
@@ -22,7 +22,8 @@ class MoreViewController: UIViewController {
     
     @IBAction func backButtonAction(_ sender: Any) {
         
-        appdelegate.setHomeView()
+//        appdelegate.setHomeView()
+        panel?.openLeft(animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -133,7 +134,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
    
             let cell = tableView.dequeueReusableCell(withIdentifier: "MoreTableViewCell", for: indexPath) as! MoreTableViewCell
            
-                cell.configCell(imageName: moreImagesArray[indexPath.row], title: moreTitlesArray[indexPath.row], showTitle: false)
+        cell.configCell(imageName: moreImagesArray[indexPath.row], title: moreTitlesArray[indexPath.row].localized(lang), showTitle: false)
             
             return cell
         

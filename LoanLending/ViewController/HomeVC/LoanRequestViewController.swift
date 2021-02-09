@@ -14,7 +14,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     var lbl_LoanAmount = UIButton()
     var lbl_Tenure = UIButton()
     var loanAmount = 50000
-    var isAcceptTermCondition = true
+    var isAcceptTermCondition = false
     var tenure = 1
     var totalEMI = 0.0
     var totalPayment = 0.0
@@ -110,7 +110,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         let placeHolder = "List"
         let customStringPicker = ActionSheetStringPicker.init(title:placeHolder, rows: array as [Any], initialSelection:initalValue, doneBlock:
         { picker, values, indexes in
-            textField.text = (String(describing: indexes!))
+            textField.text = (String(describing: indexes ?? ""))
             self.initalValue = values
             return
         }, cancel: nil, origin: textField)
@@ -133,8 +133,8 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
            print("import result : \(myURL)")
         let path:String = myURL.path
         self.document = try! Data(contentsOf:myURL)
-        self.uploadDocBtn.setTitle("", for: .normal)
-        self.uploadDocBtn.setImage(UIImage(named: ""), for: .normal)
+//        self.uploadDocBtn.setTitle("", for: .normal)
+//        self.uploadDocBtn.setImage(UIImage(named: ""), for: .normal)
         self.docImageView.image = drawPDFfromURL(url: myURL)
         self.docImageView.image = UIImage().imagetAccodingToExtension(extensionStr: path)
     }
@@ -206,7 +206,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     }
     @IBAction func remeberMeAction(_ sender: UIButton) {
         if sender.isSelected {
-            
+            isAcceptTermCondition = true
             self.acceptImageView.image = #imageLiteral(resourceName: "uncheck")
         }
         else {
@@ -240,7 +240,8 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 let message = parseData["message"].stringValue
                 Common.showAlert(alertMessage: message, alertButtons: ["Ok"]) { (bt) in
-                    self.navigationController?.popViewController(animated: true)
+//                    self.navigationController?.popViewController(animated: true)
+                    appdelegate.tabBarController.selectedIndex = 1
                 }
             } else {
                 

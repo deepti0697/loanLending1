@@ -35,7 +35,7 @@ class Validate: NSObject {
 
             }
             else if !vc.isAcceptTermCondition {
-                self.showMessage(message:"AcceptTermAndCondition")
+                self.showMessage(message:"AcceptTermAndCondition".localized(lang))
                 return false
             }
             else {

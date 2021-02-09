@@ -27,6 +27,7 @@
 		F22D6C2425B8079A00882B58 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F22D6C2325B8079A00882B58 /* Reachability.m */; };
 		F22D6C6F25B837EF00882B58 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D6C6E25B837EF00882B58 /* Validation.swift */; };
 		F22D6C7425B837FD00882B58 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D6C7325B837FD00882B58 /* Validate.swift */; };
+		F241381B25D2AD21002A178F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F241381A25D2AD21002A178F /* GoogleService-Info.plist */; };
 		F247C76025B6B6D1004376D8 /* CalculateEMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247C75F25B6B6D1004376D8 /* CalculateEMIViewController.swift */; };
 		F247C79025B70B38004376D8 /* LoanRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F247C78F25B70B36004376D8 /* LoanRequestViewController.swift */; };
 		F24C310C25CD16AA005BAAAD /* ProfileOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C310B25CD16AA005BAAAD /* ProfileOneVC.swift */; };
@@ -120,6 +121,7 @@
 		F22D6C2B25B807A000882B58 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		F22D6C6E25B837EF00882B58 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		F22D6C7325B837FD00882B58 /* Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
+		F241381A25D2AD21002A178F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F247C75F25B6B6D1004376D8 /* CalculateEMIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateEMIViewController.swift; sourceTree = "<group>"; };
 		F247C78F25B70B36004376D8 /* LoanRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanRequestViewController.swift; sourceTree = "<group>"; };
 		F24C310B25CD16AA005BAAAD /* ProfileOneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOneVC.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 		F2C39DD525AD6472005CBA0A /* LoanLending */ = {
 			isa = PBXGroup;
 			children = (
+				F241381A25D2AD21002A178F /* GoogleService-Info.plist */,
 				F278246025B991CD007C7A8A /* LoanLending.entitlements */,
 				F22D6C2125B8078D00882B58 /* Rechability */,
 				F213DD7125B7F50A0078C03A /* Model */,
@@ -452,6 +455,7 @@
 				F2C39DD025AD6472005CBA0A /* Frameworks */,
 				F2C39DD125AD6472005CBA0A /* Resources */,
 				B3042295C05D3D7624561EB8 /* [CP] Embed Pods Frameworks */,
+				F24137B425D2A498002A178F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -550,6 +554,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F241381B25D2AD21002A178F /* GoogleService-Info.plist in Resources */,
 				F2C39E4925AD7637005CBA0A /* poppins_regular.ttf in Resources */,
 				F2882E5425B5958D00809617 /* ContestCategoryTableHeaderView.xib in Resources */,
 				F2C39E4525AD7633005CBA0A /* poppins_light.ttf in Resources */,
@@ -681,6 +686,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F24137B425D2A498002A178F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -933,6 +957,7 @@
 				CODE_SIGN_ENTITLEMENTS = LoanLending/LoanLending.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = LoanLending/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

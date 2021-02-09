@@ -15,19 +15,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var allLendersLabel: UILabel!
     @IBOutlet weak var aTableView: UITableView!
     @IBOutlet weak var collctionView: UICollectionView!
-    var LblArray = ["Personal Loan","Auto Loan","Mortgage Loan","Others"]
-    var imageArray = [#imageLiteral(resourceName: "mortgageLoan@1"),#imageLiteral(resourceName: "AutoLoan"),#imageLiteral(resourceName: "mortgageLoan@1"),#imageLiteral(resourceName: "Others@1")]
+    var indexSelection = 0
     var homeLoanArray = [LoanType](){
         didSet {
             
-            self.collctionView.reloadData()
+            
             if homeLoanArray.count > 0 {
                 
                     self.homeLoanData(loanID: self.homeLoanArray[0].id)
-                let myIndexPath = IndexPath(row: 0, section: 0)
-                let selectedCell = collctionView.cellForItem(at: myIndexPath) as? HomeVCCollectionViewCell
-                selectedCell?.isSelected = true
+               
                 }
+            self.collctionView.reloadData()
             }
         
     }
@@ -46,8 +44,9 @@ class HomeViewController: UIViewController {
               collectionLayout.minimumInteritemSpacing = 1 
         collectionLayout.scrollDirection = .horizontal
         collctionView.collectionViewLayout = collectionLayout
-        
         homeLoanTypeAPI()
+//        fatalError()
+      
         
         // Do any additional setup after loading the view.
     }
@@ -92,31 +91,36 @@ extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeVCCollectionViewCell", for: indexPath) as! HomeVCCollectionViewCell
-//        if indexPath.row == 0 {
-//            cell.loanTypeLabel.textColor =   UIColor(red: 26/155, green: 178/255, blue: 241/255, alpha: 1)
-//            cell.backgroundViewC?.layer.borderColor =  UIColor(red: 26/155, green: 178/255, blue: 241/255, alpha: 1).cgColor
-//            cell.backgroundViewC.layer.borderWidth =  2
-//        }
-        cell.configureCell(response: homeLoanArray[indexPath.row])
-        
-        return cell
-    }
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeVCCollectionViewCell", for: indexPath) as! HomeVCCollectionViewCell
+           if indexSelection == indexPath.row {
+               cell.loanTypeLabel.textColor =   UIColor(red: 26/155, green: 178/255, blue: 241/255, alpha: 1)
+               cell.backgroundViewC?.layer.borderColor =  UIColor(red: 26/155, green: 178/255, blue: 241/255, alpha: 1).cgColor
+               cell.backgroundViewC.layer.borderWidth =  2
+           }
+           else {
+               cell.loanTypeLabel.textColor =  #colorLiteral(red: 0.5060961843, green: 0.5214104056, blue: 0.6324416399, alpha: 1)
+               cell.backgroundViewC?.layer.borderColor = #colorLiteral(red: 0.5060961843, green: 0.5214104056, blue: 0.6324416399, alpha: 1)
+               cell.backgroundViewC.layer.borderWidth =  0
+           }
+           cell.configureCell(response: homeLoanArray[indexPath.row])
+           
+           return cell
+       }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         let selectedCell = collctionView.cellForItem(at: indexPath) as? HomeVCCollectionViewCell
-//               selectedCell.viewBG.backgroundColor =
         
-        selectedCell?.loanTypeLabel.textColor = UIColor(red: 26/155, green: 178/255, blue: 241/255, alpha: 1)
+       
             self.homeLoanData(loanID: self.homeLoanArray[indexPath.row].id)
-          
-    
+        self.indexSelection = indexPath.row
+              collectionView.reloadData()
+
+
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let selectedCell = collctionView.cellForItem(at: indexPath) as? HomeVCCollectionViewCell
-//               selectedCell.viewBG.backgroundColor =
-        selectedCell?.loanTypeLabel.textColor = UIColor(red: 108/155, green: 111/255, blue: 143/255, alpha: 1)
-//           self.homeLoanData(loanID: self.homeLoanArray[indexPath.row].id)
-    }
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        let selectedCell = collctionView.cellForItem(at: indexPath) as? HomeVCCollectionViewCell
+////               selectedCell.viewBG.backgroundColor =
+//        selectedCell?.loanTypeLabel.textColor = UIColor(red: 108/155, green: 111/255, blue: 143/255, alpha: 1)
+////           self.homeLoanData(loanID: self.homeLoanArray[indexPath.row].id)
+//    }
 }
 extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -145,7 +149,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 120
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         openViewController(controller: BankDetailViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
@@ -199,6 +203,9 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
                    let comObj = LoanList(fromJson:obj)
                     self.homeLoanData.append(comObj)
                 }
+                let myIndexPath = IndexPath(row: 0, section: 0)
+                let selectedCell = self.collctionView.cellForItem(at: myIndexPath) as? HomeVCCollectionViewCell
+                selectedCell?.isSelected = true
                 }
              else {
                 

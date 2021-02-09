@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         localizedString()
+     
 //        self.logo.contentMode = UIView.ContentMode.scaleAspectFill
         // Do any additional setup after loading the view.
     }

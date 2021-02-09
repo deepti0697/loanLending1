@@ -21,6 +21,7 @@ class ChooseLanguageVc: BaseViewController {
         self.langTxtFeild.delegate = self
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         setup()
+     
         // Do any additional setup after loading the view.
     }
     func setup(){
@@ -50,7 +51,7 @@ class ChooseLanguageVc: BaseViewController {
 
             let customStringPicker = ActionSheetStringPicker.init(title:placeHolder, rows: rowsArray as [Any], initialSelection: serviceInitialValue, doneBlock:
             { picker, values, indexes in
-                textField.text = (String(describing: indexes!))
+                textField.text = (String(describing: indexes ?? ""))
                 self.selectedCat = self.langArray[values]
                 self.serviceInitialValue = values
                 if self.selectedCat == "English" {

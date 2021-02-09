@@ -8,6 +8,8 @@
 import UIKit
 import IQKeyboardManagerSwift
 import FAPanels
+import Firebase
+import FirebaseCrashlytics
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,29 +31,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
          Thread.sleep(forTimeInterval: 3.0)
          IQKeyboardManager.shared.enable = true
-//        if (AppHelper.getStringForKey(ServiceKeys.languageType) == "") {
-//            let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-//            let vc1 = storyBoard.instantiateViewController(withIdentifier: "ChooseLanguageVc") as! ChooseLanguageVc
-//            let nv4 = UINavigationController(rootViewController: vc1)
-//
-//            self.window?.rootViewController = nv4
-//            self.window?.makeKeyAndVisible()
-//        }
-//        else {
-//            if  (AppHelper.getStringForKey(ServiceKeys.token) != "") {
+        FirebaseApp.configure()
+        Crashlytics.crashlytics()
+        if (AppHelper.getStringForKey(ServiceKeys.languageType) == "") {
+            let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
+            let vc1 = storyBoard.instantiateViewController(withIdentifier: "ChooseLanguageVc") as! ChooseLanguageVc
+            let nv4 = UINavigationController(rootViewController: vc1)
+
+            self.window?.rootViewController = nv4
+            self.window?.makeKeyAndVisible()
+        }
+        else {
+            if  (AppHelper.getStringForKey(ServiceKeys.token) != "") {
                 let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-                let vc1 = storyBoard.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
+                let vc1 = storyBoard.instantiateViewController(withIdentifier: "ToucIDAndTouchFaceVC") as! ToucIDAndTouchFaceVC
                 let nv4 = UINavigationController(rootViewController: vc1)
 
                 self.window?.rootViewController = nv4
                 self.window?.makeKeyAndVisible()
-//                appdelegate.setHomeView()
-////                setHomeView()
-//            }
-//            else {
-//                self.initalViewController()
-//            }
-//        }
+                appdelegate.setHomeView()
+//                setHomeView()
+            }
+            else {
+                self.initalViewController()
+            }
+        }
        
 //
         return true

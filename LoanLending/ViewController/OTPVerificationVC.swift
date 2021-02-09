@@ -46,7 +46,7 @@ class OTPVerificationVC: UIViewController {
     }
     
     @IBAction func btnResendAction(_ sender: Any) {
-        
+        getOTP()
         
     }
     

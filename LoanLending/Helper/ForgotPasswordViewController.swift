@@ -57,31 +57,34 @@ class ForgotPasswordViewController: UIViewController {
     
     /// ForgotPassword Api
     fileprivate func forgotPasswordAction() {
-//        self.showActivityIndicator(sMessage: "Loading")
-//        let email = emailTextFeild.text ?? ""
-//        let parameters = ["email" : email]
-//        let head = ["Content-Type":"application/json",
-//                    "Accept" :"application/json"]
-//        NetworkManager.post_Request2(urlService: kForgotPassword, param: parameters as [String : Any], head: head) { (response) in
-//            self.hideActivityIndicator()
-//            do {
-//                let response = try JSON(data:  response as! Data)
-//                let jsonStatus = response["status"].intValue
-//                let jsonMessage = response["message"].stringValue
-//                if jsonStatus == 1 {
-//
+//        var params =  [String : Any]()
+//        params["old_password"] = self.oldPassowrdTextField.text ?? ""
+//        params["password"] = self.newPassowrdTxtFld.text ?? ""
+//      
+//        AppManager.init().hudShow()
+//        ServiceClass.sharedInstance.hitServiceForupdate_Passowrd(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+//            print_debug("response: \(parseData)")
+//            AppManager.init().hudHide()
+//            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+//                let message = parseData["message"].stringValue
+//                Common.showAlert(alertMessage: message, alertButtons: ["Ok"]) { (bt) in
 //                    self.navigationController?.popViewController(animated: true)
-//                    self.view.makeToast(message: "Reset Email Sent")
 //                }
-//                else {
-//                    self.view.makeToast(message: jsonMessage)
 //                }
+//             else {
+//                
+//                guard let dicErr = errorDict?["msg"] as? String else {
+//                    return
+//                }
+//                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+//                }
+//                
+//                
 //            }
-//            catch {
-//                Loader.showAlert(message: "Internal Error")
-//            }
-//        }
+//        })
+        
     }
+    
     
     @IBAction func forgotPassword(_ sender: Any) {
 //        forgotPasswordAction()
@@ -90,6 +93,8 @@ class ForgotPasswordViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
         
     }
+    
+    
 }
 
 

@@ -21,6 +21,8 @@ pod 'SwiftyJSON'
 pod 'SVProgressHUD'
 pod 'SDWebImage'
 pod 'BiometricAuthentication'
+pod 'Firebase/Analytics'
+pod 'Firebase/Crashlytics'
 #pod "NADocumentPicker"
   # Pods for LoanLending
 

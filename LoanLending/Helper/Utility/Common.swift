@@ -292,15 +292,15 @@ extension UIImage {
         }
         else if extensionStr1?.lowercased() == "mov" || extensionStr1?.lowercased() == "mp4" || extensionStr1?.lowercased() == "avi" || extensionStr1?.lowercased() == "flv" || extensionStr1?.lowercased() == "wmv" || extensionStr1?.lowercased() == "mpeg" || extensionStr1?.lowercased() == "m4v"
         {
-            imageReturn = #imageLiteral(resourceName: "video_icon")
+            imageReturn = #imageLiteral(resourceName: "img")
         }
         else if extensionStr1?.lowercased() == "zip" || extensionStr1?.lowercased() == "rar" || extensionStr1?.lowercased() == "Zip"
         {
-            imageReturn = #imageLiteral(resourceName: "zip_icon")
+            imageReturn = #imageLiteral(resourceName: "doc")
         }
         else if extensionStr1?.lowercased() == "pdf"
         {
-            imageReturn = #imageLiteral(resourceName: "pdf_icon")
+            imageReturn = #imageLiteral(resourceName: "text")
         }
         else if extensionStr1?.lowercased() == "doc" || extensionStr1?.lowercased() == "docx"
         {
@@ -324,7 +324,7 @@ extension UIImage {
         }
         else if extensionStr1?.lowercased() == "mp3"
         {
-            imageReturn = #imageLiteral(resourceName: "audio_icon")
+            imageReturn = #imageLiteral(resourceName: "audio")
         }
         else
         {

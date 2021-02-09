@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Loan Lending</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,8 +22,6 @@
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>YES</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -32,6 +32,8 @@
 	<key>NSAppleMusicUsageDescription</key>
 	<string>YES</string>
 	<key>NSCameraUsageDescription</key>
+	<string>YES</string>
+	<key>NSFaceIDUsageDescription</key>
 	<string>YES</string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>

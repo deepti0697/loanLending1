@@ -15,6 +15,10 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var btn_Confirm_Show_Password: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
    
+    @IBOutlet weak var confirmPasswordLocLbl: UILabel!
+    @IBOutlet weak var newPasswordLocLbl: UILabel!
+    @IBOutlet weak var oldPassowrdLblLoc: UILabel!
+    @IBOutlet weak var changeLbl: UILabel!
     @IBOutlet weak var confirmPassowrdTxtFld: UITextField!
     @IBOutlet weak var newPassowrdTxtFld: UITextField!
     @IBOutlet weak var oldPassowrdTextField: UITextField!
@@ -35,9 +39,15 @@ class ChangePasswordViewController: UIViewController {
         self.oldPassowrdTextField.delegate = self
         self.newPassowrdTxtFld.delegate = self
         self.confirmPassowrdTxtFld.delegate = self
-      
+        setupLocalizable()
     }
     
+    func setupLocalizable(){
+        self.newPasswordLocLbl.text = "New Password".localized(lang)
+        self.newPasswordLocLbl.text = "New Password".localized(lang)
+        self.confirmPasswordLocLbl.text = "Confirm Password".localized(lang)
+        self.nextBtn.setTitle("Update Password".localized(lang), for: .normal)
+    }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
@@ -105,13 +115,13 @@ class ChangePasswordViewController: UIViewController {
     
     @IBAction func btn_ShowPasswordAction(_ sender: UIButton) {
         if sender.isSelected {
-            oldPassowrdTextField.isSecureTextEntry = false
+            oldPassowrdTextField.isSecureTextEntry = true
             self.oldPassowrdTextField.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
             
         }
         else {
           
-            oldPassowrdTextField.isSecureTextEntry = true
+            oldPassowrdTextField.isSecureTextEntry = false
             self.oldPassowrdTextField.RightViewImage(#imageLiteral(resourceName: "icons8-eye-48"))
             
          
@@ -121,13 +131,13 @@ class ChangePasswordViewController: UIViewController {
     }
     @IBAction func btn_ShowNewPasswordAction(_ sender: UIButton) {
         if sender.isSelected {
-            newPassowrdTxtFld.isSecureTextEntry = false
+            newPassowrdTxtFld.isSecureTextEntry = true
             self.newPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
             btn_ShowPassword.tag = 2
         }
         else {
           
-            newPassowrdTxtFld.isSecureTextEntry = true
+            newPassowrdTxtFld.isSecureTextEntry = false
             self.newPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-eye-48"))
             
             btn_ShowPassword.tag = 1
@@ -137,13 +147,13 @@ class ChangePasswordViewController: UIViewController {
     }
     @IBAction func btn_ShowConfirmPasswordAction(_ sender: UIButton) {
         if sender.isSelected {
-            confirmPassowrdTxtFld.isSecureTextEntry = false
+            confirmPassowrdTxtFld.isSecureTextEntry = true
             self.confirmPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
             btn_ShowPassword.tag = 2
         }
         else {
           
-            confirmPassowrdTxtFld.isSecureTextEntry = true
+            confirmPassowrdTxtFld.isSecureTextEntry = false
             self.confirmPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-eye-48"))
             
             btn_ShowPassword.tag = 1

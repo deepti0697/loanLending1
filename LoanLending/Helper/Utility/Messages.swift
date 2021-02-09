@@ -12,7 +12,8 @@ let kDateFormate2          =  "dd MMM yyyy"
 let kDateFormateAPI       =  "yyyy-MM-dd"
 let kUTC_time_zone_format = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 //2020-05-23T13:18:50.000Z
-
+var ios_version : String = UIDevice.current.systemVersion
+var OS = "IOS"
 let SCREEN_WIDTH  = UIScreen.main.bounds.size.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 //var kWindow = UIWindow(frame: UIScreen.main.bounds)
@@ -74,7 +75,7 @@ let moreTitlesArray = ["Edit Profile","Change Passoword","About Us",
                        "FAQ's",
                        "T & C",
                        "Privacy policy",]
-let moreImagesArray = ["loanmenu@1","abouticon","abouticon",
+let moreImagesArray = ["loanmenu@1","icons8-no-key-48","abouticon",
                      "mail",
                        "faq",
                        "ordersmenu",

@@ -110,7 +110,7 @@ class SignupSecondVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let placeHolder = "List"
         let customStringPicker = ActionSheetStringPicker.init(title:placeHolder, rows: array as [Any], initialSelection:initalValue, doneBlock:
         { picker, values, indexes in
-            textField.text = (String(describing: indexes!))
+            textField.text = (String(describing: indexes ?? ""))
             self.initalValue = values
             return
         }, cancel: nil, origin: textField)

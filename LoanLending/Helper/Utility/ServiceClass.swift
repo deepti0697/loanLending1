@@ -613,7 +613,7 @@ class ServiceClass: NSObject {
     func hitServiceForCountryCode(_ params:[String : Any], completion:@escaping completionBlockType)
         {
             let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.appData)"
-            let headers: HTTPHeaders = ["accept": "application/json","Content-Type": "application/json"]
+            let headers: HTTPHeaders = ["accept": "application/json","Content-Type": "application/json","os" : OS,"version":ios_version]
             self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
         }
     
@@ -622,14 +622,14 @@ class ServiceClass: NSObject {
     {
         let baseUrl = "\(ServiceUrls.baseUrl)\(ServiceUrls.enterregistrationcode)"
         print(baseUrl)
-           let headers: HTTPHeaders = [ "Content-Type" : "application/json"]
+           let headers: HTTPHeaders = [ "Content-Type" : "application/json","os" : OS,"version":ios_version]
         print_debug(params)
         self.hitServiceWithUrlString(urlString: baseUrl, parameters: params as [String : AnyObject] , headers: headers, completion: completion)
     }
     func hitServiceForlogin(_ params:[String : Any], completion:@escaping completionBlockType)
     {
         let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.login)"
-        let headers: HTTPHeaders = [ "Content-Type" : "application/json"]
+        let headers: HTTPHeaders = [ "Content-Type" : "application/json","os" : OS,"version":ios_version]
        
         self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject] , headers: headers, completion: completion)
     }
@@ -715,32 +715,32 @@ class ServiceClass: NSObject {
     func hitServiceForHomeLoan(_ params:[String : Any], completion:@escaping completionBlockType)
     {
         let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.loan_Types)"
-        let headers: HTTPHeaders = [ "os" : "IOS","version":"1", "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
         self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
     func hitServiceForHomeLoanData(_ params:[String : Any],loanType:String?, completion:@escaping completionBlockType)
     {
         let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.loan_lender)?loan_type=\(loanType ?? "")"
-        let headers: HTTPHeaders = [ "os" : "IOS","version":"1", "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
         self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
     func hitServiceForMyLoanData(_ params:[String : Any], completion:@escaping completionBlockType)
     {
         let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.my_loan_list)"
-        let headers: HTTPHeaders = [ "os" : "IOS","version":"1", "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+        let headers: HTTPHeaders = ["os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
         self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
     func hitServiceForMyUserData(_ params:[String : Any], completion:@escaping completionBlockType)
     {
         let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.my_User_Data)"
-        let headers: HTTPHeaders = [ "os" : "IOS","version":"1", "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
         self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
     
     func hitServiceFoHisstoryData(_ params:[String : Any], completion:@escaping completionBlockType)
     {
         let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.my_History)"
-        let headers: HTTPHeaders = [ "os" : "IOS","version":"1", "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+        let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
         self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
     //MARK:- Product Like

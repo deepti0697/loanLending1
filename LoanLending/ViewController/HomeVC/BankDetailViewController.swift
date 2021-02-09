@@ -9,6 +9,7 @@ import UIKit
 
 class BankDetailViewController: UIViewController {
 
+    @IBOutlet weak var bankImageView: UIImageView!
     @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var loanTenureLocLbl: UILabel!
     @IBOutlet weak var processngFeeLocLbl: UILabel!
@@ -44,6 +45,14 @@ class BankDetailViewController: UIViewController {
         processingFeeLbl.text = "\(self.bankDetail?.processingFee ?? "")"
         self.loanTenureLbl.text = "\(self.bankDetail?.min_tenure ?? "" ) Year"
         self.descriptionLbl.text = "\(self.bankDetail?.description ?? "Testing")"
+        if let imageStr = self.bankDetail?.logo{
+            print(imageStr)
+           
+            let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let imageUrl = URL(string: urlString ?? "")
+            bankImageView?.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "ino-image"), options: .continueInBackground) { (img, err, cacheType, url) in
+            }
+        }
         if bankDetail?.description == "" || bankDetail?.description == "null" {
             self.descriptionView.isHidden = true
         }

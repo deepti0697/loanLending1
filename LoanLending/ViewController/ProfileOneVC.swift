@@ -20,6 +20,7 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
    
     @IBOutlet weak var heightFeetView: UIView!
    
+    @IBOutlet weak var staffIDLOCLbl: UILabel!
     @IBOutlet weak var btnPickImage: UIButton!
   
     var imageData = Data()
@@ -43,13 +44,14 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         didSet {
             if isMaleButtonSelected {
                 self.gender = "male"
-                self.femaleImageView.image = #imageLiteral(resourceName: "icons8-circle-32")
+                self.femaleImageView.image = #imageLiteral(resourceName: "icons8-circle-48")
+                
                 self.maleImageView.image = #imageLiteral(resourceName: "check@1")
 
             } else {
                 self.gender = "female"
                 self.femaleImageView.image = #imageLiteral(resourceName: "check@1")
-                self.maleImageView.image = #imageLiteral(resourceName: "icons8-circle-32")
+                self.maleImageView.image = #imageLiteral(resourceName: "icons8-circle-48")
             }
         }
     }
@@ -88,7 +90,7 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         self.txtFullName.delegate = self
         self.txtCompanyName.delegate = self
         userImageView.layer.borderWidth = 1.0
-        userImageView.contentMode =  UIView.ContentMode.scaleAspectFill
+        userImageView.contentMode =  UIView.ContentMode.scaleToFill
         userImageView.layer.borderColor = UIColor(red: 247/255, green: 247/255, blue: 238/255, alpha: 1).cgColor
         userImageView.layer.cornerRadius = userImageView.frame.size.height/2
         userImageView.clipsToBounds = true
@@ -97,7 +99,7 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         self.dataSetup()
         myUserData()
         // Do any additional setup after loading the view.
-        
+        localizstionSetUp()
     }
     
     func localizstionSetUp(){
@@ -109,7 +111,12 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         self.fullNameLocLbl.text = "Full Name".localized(lang)
         self.txtFullName.placeholder = "fullName".localized(lang)
         self.staffIDTxtFld.placeholder  = "staffID".localized(lang)
+        self.staffIDLOCLbl.text = "staffID".localized(lang)
         self.txtCompanyName.placeholder = "compnayName".localized(lang)
+        lblCompanyLOC.text  = "compnayName".localized(lang)
+        cityLblLOC.text = "city".localized(lang)
+        txtCity.text = "city".localized(lang)
+        btnSaveOutlt.setTitle("Save".localized(lang), for: .normal)
         
         
     }

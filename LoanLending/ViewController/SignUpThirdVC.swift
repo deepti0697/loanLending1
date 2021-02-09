@@ -145,7 +145,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
     
     @IBAction func remeberMeAction(_ sender: UIButton) {
         if sender.isSelected {
-            
+            isAcceptTermCondition = false
             self.remeberMeImageView.image = #imageLiteral(resourceName: "uncheck")
         }
         else {

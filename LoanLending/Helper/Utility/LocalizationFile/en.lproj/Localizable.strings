@@ -82,8 +82,24 @@
 "Upload 3 months Pay slip" = "Upload 3 months Pay slip";
 "Submit" = "Submit";
 "EMAIL_INVALID" = "Please enter correct email address.";
-"AcceptTermAndCondition" = "Please Accept Term & Conditions. ";
+"AcceptTermAndCondition" = "Please Accept Terms & Conditions. ";
 "Enter purpose of loan" = "Enter purpose of loan";
 "Enter your bank name" = "Enter your bank name";
-"Profile Picture" = "Profile Picture"
+"Profile Picture" = "Profile Picture";
+"Save" = "Save";
+"Change Password" = "Change Password";
+"New Password" = "New Password";
+"Confirm Password" = "Confirm Password";
+"Old Password" = "Old Password";
+"Update Password" = "Update Password";
+"Edit Profile" = "Edit Profile";
+"Change Passoword" = "Change Passoword";
+"About Us" = "About Us";
+"Contact us" = "Contact us";
+"FAQ's" = "FAQ's";
+"T & C" = "T & C";
+"Privacy policy" = "Privacy policy";
+
+
+
 
