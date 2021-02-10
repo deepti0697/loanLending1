@@ -45,7 +45,7 @@ struct ServiceKeys{
     static let token = "token"
     static let user_name = "user_name"
     static let email = "email"
-    
+    static let country_Code = "countryCode"
     static let profile_image = "profile_image"
     static let phone_no = "phone_no"
     
@@ -85,11 +85,12 @@ struct ServiceUrls
 //    static let baseUrl = "http://34.238.160.251:3002/register_user"
 
     
-    static let baseUrl = "http://192.168.1.134:7010/api"
+    static let baseUrl = "http://14.98.110.246:7010/api"
     static let regiser_New_User = "/auth/register"
     static let loan_Request = "/loan/request"
     static let check_Mobile_Registered = "/auth/email-mobile-exists"
     static let upate_Password = "/user/change_password"
+    static let forgot_Password = "/auth/forgot_password"
 //    static let login = "v1/login"
     static let login = "/auth/login"
     static let verify_OTP = "/auth/verify-otp"

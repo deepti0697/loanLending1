@@ -157,7 +157,7 @@ class LoginViewController: UIViewController {
                 print(user)
               
                AppHelper.setStringForKey(user.email, key: ServiceKeys.email)
-              
+                AppHelper.setStringForKey(user.country_code, key: ServiceKeys.country_Code)
                 AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
                 appdelegate.setHomeView()
                 }

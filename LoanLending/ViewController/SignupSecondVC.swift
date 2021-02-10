@@ -121,8 +121,8 @@ class SignupSecondVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     @IBAction func nextAction(_ sender: Any) {
         if cityTxt.text != "" {
-            if mblTxt.text != "" {
-                if passowrdTxt.text != "" {
+            if mblTxt.text != ""  {
+                if (passowrdTxt.text?.count)!  > 5 {
                     var params =  [String : Any]()
                     
                     params["mobile"] = self.mblTxt.text ?? ""
@@ -139,6 +139,7 @@ class SignupSecondVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                                 vc.city = self.cityTxt.text ?? ""
                                 vc.mobile = self.mblTxt.text ?? ""
                                 vc.password = self.passowrdTxt.text ?? ""
+                                vc.contryCode = self.countryCodeTxt.text ?? ""
                             })
                             }
                          else {
@@ -155,7 +156,7 @@ class SignupSecondVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                     
                 }
                 else {
-                    Common.showAlert(alertMessage: "Please enter password".localized(lang), alertButtons: ["Ok"]) { (bt) in
+                    Common.showAlert(alertMessage: "correctPassword".localized(lang), alertButtons: ["Ok"]) { (bt) in
                     }
                 }
            
@@ -194,6 +195,7 @@ class SignupSecondVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                     return
                 }
                 Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                    self.navigationController?.popViewController(animated: true)
                 }
                 
                 

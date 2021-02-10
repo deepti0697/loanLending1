@@ -128,6 +128,9 @@ extension SignUPFirstVC:UITextFieldDelegate {
            textField.resignFirstResponder()
          companyNameTxt.becomeFirstResponder()
         }
+        else if textField == companyNameTxt {
+            textField.resignFirstResponder()
+        }
        return true
       }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

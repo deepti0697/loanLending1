@@ -828,6 +828,14 @@ class ServiceClass: NSObject {
               
                self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
           }
+    func hitServiceForNewe_Passowrd(_ params:[String : Any], completion:@escaping completionBlockType)
+          {
+              let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.forgot_Password)"
+             
+              let headers: HTTPHeaders = [ "Content-Type" : "application/json", "accept": "application/json", "os" : "IOS","version":"1"]
+              
+               self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+          }
     
     
     

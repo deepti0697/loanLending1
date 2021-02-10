@@ -11,6 +11,7 @@ import SVPinView
 import SwiftyJSON
 class OTPVerificationVC: UIViewController {
     
+    @IBOutlet weak var lbl_expireTime: UILabel!
     @IBOutlet weak var confirmBtn: UIButton!
     @IBOutlet weak var resendOtpBtn: UIButton!
     @IBOutlet weak var xdontRecveOtpLbl: UILabel!
@@ -20,20 +21,23 @@ class OTPVerificationVC: UIViewController {
     @IBOutlet weak var vwSVP: SVPinView!
     @IBOutlet weak var lblPhone: UILabel!
     var type = ""
+    var countryCode: String = ""
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     var phonenumber = ""
+    var timer: Timer?
+    var totalTime = 120
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
+        self.startOtpTimer()
         vwSVP.style = .none
         vwSVP.pinLength = 4
         vwSVP.style = .box
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.mobileNOLbl.text = self.phonenumber
+        self.mobileNOLbl.text = "\(countryCode) \(self.phonenumber)"
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         getOTP()
     }
@@ -46,11 +50,40 @@ class OTPVerificationVC: UIViewController {
         resendOtpBtn.setTitle("resendOTP".localized(lang), for: .normal)
     }
     
-    @IBAction func btnResendAction(_ sender: Any) {
-        getOTP()
-        
+    override func viewWillDisappear(_ animated: Bool) {
+        timer?.invalidate()
     }
     
+    @IBAction func btnResendAction(_ sender: Any) {
+        getOTP()
+        confirmBtn.isEnabled = true
+        self.startOtpTimer()
+        
+    }
+    private func startOtpTimer() {
+            self.totalTime = 120
+            self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        }
+
+    @objc func updateTimer() {
+            print(self.totalTime)
+            self.lbl_expireTime.text = self.timeFormatted(self.totalTime) // will show timer
+            if totalTime != 0 {
+                totalTime -= 1  // decrease counter timer
+            } else {
+                if let timer = self.timer {
+                    timer.invalidate()
+                    self.timer = nil
+                    confirmBtn.isEnabled = false
+                    
+                }
+            }
+        }
+    func timeFormatted(_ totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds % 60
+        let minutes: Int = (totalSeconds / 60) % 60
+        return String(format: "Expired in %02d:%02d", minutes, seconds)
+    }
     
     
     
@@ -113,12 +146,22 @@ class OTPVerificationVC: UIViewController {
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 print("OTP Send")
-                Common.showAlert(alertMessage: parseData["message"].stringValue, alertButtons: ["Ok"]) { (bt) in
+                self.timer?.invalidate()
                 
-                self.openViewController(controller: LoginViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+//                Common.showAlert(alertMessage: parseData["message"].stringValue, alertButtons: ["Ok"]) { (bt) in
+                    if self.type == "login" {
+                        
+                        self.openViewController(controller: LoginViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+                        
+                           })
+                    }
+                    else {
+                self.openViewController(controller: UpdatePasswordViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+                    vc.phoneNumber = self.phonenumber
                    })
                 }
                 }
+//                }
              else {
                 
                 guard let dicErr = errorDict?["msg"] as? String else {

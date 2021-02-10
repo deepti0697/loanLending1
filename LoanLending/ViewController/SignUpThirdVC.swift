@@ -23,12 +23,13 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
     @IBOutlet weak var uploadImageView: UIImageView!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var docImageView: UIImageView!
-    @IBOutlet weak var acceptLbl: UIButton!
+ 
     @IBOutlet weak var uploadImageLbl: UILabel!
     @IBOutlet weak var uploadIdLbl: UILabel!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var emailIDLbl: UILabel!
    
+    var contryCode = ""
     var isAcceptTermCondition = false
     var imageData = Data()
     var staffID:String?
@@ -75,6 +76,11 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
 
     }
     
+    @IBAction func openTermsAndCondition(_ sender: Any) {
+        openViewController(controller: TermAndConditionViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+      //                appdelegate.isComingFromSideMenu = false
+                  })
+    }
     func setupLocalized()
     {
         self.signUpLbl.text = ("signup".localized(lang))
@@ -85,7 +91,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
         self.uploadDocBtn.setTitle("uploadDocs".localized(lang), for: .normal)
         self.emailTxt.placeholder = ("enterEmail".localized(lang))
         self.acceptTCLbl.text = ("iAccept".localized(lang))
-        self.acceptLbl.setTitle("termAcondition".localized(lang), for: .normal)
+        self.termAndCondtionLbl.setTitle("termAcondition".localized(lang), for: .normal)
         self.alreadyHaveAnAccountLbl.text = ("alreadyHaveAccnt".localized(lang))
         self.uploadDocBtn.setTitle("uploadDocs".localized(lang), for: .normal)
         self.uploadImageBtn.setTitle("uploadImage".localized(lang), for: .normal)
@@ -217,6 +223,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
                     self.openViewController(controller: OTPVerificationVC.self, storyBoard: .mainStoryBoard, handler: { (vc) in
                         vc.phonenumber = self.mobile ?? ""
                         vc.type = "login"
+                        vc.countryCode = self.contryCode
                     })
                 }
                 }

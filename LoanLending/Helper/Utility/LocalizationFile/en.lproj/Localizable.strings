@@ -48,7 +48,7 @@
 "history" = "History";
 "account" = "Account";
 "Valid_NUMBER" = "Please enter valid mobile number.";
-"correctPassword" = "Please enter password atleast 6 digits";
+"correctPassword" = "Please enter atleast 6 digits password";
 "newPassword" = "Please enter your new Password";
 "Please enter full name" = "Please enter your full name.";
 "Please enter password" = "Please enter password.";
