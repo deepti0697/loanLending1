@@ -29,7 +29,7 @@
 "enterName" = "Enter Name";
 "enterHere" = "Enter Here";
 "next" = "Next";
-"enterMblNo" = "Enter Mobile No";
+"enterMblNo" = "Enter Mobile No.";
 "city" = "City";
 "enterCity" = "Enter City";
 "enterPasswrd" = "Enter Password";
@@ -48,9 +48,9 @@
 "history" = "History";
 "account" = "Account";
 "Valid_NUMBER" = "Please enter valid mobile number.";
-"correctPassword" = "Please enter atleast 6 words";
+"correctPassword" = "Please enter password atleast 6 digits";
 "newPassword" = "Please enter your new Password";
-"Please enter full name" = "Please enter your name.";
+"Please enter full name" = "Please enter your full name.";
 "Please enter password" = "Please enter password.";
 "Please enter mobile number" = "Please enter mobile number";
 "Please Enter your City" = "Please Enter your City.";

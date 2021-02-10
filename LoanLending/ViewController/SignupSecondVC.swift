@@ -209,6 +209,10 @@ extension SignupSecondVC:UITextFieldDelegate {
         } else if textField == mblTxt {
            textField.resignFirstResponder()
          passowrdTxt.becomeFirstResponder()
+            
+        }
+        else if textField == passowrdTxt {
+            textField.resignFirstResponder()
         }
        return true
       }

@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 self.window?.rootViewController = nv4
                 self.window?.makeKeyAndVisible()
-                appdelegate.setHomeView()
+//                appdelegate.setHomeView()
 //                setHomeView()
             }
             else {

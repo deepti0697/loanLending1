@@ -89,7 +89,10 @@ class SignUPFirstVC: UIViewController {
         
     }
    
-   
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func nexAction(_ sender: Any) {
       
         if   self.fullNameTxt.text?.trimmingCharacters(in: .whitespaces).count != 0 {

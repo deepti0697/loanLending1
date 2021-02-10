@@ -19,14 +19,14 @@ class OTPVerificationVC: UIViewController {
     @IBOutlet weak var verifictnCodeLbl: UILabel!
     @IBOutlet weak var vwSVP: SVPinView!
     @IBOutlet weak var lblPhone: UILabel!
-    
+    var type = ""
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     var phonenumber = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+      
         vwSVP.style = .none
         vwSVP.pinLength = 4
         vwSVP.style = .box
@@ -34,6 +34,7 @@ class OTPVerificationVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.mobileNOLbl.text = self.phonenumber
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         getOTP()
     }
     
@@ -105,14 +106,18 @@ class OTPVerificationVC: UIViewController {
        
         params["mobile"]  = self.phonenumber
         params["otp"] = otp
+        params["type"] = self.type
         AppManager.init().hudShow()
         ServiceClass.sharedInstance.hitServiceForOTPVerify(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 print("OTP Send")
+                Common.showAlert(alertMessage: parseData["message"].stringValue, alertButtons: ["Ok"]) { (bt) in
+                
                 self.openViewController(controller: LoginViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
                    })
+                }
                 }
              else {
                 

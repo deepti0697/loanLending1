@@ -216,6 +216,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
                 Common.showAlert(alertMessage: parseData["message"].stringValue, alertButtons: ["Ok"]) { (btn) in
                     self.openViewController(controller: OTPVerificationVC.self, storyBoard: .mainStoryBoard, handler: { (vc) in
                         vc.phonenumber = self.mobile ?? ""
+                        vc.type = "login"
                     })
                 }
                 }

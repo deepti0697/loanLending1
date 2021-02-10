@@ -11,10 +11,9 @@ import MBProgressHUD
 import Alamofire
 import SwiftyJSON
 class ForgotPasswordViewController: UIViewController {
-    
+    var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var nextBtn: UIButton!
-    @IBOutlet weak var weAreHeretoHelpYouLbl: UILabel!
-    @IBOutlet weak var emailPlaceholderTextField: UITextField!
+  
     @IBOutlet weak var forgotPassword: UILabel!
     
     @IBOutlet weak var emailTextFeild: UITextField!
@@ -22,7 +21,7 @@ class ForgotPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.emailTextFeild.delegate = self
         // Do any additional setup after loading the view.
        
     }
@@ -57,6 +56,25 @@ class ForgotPasswordViewController: UIViewController {
     
     /// ForgotPassword Api
     fileprivate func forgotPasswordAction() {
+        if emailTextFeild.text != ""   {
+            if emailTextFeild.text?.count == 10 {
+        openViewController(controller: OTPVerificationVC.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+            vc.phonenumber = self.emailTextFeild.text ?? ""
+            vc.type = "forget"
+            
+    })
+        }
+            else {
+                AppManager.init().showAlertSingle(kAppName, message:"Please enter valid mobile n    umber.", buttonTitle: "Ok") {
+
+                            }
+            }
+        }
+        else {
+            AppManager.init().showAlertSingle(kAppName, message:"Valid_NUMBER".localized(lang), buttonTitle: "Ok") {
+
+                        }
+        }
 //        var params =  [String : Any]()
 //        params["old_password"] = self.oldPassowrdTextField.text ?? ""
 //        params["password"] = self.newPassowrdTxtFld.text ?? ""
@@ -87,7 +105,7 @@ class ForgotPasswordViewController: UIViewController {
     
     
     @IBAction func forgotPassword(_ sender: Any) {
-//        forgotPasswordAction()
+        forgotPasswordAction()
     }
     @IBAction func backToLoginPage(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -97,5 +115,12 @@ class ForgotPasswordViewController: UIViewController {
     
 }
 
-
+extension ForgotPasswordViewController:UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (string == " ") {
+            return false
+        }
+        return true
+    }
+}
 

@@ -206,7 +206,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     }
     @IBAction func remeberMeAction(_ sender: UIButton) {
         if sender.isSelected {
-            isAcceptTermCondition = true
+            isAcceptTermCondition = false
             self.acceptImageView.image = #imageLiteral(resourceName: "uncheck")
         }
         else {

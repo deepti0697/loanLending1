@@ -597,7 +597,7 @@ class ServiceClass: NSObject {
      {
          let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.verify_OTP)"
         
-         let headers: HTTPHeaders = [:]
+         let headers: HTTPHeaders = ["os" : OS,"version":ios_version]
          self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
      }
     

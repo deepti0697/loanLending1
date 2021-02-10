@@ -83,6 +83,12 @@ class LoginViewController: UIViewController {
         sender.isSelected = !sender.isSelected
     }
     
+    @IBAction func forgotPasswordAction(_ sender: Any) {
+//        ForgotPasswordViewController
+        openViewController(controller: ForgotPasswordViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+            
+    })
+    }
     @IBAction func btn_ShowPasswordAction(_ sender: UIButton) {
         if btn_ShowPassword.tag == 101 {
             txt_Password.isSecureTextEntry = false
@@ -180,5 +186,11 @@ extension LoginViewController:UITextFieldDelegate {
         }
        return true
       }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (string == " ") {
+            return false
+        }
+        return true
+    }
     
 }
