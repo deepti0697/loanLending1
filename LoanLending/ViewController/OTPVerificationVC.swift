@@ -27,6 +27,7 @@ class OTPVerificationVC: UIViewController {
     var timer: Timer?
     var totalTime = 120
     
+    var isResendBtnClick = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,9 +56,11 @@ class OTPVerificationVC: UIViewController {
     }
     
     @IBAction func btnResendAction(_ sender: Any) {
+        self.isResendBtnClick = true
+        timer?.invalidate()
         getOTP()
-        confirmBtn.isEnabled = true
-        self.startOtpTimer()
+//        confirmBtn.isEnabled = true
+//        self.startOtpTimer()
         
     }
     private func startOtpTimer() {
@@ -74,7 +77,7 @@ class OTPVerificationVC: UIViewController {
                 if let timer = self.timer {
                     timer.invalidate()
                     self.timer = nil
-                    confirmBtn.isEnabled = false
+//                    confirmBtn.isEnabled = false
                     
                 }
             }
@@ -92,23 +95,32 @@ class OTPVerificationVC: UIViewController {
     }
     
     @IBAction func btnSubmitAction(_ sender: Any) {
-        
-        
-        var userInfo = [String: Any]()
-//        openViewController(controller: ChooseLanguageVc.self, storyBoard: .mainStoryBoard, handler: { (vc) in
-//    })
-        if vwSVP.getPin().count < 4 {
+        if ((timer?.isValid) != nil) {
+            var userInfo = [String: Any]()
+    //        openViewController(controller: ChooseLanguageVc.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+    //    })
+            if vwSVP.getPin().count < 4 {
 
-                            AppManager.init().showAlertSingle(kAppName, message:  "Please enter valid OTP.", buttonTitle: "Ok") {
+                                AppManager.init().showAlertSingle(kAppName, message:  "Please enter valid OTP.", buttonTitle: "Ok") {
 
-                                        }
-        } else {
-            userInfo["otp"] = vwSVP.getPin()
-            verifyOTP(otp:vwSVP.getPin())
-//            self.navigationController?.popViewController(animated: true)
+                                            }
+            } else {
+                userInfo["otp"] = vwSVP.getPin()
+                verifyOTP(otp:vwSVP.getPin())
+    //            self.navigationController?.popViewController(animated: true)
+            }
+            
         }
+        else {
+            AppManager.init().showAlertSingle(kAppName, message:  "Your OTP is Expire now, Please Resend Otp again.", buttonTitle: "Ok") {
+
+                        }
+        }
+        
+        
     }
     func getOTP(){
+       
         var params =  [String : Any]()
        
         params["mobile"]  = self.phonenumber
@@ -118,6 +130,15 @@ class OTPVerificationVC: UIViewController {
             print_debug("response: \(parseData)")
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                if self.isResendBtnClick {
+                    let message = parseData["message"].stringValue
+                    Common.showAlert(alertMessage: message , alertButtons: ["Ok"]) { (bt) in
+                        self.startOtpTimer()
+                    }
+                }
+                else{
+                    
+                }
                 print("OTP Send")
               
                 }

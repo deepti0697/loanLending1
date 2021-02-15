@@ -18,14 +18,14 @@ class TermAndConditionViewController: UIViewController {
         
         private func openWebView() {
             if lang == "en" {
-            let url = URL(string:"http://192.168.1.134:9020/mobile/terms_of_use/en")
+            let url = URL(string:"http://14.98.110.246:9020/mobile/terms_of_use/en")
             if let urlLink = url {
                 let request = URLRequest(url: urlLink)
                 aWebView.load(request)
             }
             }
             else {
-                let url = URL(string:"http://192.168.1.134:9020/mobile/terms_of_use/fr")
+                let url = URL(string:"http://14.98.110.246:9020/mobile/terms_of_use/fr")
                 if let urlLink = url {
                     let request = URLRequest(url: urlLink)
                     aWebView.load(request)

@@ -61,13 +61,12 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         lbl_LoanAmount.layer.cornerRadius = 5
         lbl_Tenure.layer.cornerRadius = 5
         
-        
         lbl_LoanAmount.backgroundColor = UIColor(red: 37/255, green: 193/255, blue: 255/255, alpha: 1)
         lbl_LoanAmount.frame = CGRect(x: 0,y: 32,width: 100,height: 25)
         
         lbl_LoanAmount.setTitleColor(.white, for: .normal)
 //        lbl_Distance.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        lbl_LoanAmount.setTitle("0", for: .normal)
+        lbl_LoanAmount.setTitle("₵0", for: .normal)
         lbl_LoanAmount.center = setUISliderThumbValueWithLabel(slider: loanAmountSlider.self)
         loanAmountSlider.addSubview(lbl_LoanAmount)
         lbl_LoanAmount.isHidden = true
@@ -75,7 +74,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         lbl_Tenure.frame = CGRect(x: 0,y: 32,width: 100,height: 25)
         lbl_Tenure.setTitleColor(.white, for: .normal)
 //        lbl_Distance.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        lbl_Tenure.setTitle("0" + " Months", for: .normal)
+        lbl_Tenure.setTitle("1" + " Months", for: .normal)
         lbl_Tenure.center = setUISliderThumbValueWithLabel(slider: tenureSlider.self)
         tenureSlider.addSubview(lbl_Tenure)
         lbl_Tenure.isHidden = true
@@ -177,7 +176,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         print(currentValue)
         self.lbl_LoanAmount.isHidden = false
         let x = Int(round(sender.value))
-        lbl_LoanAmount.setTitle("\(x)", for: .normal)
+        lbl_LoanAmount.setTitle("₵\(x)", for: .normal)
         self.loanAmount = (x)
         lbl_LoanAmount.center = setUISliderThumbValueWithLabel(slider: sender)
         setupEMI()
@@ -187,7 +186,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         let interestRateVal = interestRate / 1200
         let loanTenureVal = loanTenure * 12
         self.totalEMI = Double(loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal))))
-        self.emiLbl.text =  String(format: "%.2f",loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal))))
+        self.emiLbl.text =  "₵\(String(format: "%.2f",loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal)))))"
     }
     func setupEMI(){
         calculateEmi(loanAmount: Double(loanAmount), loanTenure: Double(tenure), interestRate: Double(self.loaninfo?.interest ?? "") ?? 0.0)
@@ -196,7 +195,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     }
     func calculateTotalPayment(_ emi : Double, loanTenure : NSInteger)  {
         let totalMonth = loanTenure * 12
-        self.totalAmount.text = String(format: "%.2f",emi * Double(totalMonth))
+        self.totalAmount.text = "₵\(String(format: "%.2f",emi * Double(totalMonth)))"
         self.totalPayment = emi * Double(totalMonth)
     }
     
@@ -241,7 +240,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
                 let message = parseData["message"].stringValue
                 Common.showAlert(alertMessage: message, alertButtons: ["Ok"]) { (bt) in
 //                    self.navigationController?.popViewController(animated: true)
-                    appdelegate.tabBarController.selectedIndex = 1
+                    appdelegate.setHomeView(selectedIndex: 1)
                 }
             } else {
                 

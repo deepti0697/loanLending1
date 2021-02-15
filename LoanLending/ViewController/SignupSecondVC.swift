@@ -49,7 +49,7 @@ class SignupSecondVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         setupLocalized()
         openCountryCode()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.passowrdTxt.RightViewImage(UIImage.init(named: "password-view-1"))
+        self.passowrdTxt.RightViewImage(UIImage.init(named: "password-view-1"), width: 25, height: 25)
         self.cityTxt.delegate = self
         self.mblTxt.delegate = self
         self.passowrdTxt.delegate = self
@@ -93,13 +93,13 @@ class SignupSecondVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBAction func btn_ShowPasswordAction(_ sender: UIButton) {
         if btn_ShowPassword.tag == 1 {
             passowrdTxt.isSecureTextEntry = false
-            self.passowrdTxt.RightViewImage(UIImage.init(named: "password_icon-1"))
+            self.passowrdTxt.RightViewImage(UIImage.init(named: "password_icon-1"), width: 25, height: 25)
             btn_ShowPassword.tag = 2
         }
         else {
           
             passowrdTxt.isSecureTextEntry = true
-            self.passowrdTxt.RightViewImage(UIImage.init(named: "password-view-1"))
+            self.passowrdTxt.RightViewImage(UIImage.init(named: "password-view-1"), width: 25, height: 25)
             
             btn_ShowPassword.tag = 1
             
@@ -218,10 +218,10 @@ extension SignupSecondVC:UITextFieldDelegate {
         }
        return true
       }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (string == " ") {
-            return false
-        }
-        return true
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if (string == " ") {
+//            return false
+//        }
+//        return true
+//    }
 }

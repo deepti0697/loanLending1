@@ -24,14 +24,14 @@ class HomeTableCollectionViewCell: UITableViewCell {
     override func layoutSubviews() {
             super.layoutSubviews()
             
-            contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+            contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
         }
     
     
     func configureCell(response:LoanList) {
         self.bankNamelbl.text = response.name
         self.rateOfIneterest.text = "\(response.interest ?? "")% Rate of Interest"
-        self.processingFeeLbl.text = "Processing fee: $\(response.processingFee ?? "")"
+        self.processingFeeLbl.text = "Processing fee: ₵\(response.processingFee ?? "")"
         if let imageStr = response.logo{
             print(imageStr)
            

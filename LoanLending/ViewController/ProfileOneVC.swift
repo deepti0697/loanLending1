@@ -230,12 +230,8 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
            
-           
-              
                 self.userImageView.image = pickedImage
-               
-               
-            
+             
             let imageData = pickedImage.jpegData(compressionQuality: 0.1)! as Data
         print(imageData)
             self.imageData = imageData

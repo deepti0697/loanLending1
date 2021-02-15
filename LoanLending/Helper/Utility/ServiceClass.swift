@@ -150,7 +150,7 @@ class ServiceClass: NSObject {
         {
             if Reachability.forInternetConnection()!.isReachable()
             {
-                            hudShow()
+//                            hudShow()
                 let updatedUrl = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
                 let url = URL(string: updatedUrl!)!
                 print("URL \(url)")
@@ -160,7 +160,7 @@ class ServiceClass: NSObject {
                 
                 AF.request(url, method: .get , encoding: JSONEncoding.prettyPrinted, headers: headers).responseJSON { response in
                     
-                    self.hudHide()
+//                    self.hudHide()
                     guard case .success(let rawJSON) = response.result else {
                         print("SomeThing wrong")
                         
@@ -297,7 +297,7 @@ class ServiceClass: NSObject {
     //                            multipartFormData.append(data1 , withName:  imageKey, fileName: "attachment", mimeType: "image/jpg")
     //
                         if let data = doc {
-                            multipartFormData.append(data, withName: "verificationId", fileName: "pdfDocuments.\(pathExtension!)", mimeType: "pdfDocuments.\(pathExtension!)")
+                            multipartFormData.append(data, withName: "verificationId", fileName: "        .\(pathExtension!)", mimeType: "pdfDocuments.\(pathExtension!)")
                         }
                     
                         if let data = data {

@@ -121,10 +121,10 @@ extension LoanVC {
     func myLoanData(){
         let params =  [String : Any]()
      
-        AppManager.init().hudShow()
+        Common.startActivityIndicator(baseView: aTableView)
         ServiceClass.sharedInstance.hitServiceForMyLoanData(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")
-            AppManager.init().hudHide()
+            Common.stopActivityIndicator(baseView: self.aTableView)
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
              //                let loanType = parseData["loan_types"].stringValue
                 self.loanSectionArray.removeAll()

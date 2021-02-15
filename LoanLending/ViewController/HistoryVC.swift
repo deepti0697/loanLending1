@@ -55,13 +55,13 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         }
         else if getLoanHistory[indexPath.row].status == "DECLINE"{
             cell.loanAmountRcvdLbl.text = "Loan Decline by \(getLoanHistory[indexPath.row].lender?.name ?? "")"
-            cell.amountLbl.text = "$ \(getLoanHistory[indexPath.row].amount ?? "")"
+            cell.amountLbl.text = "₵ \(getLoanHistory[indexPath.row].amount ?? "")"
             cell.amountLbl.textColor = UIColor(red: 185/255, green: 34/255, blue: 34/255, alpha: 1)
             cell.imageCheck.image = #imageLiteral(resourceName: "Incomplete@1")
         }
         else {
             cell.loanAmountRcvdLbl.text = "Completed"
-            cell.amountLbl.text = "$ \(getLoanHistory[indexPath.row].amount ?? "")"
+            cell.amountLbl.text = "₵ \(getLoanHistory[indexPath.row].amount ?? "")"
             cell.amountLbl.textColor = .black
             cell.imageCheck.image = #imageLiteral(resourceName: "completeDisebal@1")
         }
@@ -120,10 +120,10 @@ extension HistoryVC {
     func myHistoryData(){
         let params =  [String : Any]()
      
-        AppManager.init().hudShow()
+        Common.startActivityIndicator(baseView: aTableView)
         ServiceClass.sharedInstance.hitServiceFoHisstoryData(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")
-            AppManager.init().hudHide()
+            Common.stopActivityIndicator(baseView: self.aTableView)
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
              //                let loanType = parseData["loan_types"].stringValue
                 self.getLoanHistory.removeAll()
@@ -151,7 +151,7 @@ extension HistoryVC {
         if splitedDate.count > 0 {
             formatter.dateFormat = "yyyy/MM/dd"
 //            if let parsedDate = formatter.date(from: splitedDate[0]) {
-                return "\(splitedDate[0])"
+                return "Date: \(splitedDate[0])"
 //            }
         }
         // Format 1

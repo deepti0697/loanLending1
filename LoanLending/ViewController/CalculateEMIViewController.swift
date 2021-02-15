@@ -9,7 +9,7 @@ import UIKit
 //import MaterialComponents.MaterialSlider
 class CalculateEMIViewController: UIViewController {
     var loanAmount = 50000
-    var interest = 0
+    var interest = 1
     var tenure = 1
     var totalEMI = 0.0
     var totalPayment = 0.0
@@ -116,7 +116,7 @@ class CalculateEMIViewController: UIViewController {
         print(currentValue)
         self.lbl_LoanAmount.isHidden = false
         let x = Int(round(sender.value))
-        lbl_LoanAmount.setTitle("\(x)", for: .normal)
+        lbl_LoanAmount.setTitle("₵\(x)", for: .normal)
         self.loanAmount = (x)
         lbl_LoanAmount.center = setUISliderThumbValueWithLabel(slider: sender)
         setupEMI()
@@ -145,7 +145,7 @@ class CalculateEMIViewController: UIViewController {
         let interestRateVal = interestRate / 1200
         let loanTenureVal = loanTenure * 12
         self.totalEMI = Double(loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal))))
-        self.totalEmiLbl.text =  String(format: "%.2f",loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal))))
+        self.totalEmiLbl.text =  "₵\(String(format: "%.2f",loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal)))))"
     }
     func setupEMI(){
         calculateEmi(loanAmount: Double(loanAmount), loanTenure: Double(tenure), interestRate: Double(interest))
@@ -154,12 +154,12 @@ class CalculateEMIViewController: UIViewController {
     }
     func calculateTotalPayment(_ emi : Double, loanTenure : NSInteger)  {
         let totalMonth = loanTenure * 12
-        self.totalAmountLbl.text = String(format: "%.2f",emi * Double(totalMonth))
+        self.totalAmountLbl.text = "₵\(String(format: "%.2f",emi * Double(totalMonth)))"
         self.totalPayment = emi * Double(totalMonth)
     }
     
     func calculateTotalInterestPayable(_ totalPayment : Double, loanAmount : Double) {
-        self.totalInterestLbl.text =  String(format: "%.2f",totalPayment - loanAmount)
+        self.totalInterestLbl.text =  "₵\(String(format: "%.2f",totalPayment - loanAmount))"
     }
 }
     /*

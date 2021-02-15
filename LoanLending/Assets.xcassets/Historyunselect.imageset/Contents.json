@@ -1,17 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "Historyunselect@1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Historyunselect@2x.png",
+      "filename" : "ic-history@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Historyunselect@3x.png",
+      "filename" : "ic-history@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    var kWindow = UIWindow(frame: UIScreen.main.bounds)
 //     let appdelegate = UIApplication.shared.delegate as! AppDelegate
 //    var kScreenSize         = UIScreen.main.bounds.size
-
+//    fileprivate lazy var defaultTabBarHeight = { tabBar.frame.size.height }()
     var islogout = false 
     var window: UIWindow?
     var currentNavController:UINavigationController?
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = nv4
                 self.window?.makeKeyAndVisible()
 //                appdelegate.setHomeView()
-//                setHomeView()
+                setHomeView(selectedIndex: 0)
             }
             else {
                 self.initalViewController()
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = nv4
         self.window?.makeKeyAndVisible()
     }
-    func setHomeView() {
+    func setHomeView(selectedIndex:Int) {
         
         let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
         
@@ -98,10 +98,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
         // nv5.restorationIdentifier = "logoutViewController"
         
-        nv1.tabBarItem = UITabBarItem.init(title: "first", image: UIImage(named: "Homeunselect"), selectedImage: UIImage(named: "Home"))
-        nv2.tabBarItem = UITabBarItem.init(title: "secnds", image: UIImage(named: "myLoanunselect"), selectedImage: UIImage(named: "myLoan"))
-        nv3.tabBarItem = UITabBarItem.init(title: "third", image: UIImage(named: "Historyunselect"), selectedImage: UIImage(named: "History"))
+        nv1.tabBarItem = UITabBarItem.init(title: "first", image: UIImage(named: "Homeunselect")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "Home")?.withRenderingMode(.alwaysOriginal))
+        nv1.tabBarItem.imageInsets = UIEdgeInsets(top: 05, left: 0, bottom: 0, right: 0)
+        nv2.tabBarItem = UITabBarItem.init(title: "secnds", image: UIImage(named: "myLoanunselect")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "myLoan")?.withRenderingMode(.alwaysOriginal))
+        nv2.tabBarItem.imageInsets = UIEdgeInsets(top: 05, left: 0, bottom: 0, right: 0)
+        nv3.tabBarItem = UITabBarItem.init(title: "third", image: UIImage(named: "Historyunselect")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "History")?.withRenderingMode(.alwaysOriginal))
+        nv3.tabBarItem.imageInsets = UIEdgeInsets(top: 05, left: 0, bottom: 0, right: 0)
         nv4.tabBarItem = UITabBarItem.init(title: "fourth", image: UIImage(named: "Account"), selectedImage: UIImage(named: "Accountunselect"))
+        nv4.tabBarItem.imageInsets = UIEdgeInsets(top: 05, left: 0, bottom: 0, right: 0)
         
        // nv3.tabBarItem.isEnabled = false
         let lang = AppHelper.getStringForKey(ServiceKeys.languageType)
@@ -122,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         tabBarController.viewControllers = [nv1, nv2, nv3, nv4]
         tabBarController.tabBar.tintColor = UIColor(red: 38/255, green: 149/255, blue: 190/255, alpha: 1)
-        tabBarController.selectedIndex = 0
+        tabBarController.selectedIndex = selectedIndex
         
         customizeTabBarView()
         if self.navigationController == nil {
@@ -157,8 +161,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
     fileprivate func customizeTabBarView() {
         UITabBar.appearance().barTintColor = UIColor.black
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 38/255, green: 149/255, blue: 190/255, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .selected)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 38/255, green: 149/255, blue: 190/255, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)], for: .normal)
+        
     }
     func setupMore(){
         let storyBoard  = UIStoryboard(name: "Main", bundle: nil)

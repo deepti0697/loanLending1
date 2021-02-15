@@ -57,6 +57,16 @@ class Validate: NSObject {
                     return false
 
                 }
+                else if vc.selectMobileWalletTxt.text?.trimmingCharacters(in: .whitespaces).count == 0 {
+                    self.showMessage(message: "Please select your wallet type".localized(lang))
+                 
+                    return false
+                }
+               
+                else if vc.document.isEmpty {
+                    self.showMessage(message: "SalarySlip".localized(lang))
+                    return false
+                }
                 else if !vc.isAcceptTermCondition {
                     self.showMessage(message: "AcceptTermAndCondition".localized(lang))
                     return false

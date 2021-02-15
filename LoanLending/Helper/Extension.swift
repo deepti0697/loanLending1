@@ -76,12 +76,27 @@ extension UITextField {
         
     }
     
-    public func RightViewImage(_ textFieldImg: UIImage?) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+    public func RightViewImage(_ textFieldImg: UIImage?,width:Int,height:Int) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         if let image = textFieldImg {
             let paddingImage = UIImageView()
             paddingImage.image = image
             paddingImage.contentMode = .center
+            paddingImage.tintColor = .white
+            paddingImage.frame = CGRect(x: 6, y: 6, width: 14, height: 18)
+            paddingView.addSubview(paddingImage)
+        }
+        self.rightView = paddingView
+        self.rightViewMode = UITextField.ViewMode.always
+    }
+    
+    public func RightViewImage1(_ textFieldImg: UIImage?,width:Int,height:Int) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        if let image = textFieldImg {
+            let paddingImage = UIImageView()
+            paddingImage.image = image
+            paddingImage.contentMode = .center
+            paddingImage.tintColor = .black
             paddingImage.frame = CGRect(x: 6, y: 6, width: 14, height: 18)
             paddingView.addSubview(paddingImage)
         }

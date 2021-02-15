@@ -53,7 +53,8 @@ class LoginViewController: UIViewController {
 //        self.txt_Mobile.layer.borderWidth = 1.0
         self.txt_Password.layer.borderColor = UIColor.white.cgColor
         self.txt_Mobile.layer.borderColor = UIColor.white.cgColor
-        self.txt_Password.RightViewImage(UIImage.init(named: "password-view-1"))
+//        self.txt_Password.RightViewImage(UIImage.init(named: "password-view-1"))
+        self.txt_Password.RightViewImage(UIImage.init(named: "password-view-1"), width: 25, height: 25)
 //        self.btnRememberMe.setTitle("remember".localized(lang), for: .normal)
     }
     
@@ -92,11 +93,11 @@ class LoginViewController: UIViewController {
     @IBAction func btn_ShowPasswordAction(_ sender: UIButton) {
         if btn_ShowPassword.tag == 101 {
             txt_Password.isSecureTextEntry = false
-            self.txt_Password.RightViewImage(UIImage.init(named: "password_icon-1"))
+            self.txt_Password.RightViewImage(UIImage.init(named: "password_icon-1"), width: 25, height: 25)
             btn_ShowPassword.tag = 2
         }
         else {
-            self.txt_Password.RightViewImage(UIImage.init(named: "password-view-1"))
+            self.txt_Password.RightViewImage(UIImage.init(named: "password-view-1"), width: 25, height: 25)
             txt_Password.isSecureTextEntry = true
             
             btn_ShowPassword.tag = 101
@@ -159,7 +160,7 @@ class LoginViewController: UIViewController {
                AppHelper.setStringForKey(user.email, key: ServiceKeys.email)
                 AppHelper.setStringForKey(user.country_code, key: ServiceKeys.country_Code)
                 AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
-                appdelegate.setHomeView()
+                appdelegate.setHomeView(selectedIndex: 0)
                 }
              else {
                 

@@ -1,17 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "Accountunselect@1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Accountunselect@2x.png",
+      "filename" : "ic-account@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Accountunselect@3x.png",
+      "filename" : "ic-account@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

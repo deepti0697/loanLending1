@@ -9,7 +9,7 @@ import UIKit
 import FAPanels
 import SwiftyJSON
 class HomeViewController: UIViewController {
-
+    var kBarHeight:CGFloat = 80
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var allLoansLabel: UILabel!
     @IBOutlet weak var allLendersLabel: UILabel!
@@ -18,16 +18,11 @@ class HomeViewController: UIViewController {
     var indexSelection = 0
     var homeLoanArray = [LoanType](){
         didSet {
-            
-            
             if homeLoanArray.count > 0 {
-                
-                    self.homeLoanData(loanID: self.homeLoanArray[0].id)
-               
+                self.homeLoanData(loanID: self.homeLoanArray[0].id)
                 }
             self.collctionView.reloadData()
             }
-        
     }
     var homeLoanData = [LoanList](){
         didSet {
@@ -35,6 +30,7 @@ class HomeViewController: UIViewController {
             
         }
     }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         collctionView.delegate = self
@@ -167,7 +163,6 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
             Common.stopActivityIndicator(baseView: self.collctionView)
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 let getData = parseData["data"]
-//                let loanType = parseData["loan_types"].stringValue
                 self.homeLoanArray.removeAll()
                 for obj in getData["loan_types"].arrayValue {
                    let comObj = LoanType(fromJson:obj)

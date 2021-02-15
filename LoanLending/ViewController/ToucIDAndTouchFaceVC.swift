@@ -86,7 +86,7 @@ class ToucIDAndTouchFaceVC: UIViewController {
     
     func showLoginSucessAlert() {
         AppManager.init().showAlertSingle(kAppName, message: "Login successful", buttonTitle: "Success") {
-            appdelegate.setHomeView()
+            appdelegate.setHomeView(selectedIndex: 0)
         }
         
     }

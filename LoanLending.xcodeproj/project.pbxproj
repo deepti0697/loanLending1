@@ -968,14 +968,14 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = LoanLending/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loanlending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDev;
+				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDevProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "LoanLending/Rechability/LoanLending-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -995,14 +995,14 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = LoanLending/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loanlending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDev;
+				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDevProvisioningProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "LoanLending/Rechability/LoanLending-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

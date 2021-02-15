@@ -26,9 +26,9 @@ class ChooseLanguageVc: BaseViewController {
     }
     func setup(){
         if #available(iOS 13.0, *) {
-            self.langTxtFeild.RightViewImage(UIImage.init(named: "arrow-point-to-right (1)")?.withTintColor(.white))
+            self.langTxtFeild.RightViewImage(UIImage.init(named: "arrow-point-to-right (1)")?.withTintColor(.white), width: 25, height: 25)
         } else {
-            self.langTxtFeild.RightViewImage(UIImage.init(named: "arrow-point-to-right (1)"))
+            self.langTxtFeild.RightViewImage(UIImage.init(named: "arrow-point-to-right (1)"), width: 25, height: 25)
             // Fallback on earlier versions
         }
         

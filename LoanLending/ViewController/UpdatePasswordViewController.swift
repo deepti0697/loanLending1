@@ -30,8 +30,8 @@ class UpdatePasswordViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.confirmPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
-        self.newPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
+        self.confirmPassowrdTxtFld.RightViewImage1(#imageLiteral(resourceName: "password_icon-1"), width: 25, height: 25)
+        self.newPassowrdTxtFld.RightViewImage1(#imageLiteral(resourceName: "password_icon-1"), width: 25, height: 25)
         self.confirmPassowrdTxtFld.delegate = self
         self.newPassowrdTxtFld.delegate = self
         self.confirmPassowrdTxtFld.textColor = .black
@@ -59,9 +59,12 @@ class UpdatePasswordViewController: UIViewController {
     
     @IBAction func backtoForgotPasswordScreen(_ sender: Any) {
         
-        self.openViewController(controller: ForgotPasswordViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
-        
-           })
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKind(of: ForgotPasswordViewController.self) {
+                self.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
         
     }
     
@@ -111,13 +114,13 @@ class UpdatePasswordViewController: UIViewController {
     @IBAction func btn_ShowNewPasswordAction(_ sender: UIButton) {
         if sender.isSelected {
             newPassowrdTxtFld.isSecureTextEntry = true
-            self.newPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
+            self.newPassowrdTxtFld.RightViewImage1(#imageLiteral(resourceName: "password_icon-1"), width: 25, height: 25)
             
         }
         else {
           
             newPassowrdTxtFld.isSecureTextEntry = false
-            self.newPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-eye-48"))
+            self.newPassowrdTxtFld.RightViewImage1(#imageLiteral(resourceName: "password-view-1"), width: 25, height: 25)
             
            
             
@@ -127,13 +130,13 @@ class UpdatePasswordViewController: UIViewController {
     @IBAction func btn_ShowConfirmPasswordAction(_ sender: UIButton) {
         if sender.isSelected {
             confirmPassowrdTxtFld.isSecureTextEntry = true
-            self.confirmPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-hide-48"))
+            self.confirmPassowrdTxtFld.RightViewImage1(#imageLiteral(resourceName: "password_icon-1"), width: 25, height: 25)
            
         }
         else {
           
             confirmPassowrdTxtFld.isSecureTextEntry = false
-            self.confirmPassowrdTxtFld.RightViewImage(#imageLiteral(resourceName: "icons8-eye-48"))
+            self.confirmPassowrdTxtFld.RightViewImage1(#imageLiteral(resourceName: "password-view-1"), width: 25, height: 25)
          
             
         }
