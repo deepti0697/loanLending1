@@ -132,7 +132,7 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         self.txtFullName.text = self.user.name
         self.txtCompanyName.text = self.user.company
         self.txtCity.text = self.user.city
-        self.txtUsername.isUserInteractionEnabled = false
+//        self.txtUsername.isUserInteractionEnabled = false
         self.txtMbl.isUserInteractionEnabled = false
         self.staffIDTxtFld.text = self.user.staffId
         if self.user.gender == "male" {
@@ -288,6 +288,7 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         })
     }
     func update_Profile(){
+        
         var params =  [String : Any]()
         params["email"] = self.txtUsername.text ?? ""
         params["name"] = self.txtFullName.text ?? ""
@@ -350,11 +351,11 @@ extension ProfileOneVC:UITextFieldDelegate {
             textField.resignFirstResponder()
         }
        return true
-      }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (string == " ") {
-            return false
-        }
-        return true
+//      }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if (string == " ") {
+//            return false
+//        }
+//        return true
     }
 }

@@ -78,44 +78,36 @@ class MoreViewController: UIViewController {
     }
     
     func openPrivacyPolicy() {
-       
+        openViewController(controller: PrivacyPolicyViewController.self, storyBoard: .mainStoryBoard) { (vc) in
+                }
     }
     
     func openTermAndCondition() {
-    
+        openViewController(controller: TermAndConditionViewController.self, storyBoard: .mainStoryBoard) { (vc) in
+            vc.isBackNavigtn = false
+                }
     }
     
     func openAboutUs() {
-       
+        openViewController(controller: AboutUsViewController.self, storyBoard: .mainStoryBoard) { (vc) in
+                }
     }
     
-    func openHowToPlay() {
-        
-    }
+   
     
     func openContactUs() {
     }
     
-    func openTestimonial() {
-        
-    }
+   
     
     func openFqs() {
        
     }
     
-    func openFairplay() {
-//        openViewController(controller: FairPlayViewController.self, storyBoard: .moreStoryBoard) { (vc) in
-//        }
-    }
-    
    
     
-    func logoutAction() {
-
-            
-       
-    }
+   
+  
     func footerMethod() {
         let footerView = UIView()
         footerView.frame = CGRect(x: 0, y: 0, width: aTableView.frame.size.width, height: 1)
@@ -151,33 +143,45 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             openChangePassword()
         case 2:
-            openVerifyAccount()
+            openAboutUs()
         case 3:
            openFantasyPointSystem()
         case 4:
       openReferList()
         case 5:
-                openPrivacyPolicy()
+                openTermAndCondition()
         break // Personel Info
         case 6:
-           openTermAndCondition()
+            openPrivacyPolicy()
         case 7:
-            openAboutUs()
-        break // Help
+            displayAlert()
+     
         case 8:
-            openHowToPlay()
-        case 9:
-           openTestimonial()
-        case 10:
-          openFqs()
-        break  // General Info
-        case 11:
-            openContactUs()
-            
-        case 12:
-            logoutAction()
+            displayAlert()
+        break // Help
+        
         default:
             break
         }
+    }
+    func displayAlert() {
+       
+        let alert = UIAlertController(title: kAppName, message: "Are you sure you want to log out", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction((UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
+            alert.dismiss(animated: true, completion: nil)
+        })))
+        alert.addAction((UIAlertAction(title: "Proceed", style: .default, handler: { (action) -> Void in
+            self.logoutAction()
+        })))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    func logoutAction() {
+        
+               
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.user_id)
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.token)
+//        panel?.closeLeft()
+        appdelegate.initalViewController()
     }
 }

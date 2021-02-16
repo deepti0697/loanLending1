@@ -23,6 +23,7 @@ pod 'SDWebImage'
 pod 'BiometricAuthentication'
 pod 'Firebase/Analytics'
 pod 'Firebase/Crashlytics'
+pod 'Firebase/Messaging'
 #pod "NADocumentPicker"
   # Pods for LoanLending
 

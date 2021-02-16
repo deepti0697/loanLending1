@@ -57,7 +57,7 @@ class LoanTableViewCell: UITableViewCell {
         if let time = response.created_at {
           stringToDate(date: time)
         }
-        self.tenureLbl.text = response.tenure
+        self.tenureLbl.text = "\(response.tenure ?? "")"
         loanTypeLbl.text = response.loan_type?.fr_name
         if let imageStr = response.lender?.logo{
             print(imageStr)
@@ -143,6 +143,10 @@ class LoanTableViewCell: UITableViewCell {
         // Nothing worked!
        
     }
+//    func monthsToYeaar(months:String) -> String{
+//        let converet = Int(months) / 12
+//        return "\(converet) Years"
+//    }
 }
 
 

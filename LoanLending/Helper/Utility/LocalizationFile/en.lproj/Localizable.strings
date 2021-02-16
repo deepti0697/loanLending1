@@ -48,8 +48,8 @@
 "history" = "History";
 "account" = "Account";
 "Valid_NUMBER" = "Please enter valid mobile number.";
-"correctPassword" = "Please enter atleast 6 digits password";
-"newPassword" = "Please enter your new Password";
+"correctPassword" = "Please enter atleast 7 digits password";
+"newPassword" = "Please enter new password";
 "Please enter full name" = "Please enter your full name.";
 "Please enter password" = "Please enter password.";
 "Please enter mobile number" = "Please enter mobile number";
@@ -101,6 +101,7 @@
 "Privacy policy" = "Privacy policy";
 "SalarySlip" = "Please upload your 3 months pay slip";
 "Please select your wallet type" = "Please select your wallet type";
+"Please add your id" = "Please add your document";
 
 
 

@@ -48,20 +48,20 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         cell.bankNameLbl.text = stringToDate(date: getLoanHistory[indexPath.row].updated_at)
         if getLoanHistory[indexPath.row].status == "PAID"{
             cell.loanAmountRcvdLbl.text = "Amount Received by \(getLoanHistory[indexPath.row].lender?.name ?? "")"
-            cell.amountLbl.text = "$ \(getLoanHistory[indexPath.row].amount ?? "")"
+            cell.amountLbl.text = "₵\(getLoanHistory[indexPath.row].amount ?? "")"
             cell.amountLbl.textColor = UIColor(red: 49/255, green: 185/255, blue: 139/255, alpha: 1)
             cell.imageCheck.image = #imageLiteral(resourceName: "Complete@1")
             
         }
         else if getLoanHistory[indexPath.row].status == "DECLINE"{
             cell.loanAmountRcvdLbl.text = "Loan Decline by \(getLoanHistory[indexPath.row].lender?.name ?? "")"
-            cell.amountLbl.text = "₵ \(getLoanHistory[indexPath.row].amount ?? "")"
+            cell.amountLbl.text = "₵\(getLoanHistory[indexPath.row].amount ?? "")"
             cell.amountLbl.textColor = UIColor(red: 185/255, green: 34/255, blue: 34/255, alpha: 1)
             cell.imageCheck.image = #imageLiteral(resourceName: "Incomplete@1")
         }
         else {
             cell.loanAmountRcvdLbl.text = "Completed"
-            cell.amountLbl.text = "₵ \(getLoanHistory[indexPath.row].amount ?? "")"
+            cell.amountLbl.text = "₵\(getLoanHistory[indexPath.row].amount ?? "")"
             cell.amountLbl.textColor = .black
             cell.imageCheck.image = #imageLiteral(resourceName: "completeDisebal@1")
         }

@@ -42,8 +42,8 @@ class BankDetailViewController: UIViewController {
         self.loanType.text = self.bankDetail?.loanTypes[0].fr_name ?? ""
         
         self.rateOInterest.text = "\(self.bankDetail?.interest ?? "0") %"
-        processingFeeLbl.text = "\(self.bankDetail?.processingFee ?? "")"
-        self.loanTenureLbl.text = "\(self.bankDetail?.min_tenure ?? "" ) Year"
+        processingFeeLbl.text = "₵\(self.bankDetail?.processingFee ?? "")"
+        self.loanTenureLbl.text = "\(self.bankDetail?.min_tenure ?? "" ) Years"
         self.descriptionLbl.text = "\(self.bankDetail?.description ?? "Testing")"
         if let imageStr = self.bankDetail?.logo{
             print(imageStr)

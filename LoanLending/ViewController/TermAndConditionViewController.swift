@@ -9,6 +9,8 @@
 import UIKit
 import WebKit
 class TermAndConditionViewController: UIViewController {
+    
+    var isBackNavigtn = false
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var aWebView: WKWebView!
     override func viewDidLoad() {
@@ -17,33 +19,30 @@ class TermAndConditionViewController: UIViewController {
         }
         
         private func openWebView() {
-            if lang == "en" {
-            let url = URL(string:"http://14.98.110.246:9020/mobile/terms_of_use/en")
-            if let urlLink = url {
-                let request = URLRequest(url: urlLink)
-                aWebView.load(request)
-            }
-            }
-            else {
-                let url = URL(string:"http://14.98.110.246:9020/mobile/terms_of_use/fr")
+            let setaboutUS = "\(ServiceUrls.abousUS)\(lang)"
+            let url = URL(string: ServiceUrls.webBaseurl + setaboutUS )
                 if let urlLink = url {
                     let request = URLRequest(url: urlLink)
                     aWebView.load(request)
                 }
             }
             
-        }
+        
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-         
+            self.navigationController?.setNavigationBarHidden(true, animated: false)
             
 //            self.navigationController?.isNavigationBarHidden = true
         }
     
        
     @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if isBackNavigtn {
+            self.navigationController?.popViewController(animated: true)
+        }
+        else {
+        appdelegate.setHomeView(selectedIndex: appdelegate.tabBarController.selectedIndex)
+        }
     }
-    
-    }
+}

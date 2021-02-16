@@ -122,7 +122,7 @@ class SignupSecondVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBAction func nextAction(_ sender: Any) {
         if cityTxt.text != "" {
             if mblTxt.text != ""  {
-                if (passowrdTxt.text?.count)!  > 5 {
+                if (passowrdTxt.text?.count)!  > 6 && (passowrdTxt.text?.count)! < 15 {
                     var params =  [String : Any]()
                     
                     params["mobile"] = self.mblTxt.text ?? ""

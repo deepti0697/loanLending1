@@ -73,7 +73,7 @@ class UpdatePasswordViewController: UIViewController {
 //
                 if newPassowrdTxtFld.text != "" {
                     
-                    if (newPassowrdTxtFld.text?.count)! > 5 {
+                    if (newPassowrdTxtFld.text?.count)! > 6 {
                     if confirmPassowrdTxtFld.text != newPassowrdTxtFld.text {
                         AppManager.init().showAlertSingle(kAppName, message:"Please match new Password with Confirm Passowrd", buttonTitle: "Ok") {
 
@@ -85,7 +85,7 @@ class UpdatePasswordViewController: UIViewController {
                     
                 }
                     else {
-                        AppManager.init().showAlertSingle(kAppName, message:"Please enter atleast 6 digit password", buttonTitle: "Ok") {
+                        AppManager.init().showAlertSingle(kAppName, message:"Please enter atleast 7 digit password", buttonTitle: "Ok") {
 
                                     }
                     }

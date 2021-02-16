@@ -20,6 +20,8 @@ class CalculateEMIViewController: UIViewController {
     @IBOutlet weak var tenureSlider: UISlider!
     @IBOutlet weak var interestSlider: UISlider!
    
+    @IBOutlet weak var maximumSliderLabel: UILabel!
+    @IBOutlet weak var minmumSliderLabel: UILabel!
     @IBOutlet weak var doneOutltLoc: UIButton!
     @IBOutlet weak var tenureLocLbl: UILabel!
     @IBOutlet weak var interestLocLbl: UILabel!
@@ -39,6 +41,14 @@ class CalculateEMIViewController: UIViewController {
       SliderLabels()
         
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.minmumSliderLabel.text = "\(self.getLoanData?.min_tenure ?? "") Months"
+        self.maximumSliderLabel.text = "\(self.getLoanData?.max_tenure ?? "") Months"
+        tenureSlider.minimumValue = Float(self.getLoanData?.min_tenure ?? "") ?? 0.0
+        tenureSlider.maximumValue = Float(self.getLoanData?.max_tenure ?? "") ?? 0.0
+        tenure = Int(Float(self.getLoanData?.min_tenure ?? "") ?? 0.0)
     }
     
     func setuplocalizable(){

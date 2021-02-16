@@ -34,6 +34,10 @@ class Validate: NSObject {
                 return false
 
             }
+            else if vc.document.isEmpty {
+                self.showMessage(message: "Please add your id".localized(lang))
+                return false
+            }
             else if !vc.isAcceptTermCondition {
                 self.showMessage(message:"AcceptTermAndCondition".localized(lang))
                 return false

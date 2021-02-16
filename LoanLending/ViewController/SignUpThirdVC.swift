@@ -78,6 +78,7 @@ class SignUpThirdVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
     
     @IBAction func openTermsAndCondition(_ sender: Any) {
         openViewController(controller: TermAndConditionViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+            vc.isBackNavigtn = false
       //                appdelegate.isComingFromSideMenu = false
                   })
     }

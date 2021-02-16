@@ -20,6 +20,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     var totalPayment = 0.0
     var initalValue = 0
     var walletType  = ["Bank","Cash","Cheque"]
+    
     @IBOutlet weak var termAndCondtionLbl: UIButton!
     
     @IBOutlet weak var upload3MonthPaySlip: UILabel!
@@ -100,6 +101,13 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         termAndCondtionLbl.setTitle("termAcondition".localized(lang), for: .normal)
         nextBtnOutlt.setTitle("Submit".localized(lang), for: .normal)
     }
+    
+    @IBAction func openTermsAndCondition(_ sender: Any) {
+        self.openViewController(controller: TermAndConditionViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+            vc.isBackNavigtn = true
+        })
+    }
+    
     @IBAction func oWallet(_ sender: Any) {
     showTimeSheet(textField: selectMobileWalletTxt)
     }
@@ -240,7 +248,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
                 let message = parseData["message"].stringValue
                 Common.showAlert(alertMessage: message, alertButtons: ["Ok"]) { (bt) in
 //                    self.navigationController?.popViewController(animated: true)
-                    appdelegate.setHomeView(selectedIndex: 1)
+                    appdelegate.setHomeView(selectedIndex: 0)
                 }
             } else {
                 

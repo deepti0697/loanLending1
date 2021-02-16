@@ -56,8 +56,10 @@ class OTPVerificationVC: UIViewController {
     }
     
     @IBAction func btnResendAction(_ sender: Any) {
+        
         self.isResendBtnClick = true
         timer?.invalidate()
+        vwSVP.refreshView()
         getOTP()
 //        confirmBtn.isEnabled = true
 //        self.startOtpTimer()

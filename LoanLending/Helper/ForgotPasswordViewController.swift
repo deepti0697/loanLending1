@@ -65,7 +65,7 @@ class ForgotPasswordViewController: UIViewController {
     })
         }
             else {
-                AppManager.init().showAlertSingle(kAppName, message:"Please enter valid mobile n    umber.", buttonTitle: "Ok") {
+                AppManager.init().showAlertSingle(kAppName, message:"Please enter valid mobile number.", buttonTitle: "Ok") {
 
                             }
             }

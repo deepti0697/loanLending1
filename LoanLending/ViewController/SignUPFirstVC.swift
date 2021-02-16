@@ -132,11 +132,11 @@ extension SignUPFirstVC:UITextFieldDelegate {
             textField.resignFirstResponder()
         }
        return true
-      }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (string == " ") {
-            return false
-        }
-        return true
+//      }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if (string == " ") {
+//            return false
+//        }
+//        return true
     }
 }

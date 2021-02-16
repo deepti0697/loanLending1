@@ -59,6 +59,17 @@
                             <constraint firstItem="fUB-nQ-hrw" firstAttribute="centerY" secondItem="1rR-92-7QX" secondAttribute="centerY" id="8mp-Rq-SZq"/>
                             <constraint firstItem="fUB-nQ-hrw" firstAttribute="leading" secondItem="Reh-Fi-FJ0" secondAttribute="trailing" constant="10" id="gn1-36-JAq"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

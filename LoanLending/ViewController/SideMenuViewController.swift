@@ -58,35 +58,39 @@ extension SideMenuViewController : UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-//            let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
-//            let vc1 = storyBoard.instantiateViewController(withIdentifier: "LoanVC") as! LoanVC
-//            let nv4 = UINavigationController(rootViewController: vc1)
+
             panel?.closeLeft()
-//            self.tabBarController?.selectedIndex = 1
-////            self.navigationController?.pushViewController(nv4, animated: true)
-//            openViewController(controller: LoanVC.self, storyBoard: .mainStoryBoard, handler: { (vc) in
-//        })
-            appdelegate.tabBarController.selectedIndex  = 1
+//            appdelegate.tabBarController.selectedIndex  = 1
+            appdelegate.setHomeView(selectedIndex: 1)
         
         }
         else if indexPath.row == 1 {
             panel?.closeLeft()
 
-            appdelegate.tabBarController.selectedIndex  = 2
+            appdelegate.setHomeView(selectedIndex: 2)
         }
         else if indexPath.row == 2 {
-//            panel?.closeLeft()
-//            self.tabBarController?.selectedIndex = 2
+            panel?.closeLeft()                              
+            appdelegate.aboutUSViewController()
         }
         else if indexPath.row == 3 {
              
-//            appdelegate.isComingFromSideMenu = true
-////            appdelegate.tabBarController.selectedIndex = appdelegate.tabBarController.selectedIndex
-//            openViewController(controller: MoreViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
-//                    })
-//        }
+
         }
-        if indexPath.row == 7 {
+        else if indexPath.row == 4{
+            
+        }
+        else  if indexPath.row == 5
+        {
+            panel?.closeLeft()
+            appdelegate.termsAndConditionViewController()
+        }
+        else  if indexPath.row == 6
+        {
+            panel?.closeLeft()
+            appdelegate.privacyViewController()
+        }
+        else  if indexPath.row == 7 {
 //            displayAlert()
            
             appDelegate.islogout = true
