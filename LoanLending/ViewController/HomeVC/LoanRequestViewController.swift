@@ -25,11 +25,10 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     
     @IBOutlet weak var upload3MonthPaySlip: UILabel!
     @IBOutlet weak var selectMobileWalletLocLbl: UILabel!
-    @IBOutlet weak var enterBankAccountLocLbl: UILabel!
     @IBOutlet weak var iAcceptLbl: UILabel!
     @IBOutlet weak var nextBtnOutlt: UIButton!
     @IBOutlet weak var selectMobileWalletTxt: UITextField!
-    @IBOutlet weak var bankNameTxtFld: UITextField!
+  
     @IBOutlet weak var totalAmount: UILabel!
     @IBOutlet weak var emiLbl: UILabel!
     @IBOutlet weak var interestAmountLocLbl: UILabel!
@@ -94,7 +93,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         clcEMILocLbl.text = "Total Interest Payable".localized(lang)
         interestAmountLocLbl.text = "Total Interest Payable".localized(lang)
         
-        enterBankAccountLocLbl.text = "Enter Bank Account".localized(lang)
+       
         selectMobileWalletLocLbl.text = "Select mobile wallet".localized(lang)
         upload3MonthPaySlip.text = "Upload 3 months Pay slip".localized(lang)
         iAcceptLbl.text = "iAccpet".localized(lang)
@@ -237,9 +236,8 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
             params["tenure"] = self.tenure
             params["interest"]  = self.loaninfo?.interest
             params["processingFee"] = self.loaninfo?.processingFee
-        params["emi"] = self.totalEMI
-            params["bankAccount"] = self.bankNameTxtFld.text
             params["wallet"] = self.selectMobileWalletTxt.text
+            params["emi"] = self.totalEMI
         AppManager.init().hudShow()
         ServiceClass.sharedInstance.hitServiceFor_SubmitLoanRequest(params, document: document, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")

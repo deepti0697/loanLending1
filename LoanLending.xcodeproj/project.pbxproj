@@ -21,6 +21,8 @@
 		F213DD5425B7F1570078C03A /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = F213DD5325B7F1570078C03A /* Defines.swift */; };
 		F213DD5925B7F1A10078C03A /* ServiceClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F213DD5825B7F1A10078C03A /* ServiceClass.swift */; };
 		F213DD7325B7F5130078C03A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F213DD7225B7F5130078C03A /* Model.swift */; };
+		F217E8A225DCD506008A64B7 /* FQsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217E8A125DCD506008A64B7 /* FQsViewController.swift */; };
+		F217E8C825DCF67F008A64B7 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217E8C725DCF67F008A64B7 /* ContactUsViewController.swift */; };
 		F21C504925B1B1B9008A9C84 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21C504825B1B1B9008A9C84 /* MoreViewController.swift */; };
 		F21C505325B1B1C8008A9C84 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21C505225B1B1C7008A9C84 /* MoreTableViewCell.xib */; };
 		F21C505825B1B299008A9C84 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21C505725B1B299008A9C84 /* MoreTableViewCell.swift */; };
@@ -117,6 +119,8 @@
 		F213DD5325B7F1570078C03A /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
 		F213DD5825B7F1A10078C03A /* ServiceClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceClass.swift; sourceTree = "<group>"; };
 		F213DD7225B7F5130078C03A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F217E8A125DCD506008A64B7 /* FQsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FQsViewController.swift; sourceTree = "<group>"; };
+		F217E8C725DCF67F008A64B7 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		F21C504825B1B1B9008A9C84 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		F21C505225B1B1C7008A9C84 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
 		F21C505725B1B299008A9C84 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 				F247C75F25B6B6D1004376D8 /* CalculateEMIViewController.swift */,
 				F278241725B97A18007C7A8A /* ToucIDAndTouchFaceVC.swift */,
 				F20AE23325D3DBF500E8AA35 /* UpdatePasswordViewController.swift */,
+				F217E8C725DCF67F008A64B7 /* ContactUsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				F2B676E625AD9D2000CA7C52 /* ViewController */,
 				F2C39E1725AD6E81005CBA0A /* Helper */,
 				F2C39DD625AD6472005CBA0A /* AppDelegate.swift */,
+				F217E8A125DCD506008A64B7 /* FQsViewController.swift */,
 				F2C39DDC25AD6472005CBA0A /* Main.storyboard */,
 				F2C39DDF25AD6473005CBA0A /* Assets.xcassets */,
 				F2C39DE125AD6473005CBA0A /* LaunchScreen.storyboard */,
@@ -757,6 +763,7 @@
 				F2C39E4E25AD76A8005CBA0A /* Extension.swift in Sources */,
 				F2882E1125B565E400809617 /* HomeTableCollectionViewCell.swift in Sources */,
 				F2F7302025AEBA51003B6DBD /* BaseViewController.swift in Sources */,
+				F217E8C825DCF67F008A64B7 /* ContactUsViewController.swift in Sources */,
 				F20AE27625D4026200E8AA35 /* TermAndConditionViewController.swift in Sources */,
 				F257CBC625B55012007CDEC8 /* HomeVCCollectionViewCell.swift in Sources */,
 				F20B2BBE25B5AB2D00620F6A /* HistoryVC.swift in Sources */,
@@ -774,6 +781,7 @@
 				F2C39DD725AD6472005CBA0A /* AppDelegate.swift in Sources */,
 				F226925C25D1440000982FF1 /* ForgotPasswordViewController.swift in Sources */,
 				F2B676EC25ADA2EF00CA7C52 /* SkyFloatingLabelTextField.swift in Sources */,
+				F217E8A225DCD506008A64B7 /* FQsViewController.swift in Sources */,
 				F213DD5425B7F1570078C03A /* Defines.swift in Sources */,
 				F247C76025B6B6D1004376D8 /* CalculateEMIViewController.swift in Sources */,
 				F27AEE1225B176F40052AB17 /* SideMenuViewController.swift in Sources */,

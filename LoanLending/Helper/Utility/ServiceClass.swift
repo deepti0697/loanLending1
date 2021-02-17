@@ -661,6 +661,15 @@ class ServiceClass: NSObject {
 //                   self.hitServiceWithUrlString(urlString: baseUrl, parameters: params as [String : AnyObject] , headers: headers, completion: completion)
 //               }
     
+    func hitServiceContactUS(_ params:[String : Any], completion:@escaping completionBlockType)
+    {
+//        \(ServiceUrls.baseUrl)\(ServiceUrls.contact_Us)
+        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.contact_Us)"
+        let headers: HTTPHeaders = ["os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
+       
+        self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject] , headers: headers, completion: completion)
+    }
+    
     func hitServiceForResetPassword(_ params:[String : Any], completion:@escaping completionBlockType)
          {
              let baseUrl = "\(ServiceUrls.baseUrl)\(ServiceUrls.setPasswordForgot)"

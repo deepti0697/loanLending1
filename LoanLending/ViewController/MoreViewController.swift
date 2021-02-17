@@ -81,6 +81,10 @@ class MoreViewController: UIViewController {
         openViewController(controller: PrivacyPolicyViewController.self, storyBoard: .mainStoryBoard) { (vc) in
                 }
     }
+    func openFAQ() {
+        openViewController(controller: FQsViewController.self, storyBoard: .mainStoryBoard) { (vc) in
+                }
+    }
     
     func openTermAndCondition() {
         openViewController(controller: TermAndConditionViewController.self, storyBoard: .mainStoryBoard) { (vc) in
@@ -96,12 +100,15 @@ class MoreViewController: UIViewController {
    
     
     func openContactUs() {
+        openViewController(controller: ContactUsViewController.self, storyBoard: .mainStoryBoard) { (vc) in
+                }
     }
     
    
     
     func openFqs() {
-       
+        openViewController(controller: FQsViewController.self, storyBoard: .mainStoryBoard) { (vc) in
+                }
     }
     
    
@@ -145,20 +152,24 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             openAboutUs()
         case 3:
-           openFantasyPointSystem()
+            openContactUs()
+//            contact
         case 4:
-      openReferList()
+      openFqs()
+          
         case 5:
-                openTermAndCondition()
-        break // Personel Info
+//                openTermAndCondition()
+        break
+        // Personel Info
         case 6:
-            openPrivacyPolicy()
+                openTermAndCondition()
+        break
         case 7:
-            displayAlert()
-     
+            openPrivacyPolicy()
         case 8:
             displayAlert()
-        break // Help
+     
+        
         
         default:
             break

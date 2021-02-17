@@ -73,11 +73,13 @@ enum Messages : String {
 let moreTitlesArray = ["Edit Profile","Change Passoword","About Us",
                        "Contact us",
                        "FAQ's",
+                       "Bank Details",
                        "T & C",
                        "Privacy policy","Logout"]
 let moreImagesArray = ["loanmenu@1","icons8-no-key-48","abouticon",
                      "mail",
                        "faq",
+                       "Bank@1",
                        "ordersmenu",
                        "privacypolicy",
                      "logoutmenu"]

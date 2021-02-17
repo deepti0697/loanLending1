@@ -54,13 +54,7 @@ class Validate: NSObject {
                
                   
                     return false
-                } else if vc.bankNameTxtFld.text?.trimmingCharacters(in: .whitespaces).count == 0 {
-
-                    self.showMessage(message: "Enter your bank name".localized(lang))
-                 
-                    return false
-
-                }
+                } 
                 else if vc.selectMobileWalletTxt.text?.trimmingCharacters(in: .whitespaces).count == 0 {
                     self.showMessage(message: "Please select your wallet type".localized(lang))
                  

@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "loanHistorymenu@2x.png",
+      "filename" : "History@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "loanHistorymenu@3x.png",
+      "filename" : "History@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

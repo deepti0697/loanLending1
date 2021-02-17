@@ -8,21 +8,23 @@
 
 import UIKit
 import WebKit
-class TermAndConditionViewController: UIViewController {
+class TermAndConditionViewController: UIViewController,WKNavigationDelegate {
     
     var isBackNavigtn = false
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var aWebView: WKWebView!
     override func viewDidLoad() {
             super.viewDidLoad()
-            openWebView()
+        aWebView.navigationDelegate = self
         }
         
-        private func openWebView() {
+         func openWebView() {
+            AppManager.init().hudShow()
             let setaboutUS = "\(ServiceUrls.abousUS)\(lang)"
             let url = URL(string: ServiceUrls.webBaseurl + setaboutUS )
                 if let urlLink = url {
                     let request = URLRequest(url: urlLink)
+                    AppManager.init().hudHide()
                     aWebView.load(request)
                 }
             }
@@ -31,11 +33,23 @@ class TermAndConditionViewController: UIViewController {
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
+            openWebView()
             self.navigationController?.setNavigationBarHidden(true, animated: false)
             
 //            self.navigationController?.isNavigationBarHidden = true
         }
-    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        //Show loader
+        AppManager.init().hudShow()
+        
+    }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        //Hide loader
+        AppManager.init().hudHide()
+    }
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        //Hide loader
+    }
        
     @IBAction func backButton(_ sender: Any) {
         if isBackNavigtn {

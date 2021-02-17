@@ -12,10 +12,19 @@ class ToucIDAndTouchFaceVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        biometricAuthentication()
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+       
+    }
+    @IBAction func authenticationAction(_ sender: Any) {
+        biometricAuthentication()
+        
+    }
+    func biometricAuthentication() {
         BioMetricAuthenticator.shared.allowableReuseDuration = 30
         
         // start authentication
@@ -60,8 +69,6 @@ class ToucIDAndTouchFaceVC: UIViewController {
                 }
             }
         }
-    }
-    @IBAction func authenticationAction(_ sender: Any) {
         
     }
     func showPasscodeAuthentication(message: String) {

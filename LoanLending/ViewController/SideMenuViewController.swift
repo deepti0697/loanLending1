@@ -74,11 +74,14 @@ extension SideMenuViewController : UITableViewDelegate,UITableViewDataSource {
             appdelegate.aboutUSViewController()
         }
         else if indexPath.row == 3 {
-             
+            panel?.closeLeft()
+            appdelegate.contactUsViewController()
 
         }
         else if indexPath.row == 4{
-            
+            panel?.closeLeft()
+            appdelegate.fAQViewController()
+
         }
         else  if indexPath.row == 5
         {

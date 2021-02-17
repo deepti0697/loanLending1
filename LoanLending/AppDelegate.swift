@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = nv4
                 self.window?.makeKeyAndVisible()
 //                appdelegate.setHomeView()
-                setHomeView(selectedIndex: 0)
+//                setHomeView(selectedIndex: 0)
             }
             else {
                 self.initalViewController()
@@ -71,6 +71,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func aboutUSViewController(){
         let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
         let vc1 = storyBoard.instantiateViewController(withIdentifier: "AboutUsViewController") as! AboutUsViewController
+        let nv4 = UINavigationController(rootViewController: vc1)
+      
+        self.window?.rootViewController = nv4
+        self.window?.makeKeyAndVisible()
+    }
+    func fAQViewController(){
+        let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
+        let vc1 = storyBoard.instantiateViewController(withIdentifier: "FQsViewController") as! FQsViewController
+        let nv4 = UINavigationController(rootViewController: vc1)
+      
+        self.window?.rootViewController = nv4
+        self.window?.makeKeyAndVisible()
+    }
+    func contactUsViewController(){
+        let storyBoard  = UIStoryboard(name: "Main", bundle: nil)
+        let vc1 = storyBoard.instantiateViewController(withIdentifier: "ContactUsViewController") as! ContactUsViewController
         let nv4 = UINavigationController(rootViewController: vc1)
       
         self.window?.rootViewController = nv4

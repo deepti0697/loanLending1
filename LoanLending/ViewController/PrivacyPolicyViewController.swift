@@ -7,13 +7,14 @@
 
 import UIKit
 import WebKit
-class PrivacyPolicyViewController: UIViewController {
+class PrivacyPolicyViewController: UIViewController,WKNavigationDelegate {
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var aWebView: WKWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         openWebView()
+        aWebView.navigationDelegate = self
     }
     
     private func openWebView() {
@@ -24,7 +25,13 @@ class PrivacyPolicyViewController: UIViewController {
             aWebView.load(request)
         }
     }
-    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        //Hide loader
+        AppManager.init().hudHide()
+    }
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        //Hide loader
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        addNavigationBar(navigationTitle: "Privacy Policy", titleContentMode: .center, isNavImageShow: false, isBackButtonShow: true, isWalletButtonShow: false, isBinButtonShow: false)

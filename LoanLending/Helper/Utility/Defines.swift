@@ -84,10 +84,11 @@ struct ServiceUrls
 {
 //    static let baseUrl = "http://34.238.160.251:3002/register_user"
 
-    static let webBaseurl = "http://14.98.110.246:9020/mobile"
-    static let abousUS = "/about_us/"
-    static let termsAndCondition = "/terms_of_use/"
-    static let privac_policy = "/privacy_policy/"
+    static let webBaseurl = "http://14.98.110.246:9020/"
+    static let abousUS = "mobile/about_us/"
+    static let FAQ = "faq/"
+    static let termsAndCondition = "mobile/terms_of_use/"
+    static let privac_policy = "mobile/privacy_policy/"
     static let baseUrl = "http://14.98.110.246:7010/api"
     static let regiser_New_User = "/auth/register"
     static let loan_Request = "/loan/request"
@@ -96,6 +97,7 @@ struct ServiceUrls
     static let forgot_Password = "/auth/forgot_password"
 //    static let login = "v1/login"
     static let login = "/auth/login"
+    static let contact_Us = "/user/contact_us"
     static let verify_OTP = "/auth/verify-otp"
     static let send_OTP = "/auth/send-otp"
     static let appData = "/auth/appdata"

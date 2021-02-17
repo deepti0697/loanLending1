@@ -96,7 +96,7 @@ extension UITextField {
             let paddingImage = UIImageView()
             paddingImage.image = image
             paddingImage.contentMode = .center
-            paddingImage.tintColor = .black
+            paddingImage.tintColor = .lightGray
             paddingImage.frame = CGRect(x: 6, y: 6, width: 14, height: 18)
             paddingView.addSubview(paddingImage)
         }
