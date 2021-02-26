@@ -13,9 +13,7 @@ import SwiftyJSON
 class ForgotPasswordViewController: UIViewController {
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var nextBtn: UIButton!
-  
     @IBOutlet weak var forgotPassword: UILabel!
-    
     @IBOutlet weak var emailTextFeild: UITextField!
     
     

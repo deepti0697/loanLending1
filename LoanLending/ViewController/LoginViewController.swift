@@ -160,6 +160,8 @@ class LoginViewController: UIViewController {
                AppHelper.setStringForKey(user.email, key: ServiceKeys.email)
                 AppHelper.setStringForKey(user.country_code, key: ServiceKeys.country_Code)
                 AppHelper.setStringForKey(user.id, key: ServiceKeys.user_id)
+                AppHelper.setStringForKey(user.name, key: ServiceKeys.full_name)
+                AppHelper.setStringForKey(user.image, key: ServiceKeys.profile_image)
                 appdelegate.setHomeView(selectedIndex: 0)
                 }
              else {

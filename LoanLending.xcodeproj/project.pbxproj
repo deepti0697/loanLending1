@@ -979,7 +979,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LoanLending/LoanLending.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Arun Goyal (6AAGKA6J8D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
@@ -991,7 +991,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loanlending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDevProvisioningProfile;
+				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDevProvisioningProfileTestD;
 				SWIFT_OBJC_BRIDGING_HEADER = "LoanLending/Rechability/LoanLending-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1007,7 +1007,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LoanLending/LoanLending.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Arun Goyal (6AAGKA6J8D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = LoanLending/Info.plist;
@@ -1018,7 +1018,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loanlending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDevProvisioningProfile;
+				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDevProvisioningProfileTestD;
 				SWIFT_OBJC_BRIDGING_HEADER = "LoanLending/Rechability/LoanLending-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

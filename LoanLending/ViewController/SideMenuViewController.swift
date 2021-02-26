@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 class SideMenuViewController: BaseViewController {
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var lblVerified: UILabel!
@@ -15,6 +15,8 @@ class SideMenuViewController: BaseViewController {
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var tblMenu: UITableView!
     
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userNameLbl: UILabel!
     let menuArr = [("My Loans","user"),("Loan History","loanHistorymenu"),("About Us","abouticon"),("Contact us","mail"),("FAQ's", "faq"),("T & C", "ordersmenu"),("Privacy policy","privacypolicy"),("Logout","logoutmenu")]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,15 @@ class SideMenuViewController: BaseViewController {
         tblMenu.delegate = self
         tblMenu.dataSource = self
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.userNameLbl.text = AppHelper.getStringForKey(ServiceKeys.full_name)
+     
+            let urlString = AppHelper.getStringForKey(ServiceKeys.profile_image).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let imageUrl = URL(string: urlString ?? "")
+        imgUser?.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "icons8Men"), options: .continueInBackground) { (img, err, cacheType, url) in
+            }
+        
+    }
     @IBAction func btnProfileAction(_ sender: Any) {
     }
     

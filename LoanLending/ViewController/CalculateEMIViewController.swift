@@ -11,7 +11,7 @@ class CalculateEMIViewController: UIViewController {
     var loanAmount = 50000
     var interest = 1
     var tenure = 1
-    var totalEMI = 0.0
+    var loanEmi = 0.0
     var totalPayment = 0.0
     var lbl_LoanAmount = UIButton()
     var lbl_Interest = UIButton()
@@ -28,7 +28,7 @@ class CalculateEMIViewController: UIViewController {
     @IBOutlet weak var loanAmountLocLbl: UILabel!
     @IBOutlet weak var totalAmountLbl: UILabel!
     @IBOutlet weak var totalInterestLbl: UILabel!
-    @IBOutlet weak var totalEmiLbl: UILabel!
+    @IBOutlet weak var loanEmiLbl: UILabel!
     //    var slider = MDCSlider()
     @IBOutlet weak var loanEMILocLbl: UILabel!
     var getLoanData:LoanList?
@@ -154,13 +154,29 @@ class CalculateEMIViewController: UIViewController {
     func calculateEmi(loanAmount : Double, loanTenure : Double, interestRate : Double)  {
         let interestRateVal = interestRate / 1200
         let loanTenureVal = loanTenure * 12
-        self.totalEMI = Double(loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal))))
-        self.totalEmiLbl.text =  "₵\(String(format: "%.2f",loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal)))))"
+        self.loanEmi = Double(loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal))))
+        self.loanEmiLbl.text =  "₵\(String(format: "%.2f",loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal)))))"
     }
     func setupEMI(){
-        calculateEmi(loanAmount: Double(loanAmount), loanTenure: Double(tenure), interestRate: Double(interest))
-        calculateTotalPayment(Double(totalEMI), loanTenure: (tenure))
-        calculateTotalInterestPayable(totalPayment, loanAmount: Double(loanAmount))
+        if getLoanData?.interest_type == "reducing" {
+            if let intrest = Double(self.getLoanData?.interest ?? "0") {
+                let getC = (intrest/1200)
+                let processing = Double(self.getLoanData?.processingFee ?? "") ?? 0.0
+                let totalPV = (Double(loanAmount) * processing)/100
+                self.pmt(rate: Double(getC).round(to: 2), nper: Double(tenure), pv: Double(totalPV).round(to: 2))
+//                calculateTotalPayment(Double(loanEmi.round(to: 2)), loanTenure: (tenure))
+        }
+        }
+            else {
+                if let intrest = Double(self.getLoanData?.interest ?? "0") {
+        //            let getC = (intrest/1200)
+                    let processing = self.getLoanData?.processingFee ?? ""
+                    calculateFaltMethod(intRate: intrest, pv: Double(loanAmount).round(to: 2), tenure: Double(tenure), processingFee: Double(processing) ?? 0.0)
+                    
+                   
+                }
+            }
+    
     }
     func calculateTotalPayment(_ emi : Double, loanTenure : NSInteger)  {
         let totalMonth = loanTenure * 12
@@ -182,4 +198,47 @@ class CalculateEMIViewController: UIViewController {
     }
     */
 
+//
 
+extension CalculateEMIViewController {
+    
+    func pmt(rate : Double, nper : Double, pv : Double, fv : Double = 0, type : Double = 0)   {
+        self.loanEmi = ((pv * pvif(rate: rate, nper: nper) - fv) / ((1.0 + rate * type) * fvifa(rate: rate, nper: nper)).round(to: 2))
+    self.loanEmiLbl.text = "\(Int(self.loanEmi))"
+    self.totalAmountLbl.text = "\((loanEmi * Double(tenure)).round(to: 2))"
+    self.totalInterestLbl.text = "\(((loanEmi * Double(tenure)) - pv).round(to: 2))"
+    
+    }
+    
+     func pow1pm1(x : Double, y : Double) -> Double {
+        return (x <= -1) ? pow((1 + x), y) - 1 : exp(y * log(1.0 + x)) - 1
+    }
+    
+     func pow1p(x : Double, y : Double) -> Double {
+        return (abs(x) > 0.5) ? pow((1 + x), y) : exp(y * log(1.0 + x))
+    }
+    
+     func pvif(rate : Double, nper : Double) -> Double {
+        return pow1p(x: rate, y: nper)
+    }
+    
+     func fvifa(rate : Double, nper : Double) -> Double {
+        return (rate == 0) ? nper : pow1pm1(x: rate, y: nper) / rate
+    }
+    
+    func calculateFaltMethod(intRate:Double,pv:Double,tenure:Double,processingFee:Double){
+        let interestRateVal = intRate / 1200
+        let getPocessingFee = (pv * processingFee)/100
+        let fPV = pv + getPocessingFee
+        let getInterest = (fPV * interestRateVal).round(to: 2)
+        let getPrincipalTenure = (fPV / tenure).round(to: 2)
+        self.loanEmiLbl.text = "\((getInterest + getPrincipalTenure).round(to: 2))"
+        
+       
+        let totalAmountPayable = (getInterest + getPrincipalTenure) * tenure
+        self.totalAmountLbl.text = "\((totalAmountPayable).round(to: 2))"
+        self.totalInterestLbl.text = "\((totalAmountPayable - fPV).round(to: 2))"
+        
+
+    }
+}

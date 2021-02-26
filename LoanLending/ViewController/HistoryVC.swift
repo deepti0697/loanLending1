@@ -9,6 +9,7 @@ import UIKit
 import SwiftyJSON
 class HistoryVC: UIViewController {
 
+    @IBOutlet weak var noDataLbl: UILabel!
     @IBOutlet weak var aTableView: UITableView!
     var sectionArray = ["09-09-2020","09-09-2020"]
     override func viewDidLoad() {
@@ -20,10 +21,17 @@ class HistoryVC: UIViewController {
     var getLoanHistory = [LoanHistory](){
         didSet {
             aTableView.reloadData()
+          if self.getLoanHistory.count > 0 {
+                self.noDataLbl.isHidden  = true
+            }
+            else {
+                self.noDataLbl.isHidden  = false
+            }
         }
     }
     override func viewWillAppear(_ animated: Bool) {
         myHistoryData()
+        self.noDataLbl.isHidden  = true
     }
     @IBAction func showBars(_ sender: Any) {
         panel?.openLeft(animated: true)

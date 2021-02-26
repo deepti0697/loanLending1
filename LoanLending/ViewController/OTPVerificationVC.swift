@@ -41,6 +41,7 @@ class OTPVerificationVC: UIViewController {
         self.mobileNOLbl.text = "\(countryCode) \(self.phonenumber)"
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         getOTP()
+        self.resendOtpBtn.isEnabled = false
     }
     
     func localizeSetup(){
@@ -53,12 +54,14 @@ class OTPVerificationVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         timer?.invalidate()
+        self.resendOtpBtn.isUserInteractionEnabled = true
     }
     
     @IBAction func btnResendAction(_ sender: Any) {
         
         self.isResendBtnClick = true
         timer?.invalidate()
+        self.resendOtpBtn.isUserInteractionEnabled = true
         vwSVP.refreshView()
         getOTP()
 //        confirmBtn.isEnabled = true
@@ -66,6 +69,7 @@ class OTPVerificationVC: UIViewController {
         
     }
     private func startOtpTimer() {
+        self.resendOtpBtn.isUserInteractionEnabled = false
             self.totalTime = 120
             self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         }
@@ -78,6 +82,7 @@ class OTPVerificationVC: UIViewController {
             } else {
                 if let timer = self.timer {
                     timer.invalidate()
+                    self.resendOtpBtn.isEnabled = true
                     self.timer = nil
 //                    confirmBtn.isEnabled = false
                     
@@ -170,7 +175,7 @@ class OTPVerificationVC: UIViewController {
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 print("OTP Send")
                 self.timer?.invalidate()
-                
+                self.resendOtpBtn.isUserInteractionEnabled = true
 //                Common.showAlert(alertMessage: parseData["message"].stringValue, alertButtons: ["Ok"]) { (bt) in
                     if self.type == "login" {
                         

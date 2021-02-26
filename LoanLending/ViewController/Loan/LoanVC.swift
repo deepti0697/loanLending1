@@ -11,8 +11,15 @@ class LoanVC: UIViewController {
 
     @IBOutlet weak var aTableView: UITableView!
    
+    @IBOutlet weak var noDataFoundLbl: UILabel!
     var loanSectionArray = [MyLoanSection](){
         didSet {
+            if loanSectionArray.count > 0{
+                self.noDataFoundLbl.isHidden = true
+            }
+            else {
+                self.noDataFoundLbl.isHidden = false
+            }
             aTableView.reloadData()
         }
     }
@@ -25,7 +32,9 @@ class LoanVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         myLoanData()
+        self.noDataFoundLbl.isHidden = true
     }
+    
     override func viewDidAppear(_ animated: Bool) {
 //        if appdelegate.isComingFromSideMenu{
 //            openViewController(controller: CalculateEMIViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in

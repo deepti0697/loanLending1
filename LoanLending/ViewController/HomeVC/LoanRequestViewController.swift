@@ -54,6 +54,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     }
     override func viewWillAppear(_ animated: Bool) {
         setUP()
+       
     }
     var loaninfo:LoanList?
    
@@ -196,14 +197,32 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         self.emiLbl.text =  "₵\(String(format: "%.2f",loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal)))))"
     }
     func setupEMI(){
-        calculateEmi(loanAmount: Double(loanAmount), loanTenure: Double(tenure), interestRate: Double(self.loaninfo?.interest ?? "") ?? 0.0)
-        calculateTotalPayment(Double(totalEMI), loanTenure: (tenure))
+        if self.loaninfo?.interest_type == "reducing" {
+            if let intrest = Double(self.loaninfo?.interest ?? "0") {
+                let getC = (intrest/1200)
+                
+                let processing = Double(self.loaninfo?.processingFee ?? "") ?? 0.0
+                let totalPV = (Double(loanAmount) * processing)/100
+                pmt(rate: Double(getC).round(to: 2), nper: Double(tenure), pv: Double(totalPV).round(to: 2))
+//                print(pmt(rate: 0.018, nper: 24, pv: 10600))
+//                calculateTotalPayment(Double(totalEMI.round(to: 2)), loanTenure: (tenure))
+//                calculateFaltMethod(intRate: 36, pv: Double(10000), tenure: Double(24))
+            }
+        }
+        else{
+        if let intrest = Double(self.loaninfo?.interest ?? "0") {
+//            let getC = (intrest/1200)
+            let processingFee =  Double(self.loaninfo?.processingFee ?? "") ?? 0.0
+            calculateFaltMethod(intRate: intrest, pv: Double(loanAmount).round(to: 2), tenure: Double(tenure), processingFee: processingFee)
+        }
+        }
       
     }
+    
     func calculateTotalPayment(_ emi : Double, loanTenure : NSInteger)  {
-        let totalMonth = loanTenure * 12
-        self.totalAmount.text = "₵\(String(format: "%.2f",emi * Double(totalMonth)))"
-        self.totalPayment = emi * Double(totalMonth)
+//        let totalMonth = (loanTenure * 12)
+        self.totalAmount.text = "₵\(String(format: "%.2f",emi * Double(loanTenure)))"
+        self.totalPayment = emi * Double(loanTenure).round(to: 2)
     }
     
    
@@ -262,5 +281,48 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         }
         
 
+
+    }
+    func pmt(rate : Double, nper : Double, pv : Double, fv : Double = 0, type : Double = 0)   {
+        self.totalEMI = ((pv * pvif(rate: rate, nper: nper) - fv) / ((1.0 + rate * type) * fvifa(rate: rate, nper: nper)))
+        self.emiLbl.text = "\((self.totalEMI).round(to: 2))"
+    self.totalAmount.text = "\(((totalEMI * Double(tenure)) - pv).round(to: 2))"
+    
+    }
+         func pow1pm1(x : Double, y : Double) -> Double {
+            return (x <= -1) ? pow((1 + x), y) - 1 : exp(y * log(1.0 + x)) - 1
+        }
+        
+         func pow1p(x : Double, y : Double) -> Double {
+            return (abs(x) > 0.5) ? pow((1 + x), y) : exp(y * log(1.0 + x))
+        }
+        
+         func pvif(rate : Double, nper : Double) -> Double {
+            return pow1p(x: rate, y: nper)
+        }
+        
+         func fvifa(rate : Double, nper : Double) -> Double {
+            return (rate == 0) ? nper : pow1pm1(x: rate, y: nper) / rate
+        }
+    
+    func calculateFaltMethod(intRate:Double,pv:Double,tenure:Double,processingFee:Double){
+        let interestRateVal = intRate / 1200
+        let getPocessingFee = (pv * processingFee)/100
+        let fPV = pv + getPocessingFee
+        let getInterest = (fPV * interestRateVal).round(to: 2)
+        let getPrincipalTenure = (fPV / tenure).round(to: 2)
+        self.emiLbl.text = "\((getInterest + getPrincipalTenure).round(to: 2))"
+        
+       
+        let totalAmountPayable = (getInterest + getPrincipalTenure) * tenure
+        self.totalAmount.text = "\((totalAmountPayable - fPV).round(to: 2))"
+        
+
+    }
+}
+extension Double {
+    func round(to places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }
