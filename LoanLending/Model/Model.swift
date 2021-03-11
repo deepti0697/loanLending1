@@ -131,7 +131,7 @@ class LoanHistory {
         if parseData?.isEmpty ?? false{
             return
         }
-    let getLenderData = parseData["lender"]
+        let getLenderData = parseData["lender"]
         id = parseData["id"].stringValue
         amount = parseData["amount"].stringValue
         status = parseData["status"].stringValue

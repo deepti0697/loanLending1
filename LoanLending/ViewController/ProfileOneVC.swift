@@ -11,21 +11,19 @@ import SwiftyJSON
 import SDWebImage
 let reuseIdentifier = "btnCell"
 class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIDocumentPickerDelegate{
-  
+    
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var profilePictureLocLbl: UILabel!
     @IBOutlet weak var userNameLocLbl: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
-  
-   
     @IBOutlet weak var heightFeetView: UIView!
-   
+    
     @IBOutlet weak var staffIDLOCLbl: UILabel!
     @IBOutlet weak var btnPickImage: UIButton!
-  
+    
     var imageData = Data()
     @IBOutlet weak var btnSave: UIButton!
-   
+    
     @IBOutlet weak var btnSaveOutlt: UIButton!
     @IBOutlet weak var cityLblLOC: UILabel!
     @IBOutlet weak var lblCompanyLOC: UILabel!
@@ -45,9 +43,8 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
             if isMaleButtonSelected {
                 self.gender = "male"
                 self.femaleImageView.image = #imageLiteral(resourceName: "icons8-circle-48")
-                
                 self.maleImageView.image = #imageLiteral(resourceName: "check@1")
-
+                
             } else {
                 self.gender = "female"
                 self.femaleImageView.image = #imageLiteral(resourceName: "check@1")
@@ -55,8 +52,7 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
             }
         }
     }
-   
-   
+        
     var interested_in : String = "1"
     var gender : String = "Male"
     var bodytype : String = ""
@@ -76,12 +72,13 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
             dataSetup()
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-       
-       
+        
+        
         // Input the data into the array
         staffIDTxtFld.delegate = self
         self.txtUsername.delegate = self
@@ -95,7 +92,7 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         userImageView.layer.cornerRadius = userImageView.frame.size.height/2
         userImageView.clipsToBounds = true
         self.viewTextStep()
-       // self.setupTYHeightPicker()
+        // self.setupTYHeightPicker()
         self.dataSetup()
         myUserData()
         // Do any additional setup after loading the view.
@@ -132,7 +129,7 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         self.txtFullName.text = self.user.name
         self.txtCompanyName.text = self.user.company
         self.txtCity.text = self.user.city
-//        self.txtUsername.isUserInteractionEnabled = false
+        //        self.txtUsername.isUserInteractionEnabled = false
         self.txtMbl.isUserInteractionEnabled = false
         self.staffIDTxtFld.text = self.user.staffId
         if self.user.gender == "male" {
@@ -144,18 +141,19 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
             self.gender = "female"
             self.isMaleButtonSelected = false
         }
+        
         if let imageStr = user.image{
             print(imageStr)
-           
+            
             let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             let imageUrl = URL(string: urlString ?? "")
-                userImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "ino-image"), options: .continueInBackground) { (img, err, cacheType, url) in
+            userImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "ino-image"), options: .continueInBackground) { (img, err, cacheType, url) in
             }
         }
-        }
-        
-      //  heighPicker.setDefaultHeight(6.4, unit: .Inch)
-
+    }
+    
+    //  heighPicker.setDefaultHeight(6.4, unit: .Inch)
+    
     @IBAction func btnPickAction(_ sender: Any) {
         setImageForComplaint(imageSec: "1")
     }
@@ -168,41 +166,41 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         
     }
     
-  
-   
     
     
- 
-   
+    
+    
+    
+    
     
     @IBAction func actionSave(_ sender: Any) {
         update_Profile()
-   
+        
     }
     
-  
+    
     func viewTextStep(){
         
         
         txtUsername.setLeftPaddingPoints(8)
         txtMbl.setLeftPaddingPoints(8)
-
-       
+        
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         // self.navigationItem.titleView = self.tabbarTitleView(title:"Login",color:AppFontColor)
         //  self.navigationController?.setNavigationBarHidden(true, animated: true)
         //              self.navigationItem.leftBarButtonItem = self.tabbarCustomItem(imgName: "back_btn", imgColor:AppColor, action: #selector(actionBack(_:)))
         //
-//        let imageDataDict:[String: Int] = ["view": 1]
-//        
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "saveProfile"), object: nil, userInfo: imageDataDict)
+        //        let imageDataDict:[String: Int] = ["view": 1]
+        //
+        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "saveProfile"), object: nil, userInfo: imageDataDict)
     }
     
     
@@ -229,14 +227,14 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
     func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-           
-                self.userImageView.image = pickedImage
-             
+            
+            self.userImageView.image = pickedImage
+            
             let imageData = pickedImage.jpegData(compressionQuality: 0.1)! as Data
-        print(imageData)
+            print(imageData)
             self.imageData = imageData
-        picker.dismiss(animated: true, completion: nil)
-    }
+            picker.dismiss(animated: true, completion: nil)
+        }
     }
     func setImageForComplaint(imageSec:String) {
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
@@ -265,17 +263,19 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
     // MARK: - delegate PickerView
     func myUserData(){
         let params =  [String : Any]()
-     
+        
         AppManager.init().hudShow()
         ServiceClass.sharedInstance.hitServiceForMyUserData(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")
             AppManager.init().hudHide()
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
                 let userDatas = parseData["data"]
-             
-                    self.user = User(fromJson:userDatas)
+                
+                self.user = User(fromJson:userDatas)
+                AppHelper.setStringForKey(self.user.name, key: ServiceKeys.full_name)
+                AppHelper.setStringForKey(self.user.image, key: ServiceKeys.profile_image)
             }
-             else {
+            else {
                 
                 guard let dicErr = errorDict?["msg"] as? String else {
                     return
@@ -296,9 +296,9 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
         params["country_code"] = self.user.country_code
         params["staffId"] = self.staffIDTxtFld.text
         params["company"]  = self.txtCompanyName.text ?? ""
-      
+        
         params["city"] = self.txtCity.text ?? ""
-         params["gender"] = self.gender
+        params["gender"] = self.gender
         AppManager.init().hudShow()
         ServiceClass.sharedInstance.hitServiceFor_UpdateProfile(params, data: imageData, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")
@@ -308,8 +308,8 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
                 Common.showAlert(alertMessage: message, alertButtons: ["Ok"]) { (bt) in
                     self.navigationController?.popViewController(animated: true)
                 }
-                }
-             else {
+            }
+            else {
                 
                 guard let dicErr = errorDict?["msg"] as? String else {
                     return
@@ -327,35 +327,35 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
 extension ProfileOneVC:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField ==  txtUsername{
-           textField.resignFirstResponder()
+            textField.resignFirstResponder()
             txtMbl.becomeFirstResponder()
         } else if textField == txtMbl {
-           textField.resignFirstResponder()
-         txtFullName.becomeFirstResponder()
+            textField.resignFirstResponder()
+            txtFullName.becomeFirstResponder()
         }
         else if textField == txtFullName {
-           textField.resignFirstResponder()
+            textField.resignFirstResponder()
             staffIDTxtFld.becomeFirstResponder()
         }
         
         else if textField == staffIDTxtFld {
-           textField.resignFirstResponder()
-         txtCompanyName.becomeFirstResponder()
+            textField.resignFirstResponder()
+            txtCompanyName.becomeFirstResponder()
         }
         else if textField == txtCompanyName {
-           textField.resignFirstResponder()
-         txtCity.becomeFirstResponder()
+            textField.resignFirstResponder()
+            txtCity.becomeFirstResponder()
             
         }
         else if textField == txtCity {
             textField.resignFirstResponder()
         }
-       return true
-//      }
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if (string == " ") {
-//            return false
-//        }
-//        return true
+        return true
+        //      }
+        //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        //        if (string == " ") {
+        //            return false
+        //        }
+        //        return true
     }
 }

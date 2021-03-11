@@ -204,9 +204,9 @@ extension CalculateEMIViewController {
     
     func pmt(rate : Double, nper : Double, pv : Double, fv : Double = 0, type : Double = 0)   {
         self.loanEmi = ((pv * pvif(rate: rate, nper: nper) - fv) / ((1.0 + rate * type) * fvifa(rate: rate, nper: nper)).round(to: 2))
-    self.loanEmiLbl.text = "\(Int(self.loanEmi))"
-    self.totalAmountLbl.text = "\((loanEmi * Double(tenure)).round(to: 2))"
-    self.totalInterestLbl.text = "\(((loanEmi * Double(tenure)) - pv).round(to: 2))"
+    self.loanEmiLbl.text = "₵\(Int(self.loanEmi))"
+    self.totalAmountLbl.text = "₵\((loanEmi * Double(tenure)).round(to: 2))"
+    self.totalInterestLbl.text = "₵\(((loanEmi * Double(tenure)) - pv).round(to: 2))"
     
     }
     
@@ -232,12 +232,12 @@ extension CalculateEMIViewController {
         let fPV = pv + getPocessingFee
         let getInterest = (fPV * interestRateVal).round(to: 2)
         let getPrincipalTenure = (fPV / tenure).round(to: 2)
-        self.loanEmiLbl.text = "\((getInterest + getPrincipalTenure).round(to: 2))"
+        self.loanEmiLbl.text = "₵\((getInterest + getPrincipalTenure).round(to: 2))"
         
        
         let totalAmountPayable = (getInterest + getPrincipalTenure) * tenure
-        self.totalAmountLbl.text = "\((totalAmountPayable).round(to: 2))"
-        self.totalInterestLbl.text = "\((totalAmountPayable - fPV).round(to: 2))"
+        self.totalAmountLbl.text = "₵f.text\((totalAmountPayable).round(to: 2))"
+        self.totalInterestLbl.text = "₵\((totalAmountPayable - fPV).round(to: 2))"
         
 
     }

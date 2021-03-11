@@ -56,11 +56,8 @@ class ForgotPasswordViewController: UIViewController {
     fileprivate func forgotPasswordAction() {
         if emailTextFeild.text != ""   {
             if emailTextFeild.text?.count == 10 {
-        openViewController(controller: OTPVerificationVC.self, storyBoard: .mainStoryBoard, handler: { (vc) in
-            vc.phonenumber = self.emailTextFeild.text ?? ""
-            vc.type = "forget"
-            
-    })
+                self.getOTP()
+       
         }
             else {
                 AppManager.init().showAlertSingle(kAppName, message:"Please enter valid mobile number.", buttonTitle: "Ok") {
@@ -119,6 +116,41 @@ extension ForgotPasswordViewController:UITextFieldDelegate {
             return false
         }
         return true
+    }
+    func getOTP(){
+       
+        var params =  [String : Any]()
+       
+        params["mobile"]  = self.emailTextFeild.text
+       
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceForOTPSend(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                self.openViewController(controller: OTPVerificationVC.self, storyBoard: .mainStoryBoard, handler: { (vc) in
+                    vc.phonenumber = self.emailTextFeild.text ?? ""
+                    vc.type = "forget"
+                    
+            })
+            }
+//                else{
+//
+//                }
+//                print("OTP Send")
+//
+//                }
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
     }
 }
 

@@ -11,15 +11,11 @@ class LoanVC: UIViewController {
 
     @IBOutlet weak var aTableView: UITableView!
    
-    @IBOutlet weak var noDataFoundLbl: UILabel!
+    var loanInfo:MyLoanDetailView?
+  
     var loanSectionArray = [MyLoanSection](){
         didSet {
-            if loanSectionArray.count > 0{
-                self.noDataFoundLbl.isHidden = true
-            }
-            else {
-                self.noDataFoundLbl.isHidden = false
-            }
+            
             aTableView.reloadData()
         }
     }
@@ -32,9 +28,31 @@ class LoanVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         myLoanData()
-        self.noDataFoundLbl.isHidden = true
+      
     }
-    
+    fileprivate func poploanInfoView(response:MyLoanList) {
+        
+        if loanInfo == nil {
+            //               self.view.isUserInteractionEnabled = false
+            loanInfo = Bundle.main.loadNibNamed("MyLoanDetailView", owner: self, options: nil)?.first as? MyLoanDetailView
+            loanInfo?.frame = CGRect(x: 0, y: 0, width: ScreenSize.SCREEN_WIDTH, height: ScreenSize.SCREEN_HEIGHT)
+            loanInfo?.confirgureCell(response: response)
+            loanInfo?.closeButtonClouser = { [weak self] in
+                if let strongSelf = self {
+                    strongSelf.removeChangePassView()
+                }
+            }
+            appdelegate.window?.addSubview(loanInfo!)
+           
+        }
+        
+    }
+    fileprivate func removeChangePassView() {
+      
+        loanInfo?.removeFromSuperview()
+        loanInfo = nil
+        
+    }
     override func viewDidAppear(_ animated: Bool) {
 //        if appdelegate.isComingFromSideMenu{
 //            openViewController(controller: CalculateEMIViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
@@ -115,7 +133,9 @@ extension LoanVC: UITableViewDelegate, UITableViewDataSource {
       
         
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        poploanInfoView(response:  self.loanSectionArray[indexPath.section].loans[indexPath.row])
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
      
             
@@ -124,14 +144,27 @@ extension LoanVC: UITableViewDelegate, UITableViewDataSource {
             
        
         
-    
+    func showErrorOnView(message : String ,imag : UIImage? ,retry_BtnShow : Bool)
+      {
+          let Retry =  RetryViewController(frame: CGRect.init(x: 0, y: 0, width: self.aTableView.frame.width, height: self.aTableView.frame.height))
+          Retry.lbl_message.text = message
+          Retry.center_image?.image = imag
+          Retry.btn_title.isHidden = !retry_BtnShow
+          Retry.btn_title.setTitle("Try again", for: .normal)
+          Retry.retryButtonComplition = {
+              self.aTableView.backgroundView = nil
+              self.viewWillAppear(false)
+          }
+          self.aTableView.backgroundView = Retry
+      }
+  
 }
 extension LoanVC {
     func myLoanData(){
         let params =  [String : Any]()
      
         Common.startActivityIndicator(baseView: aTableView)
-        ServiceClass.sharedInstance.hitServiceForMyLoanData(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+        ServiceClass.self.sharedInstance.hitServiceForMyLoanData(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
             print_debug("response: \(parseData)")
             Common.stopActivityIndicator(baseView: self.aTableView)
             if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
@@ -140,6 +173,9 @@ extension LoanVC {
                 for obj in parseData["data"].arrayValue {
                    let comObj = MyLoanSection(fromJson:obj)
                     self.loanSectionArray.append(comObj)
+                }
+                if self.loanSectionArray.count < 1 {
+                    self.showErrorOnView(message: "No Record Found", imag: UIImage(), retry_BtnShow: false)
                 }
                 }
              else {

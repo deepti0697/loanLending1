@@ -19,6 +19,18 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 //var kWindow = UIWindow(frame: UIScreen.main.bounds)
  let appdelegate = UIApplication.shared.delegate as! AppDelegate
 //var kScreenSize         = UIScreen.main.bounds.size
+enum UIUserInterfaceIdiom: Int {
+    case Unspecified
+    case Phone
+    case Pad
+}
+
+struct ScreenSize {
+    static let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+    static let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+    static let SCREEN_MAX_LENGTH = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+    static let SCREEN_MIN_LENGTH = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+}
 
 
 enum Messages : String {
@@ -73,13 +85,12 @@ enum Messages : String {
 let moreTitlesArray = ["Edit Profile","Change Passoword","About Us",
                        "Contact us",
                        "FAQ's",
-                       "Bank Details",
                        "T & C",
                        "Privacy policy","Logout"]
 let moreImagesArray = ["loanmenu@1","icons8-no-key-48","abouticon",
                      "mail",
                        "faq",
-                       "Bank@1",
+                      
                        "ordersmenu",
                        "privacypolicy",
                      "logoutmenu"]

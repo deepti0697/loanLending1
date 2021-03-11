@@ -9,7 +9,7 @@ import UIKit
 import SwiftyJSON
 class HistoryVC: UIViewController {
 
-    @IBOutlet weak var noDataLbl: UILabel!
+ 
     @IBOutlet weak var aTableView: UITableView!
     var sectionArray = ["09-09-2020","09-09-2020"]
     override func viewDidLoad() {
@@ -21,17 +21,11 @@ class HistoryVC: UIViewController {
     var getLoanHistory = [LoanHistory](){
         didSet {
             aTableView.reloadData()
-          if self.getLoanHistory.count > 0 {
-                self.noDataLbl.isHidden  = true
-            }
-            else {
-                self.noDataLbl.isHidden  = false
-            }
         }
     }
     override func viewWillAppear(_ animated: Bool) {
         myHistoryData()
-        self.noDataLbl.isHidden  = true
+//        self.noDataLbl.isHidden  = true
     }
     @IBAction func showBars(_ sender: Any) {
         panel?.openLeft(animated: true)
@@ -120,7 +114,20 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
                 return  100
             }
             
-       
+    
+func showErrorOnView(message : String ,imag : UIImage? ,retry_BtnShow : Bool)
+  {
+      let Retry =  RetryViewController(frame: CGRect.init(x: 0, y: 0, width: self.aTableView.frame.width, height: self.aTableView.frame.height))
+      Retry.lbl_message.text = message
+      Retry.center_image?.image = imag
+      Retry.btn_title.isHidden = !retry_BtnShow
+      Retry.btn_title.setTitle("Try again", for: .normal)
+      Retry.retryButtonComplition = {
+          self.aTableView.backgroundView = nil
+          self.viewWillAppear(false)
+      }
+      self.aTableView.backgroundView = Retry
+  }
         
     
 }
@@ -139,7 +146,11 @@ extension HistoryVC {
                    let comObj = LoanHistory(fromJson:obj)
                     self.getLoanHistory.append(comObj)
                 }
-                }
+                if self.getLoanHistory.count < 1 {
+                    self.showErrorOnView(message: "No Record Found", imag: UIImage(), retry_BtnShow: false)
+            }
+            }
+            
              else {
                 
                 guard let dicErr = errorDict?["msg"] as? String else {

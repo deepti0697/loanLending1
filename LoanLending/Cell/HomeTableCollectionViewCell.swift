@@ -10,7 +10,7 @@ import SDWebImage
 class HomeTableCollectionViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.calculateEMIOtlt.setTitle("Calculate EMI".localized(lang), for: .normal)
+        self.calculateEMIOtlt.setTitle("Calculate Monthly Repayment".localized(lang), for: .normal)
     }
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     var calulateEMI: (() -> Void) = { }

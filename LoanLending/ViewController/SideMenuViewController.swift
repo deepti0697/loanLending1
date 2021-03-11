@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SwiftyJSON
 class SideMenuViewController: BaseViewController {
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var lblVerified: UILabel!
@@ -17,6 +18,9 @@ class SideMenuViewController: BaseViewController {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLbl: UILabel!
+    
+    
+    
     let menuArr = [("My Loans","user"),("Loan History","loanHistorymenu"),("About Us","abouticon"),("Contact us","mail"),("FAQ's", "faq"),("T & C", "ordersmenu"),("Privacy policy","privacypolicy"),("Logout","logoutmenu")]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,32 @@ class SideMenuViewController: BaseViewController {
     @IBAction func btnProfileAction(_ sender: Any) {
     }
     
-   
+    func myUserData(){
+        let params =  [String : Any]()
+     
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceForMyUserData(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                let userDatas = parseData["data"]
+             
+                let user = User(fromJson:userDatas)
+                AppHelper.setStringForKey(user.name, key: ServiceKeys.full_name)
+                AppHelper.setStringForKey(user.image, key: ServiceKeys.profile_image)
+            }
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
+    }
     @IBAction func sideMenuClose(_ sender: Any) {
 //        / self.dismiss(animated: true, completion: nil)
         panel?.closeLeft() 
@@ -129,6 +158,8 @@ extension SideMenuViewController : UITableViewDelegate,UITableViewDataSource {
         
                
         UserDefaults.standard.removeObject(forKey: ServiceKeys.user_id)
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.full_name)
+        UserDefaults.standard.removeObject(forKey: ServiceKeys.profile_image)
         UserDefaults.standard.removeObject(forKey: ServiceKeys.token)
 //        panel?.closeLeft()
         appdelegate.initalViewController()

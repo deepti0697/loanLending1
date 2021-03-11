@@ -19,7 +19,9 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     var totalEMI = 0.0
     var totalPayment = 0.0
     var initalValue = 0
-    var walletType  = ["Bank","Cash","Cheque"]
+    var intialLoanValue = 0
+    var walletType  = ["Bank Transfer","Cheque","Mobile Money Wallet"]
+    var LoanType  = ["marrige","home","car","Business"]
     
     @IBOutlet weak var termAndCondtionLbl: UIButton!
     
@@ -113,6 +115,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     }
     
     func showTimeSheet(textField : UITextField){
+        if textField == selectMobileWalletTxt {
         let array = self.walletType
         let placeHolder = "List"
         let customStringPicker = ActionSheetStringPicker.init(title:placeHolder, rows: array as [Any], initialSelection:initalValue, doneBlock:
@@ -124,6 +127,21 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         customStringPicker!.tapDismissAction = TapAction.cancel
         self.view.endEditing(true)
         customStringPicker!.show()
+        
+        }
+        else {
+            let array = self.LoanType
+            let placeHolder = "Purpose"
+            let customStringPicker = ActionSheetStringPicker.init(title:placeHolder, rows: array as [Any], initialSelection:initalValue, doneBlock:
+            { picker, values, indexes in
+                textField.text = (String(describing: indexes ?? ""))
+                self.intialLoanValue = values
+                return
+            }, cancel: nil, origin: textField)
+            customStringPicker!.tapDismissAction = TapAction.cancel
+            self.view.endEditing(true)
+            customStringPicker!.show()
+        }
     }
     func setUISliderThumbValueWithLabel(slider: UISlider) -> CGPoint {
         let slidertTrack : CGRect = slider.trackRect(forBounds: slider.bounds)
@@ -219,6 +237,9 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
       
     }
     
+    @IBAction func openpurposeOfLoan(_ sender: Any) {
+        showTimeSheet(textField: purposeOfLoanTxxtfld)
+    }
     func calculateTotalPayment(_ emi : Double, loanTenure : NSInteger)  {
 //        let totalMonth = (loanTenure * 12)
         self.totalAmount.text = "₵\(String(format: "%.2f",emi * Double(loanTenure)))"
@@ -247,7 +268,7 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     {
         if Validate.shared.validateSubmitLoanPage(vc: self) {
          
-        var params =  [String : Any]()
+            var params =  [String : Any]()
             params["lender"] = self.loaninfo?.id
             params["loan_type"] = self.loaninfo?.loanTypes[0].id
             params["purpose"] = self.purposeOfLoanTxxtfld.text ?? ""
@@ -285,8 +306,8 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
     }
     func pmt(rate : Double, nper : Double, pv : Double, fv : Double = 0, type : Double = 0)   {
         self.totalEMI = ((pv * pvif(rate: rate, nper: nper) - fv) / ((1.0 + rate * type) * fvifa(rate: rate, nper: nper)))
-        self.emiLbl.text = "\((self.totalEMI).round(to: 2))"
-    self.totalAmount.text = "\(((totalEMI * Double(tenure)) - pv).round(to: 2))"
+        self.emiLbl.text = "₵\((self.totalEMI).round(to: 2))"
+    self.totalAmount.text = "₵\(((totalEMI * Double(tenure)) - pv).round(to: 2))"
     
     }
          func pow1pm1(x : Double, y : Double) -> Double {
@@ -311,11 +332,11 @@ class LoanRequestViewController: UIViewController,UIDocumentPickerDelegate,UINav
         let fPV = pv + getPocessingFee
         let getInterest = (fPV * interestRateVal).round(to: 2)
         let getPrincipalTenure = (fPV / tenure).round(to: 2)
-        self.emiLbl.text = "\((getInterest + getPrincipalTenure).round(to: 2))"
+        self.emiLbl.text = "₵\((getInterest + getPrincipalTenure).round(to: 2))"
         
        
         let totalAmountPayable = (getInterest + getPrincipalTenure) * tenure
-        self.totalAmount.text = "\((totalAmountPayable - fPV).round(to: 2))"
+        self.totalAmount.text = "₵\((totalAmountPayable - fPV).round(to: 2))"
         
 
     }

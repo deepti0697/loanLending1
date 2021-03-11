@@ -55,7 +55,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
          self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = false
-      
+        myUserData()
       
 //        UITabBar.appearance().barTintColor = UIColor.black
         
@@ -151,6 +151,32 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource {
         openViewController(controller: BankDetailViewController.self, storyBoard: .mainStoryBoard, handler: { (vc) in
             vc.bankDetail = self.homeLoanData[indexPath.row]
     })
+    }
+    func myUserData(){
+        let params =  [String : Any]()
+     
+        AppManager.init().hudShow()
+        ServiceClass.sharedInstance.hitServiceForMyUserData(params, completion: { (type:ServiceClass.ResponseType, parseData:JSON, errorDict:AnyObject?) in
+            print_debug("response: \(parseData)")
+            AppManager.init().hudHide()
+            if (ServiceClass.ResponseType.kresponseTypeSuccess==type){
+                let userDatas = parseData["data"]
+             
+                let user = User(fromJson:userDatas)
+                AppHelper.setStringForKey(user.name, key: ServiceKeys.full_name)
+                AppHelper.setStringForKey(user.image, key: ServiceKeys.profile_image)
+            }
+             else {
+                
+                guard let dicErr = errorDict?["msg"] as? String else {
+                    return
+                }
+                Common.showAlert(alertMessage: (dicErr), alertButtons: ["Ok"]) { (bt) in
+                }
+                
+                
+            }
+        })
     }
     func homeLoanTypeAPI(){
         let params =  [String : Any]()

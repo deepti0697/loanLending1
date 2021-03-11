@@ -54,7 +54,17 @@ class Validate: NSObject {
                
                   
                     return false
-                } 
+                }
+                else if vc.lbl_LoanAmount.isHidden == true {
+                    self.showMessage(message: "Please select Loan Amount".localized(lang))
+                    return false
+                }
+                
+                else if vc.lbl_Tenure.isHidden == true {
+                    self.showMessage(message: "Please select Loan Amount".localized(lang))
+                    return false
+                }
+                
                 else if vc.selectMobileWalletTxt.text?.trimmingCharacters(in: .whitespaces).count == 0 {
                     self.showMessage(message: "Please select your wallet type".localized(lang))
                  

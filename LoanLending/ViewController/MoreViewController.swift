@@ -181,7 +181,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction((UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
         })))
-        alert.addAction((UIAlertAction(title: "Proceed", style: .default, handler: { (action) -> Void in
+        alert.addAction((UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
             self.logoutAction()
         })))
         self.present(alert, animated: true, completion: nil)

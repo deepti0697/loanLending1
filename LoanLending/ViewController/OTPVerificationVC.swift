@@ -40,6 +40,9 @@ class OTPVerificationVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.mobileNOLbl.text = "\(countryCode) \(self.phonenumber)"
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        if type != "forget" {
+            
+        }
         getOTP()
         self.resendOtpBtn.isEnabled = false
     }
@@ -82,7 +85,7 @@ class OTPVerificationVC: UIViewController {
             } else {
                 if let timer = self.timer {
                     timer.invalidate()
-                    self.resendOtpBtn.isEnabled = true
+                    self.resendOtpBtn.isUserInteractionEnabled = true
                     self.timer = nil
 //                    confirmBtn.isEnabled = false
                     

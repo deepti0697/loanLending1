@@ -10,7 +10,7 @@ import WebKit
 class PrivacyPolicyViewController: UIViewController,WKNavigationDelegate {
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var aWebView: WKWebView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         openWebView()
@@ -34,10 +34,10 @@ class PrivacyPolicyViewController: UIViewController,WKNavigationDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        addNavigationBar(navigationTitle: "Privacy Policy", titleContentMode: .center, isNavImageShow: false, isBackButtonShow: true, isWalletButtonShow: false, isBinButtonShow: false)
+        //        addNavigationBar(navigationTitle: "Privacy Policy", titleContentMode: .center, isNavImageShow: false, isBackButtonShow: true, isWalletButtonShow: false, isBinButtonShow: false)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-
+    
     @IBAction func backButtonAction(_ sender: Any) {
         appdelegate.setHomeView(selectedIndex: appdelegate.tabBarController.selectedIndex)
     }
