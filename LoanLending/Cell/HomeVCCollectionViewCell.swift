@@ -27,15 +27,15 @@ class HomeVCCollectionViewCell: UICollectionViewCell {
 //    }
     
     func configureCell(response:LoanType) {
-        self.loanTypeLabel.text = response.name
-        if let imageStr = response.logo{
-            print(imageStr)
-           
-            let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            let imageUrl = URL(string: urlString ?? "")
-            topImgView?.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "ino-image"), options: .continueInBackground) { (img, err, cacheType, url) in
-            }
-        }
+//        self.loanTypeLabel.text = response.name
+//        if let imageStr = response.logo{
+//            print(imageStr)
+//
+//            let urlString = imageStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//            let imageUrl = URL(string: urlString ?? "")
+//            topImgView?.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "ino-image"), options: .continueInBackground) { (img, err, cacheType, url) in
+//            }
+//        }
         
     }
 

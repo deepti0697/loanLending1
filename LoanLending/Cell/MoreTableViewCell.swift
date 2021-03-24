@@ -13,7 +13,6 @@ class MoreTableViewCell: UITableViewCell {
     
     @IBOutlet weak var aMoreSubTitleView: UIView!
     @IBOutlet weak var aMoreSubTitleLabel: UILabel!
- 
     @IBOutlet weak var aImageView: UIImageView!
     
     override func awakeFromNib() {

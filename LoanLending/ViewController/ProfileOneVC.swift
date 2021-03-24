@@ -274,6 +274,7 @@ class ProfileOneVC: UIViewController,UIImagePickerControllerDelegate,UINavigatio
                 self.user = User(fromJson:userDatas)
                 AppHelper.setStringForKey(self.user.name, key: ServiceKeys.full_name)
                 AppHelper.setStringForKey(self.user.image, key: ServiceKeys.profile_image)
+                
             }
             else {
                 

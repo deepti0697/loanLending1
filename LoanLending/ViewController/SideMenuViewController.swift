@@ -10,15 +10,15 @@ import UIKit
 import SDWebImage
 import SwiftyJSON
 class SideMenuViewController: BaseViewController {
+    
+    
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var lblVerified: UILabel!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var tblMenu: UITableView!
-    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLbl: UILabel!
-    
     
     
     let menuArr = [("My Loans","user"),("Loan History","loanHistorymenu"),("About Us","abouticon"),("Contact us","mail"),("FAQ's", "faq"),("T & C", "ordersmenu"),("Privacy policy","privacypolicy"),("Logout","logoutmenu")]
@@ -29,15 +29,16 @@ class SideMenuViewController: BaseViewController {
         tblMenu.delegate = self
         tblMenu.dataSource = self
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        myUserData()
         self.userNameLbl.text = AppHelper.getStringForKey(ServiceKeys.full_name)
-     
-            let urlString = AppHelper.getStringForKey(ServiceKeys.profile_image).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            let imageUrl = URL(string: urlString ?? "")
-        imgUser?.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "icons8Men"), options: .continueInBackground) { (img, err, cacheType, url) in
+        let urlString = AppHelper.getStringForKey(ServiceKeys.profile_image)
+            let imageUrl = URL(string: urlString)
+        userImageView?.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "icons8Men"), options: .continueInBackground) { (img, err, cacheType, url) in
             }
-        
     }
+    
     @IBAction func btnProfileAction(_ sender: Any) {
     }
     
@@ -54,6 +55,9 @@ class SideMenuViewController: BaseViewController {
                 let user = User(fromJson:userDatas)
                 AppHelper.setStringForKey(user.name, key: ServiceKeys.full_name)
                 AppHelper.setStringForKey(user.image, key: ServiceKeys.profile_image)
+                let imageUrl = URL(string: user.image ?? "")
+                self.imgUser?.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "icons8Men"), options: .continueInBackground) { (img, err, cacheType, url) in
+                }
             }
              else {
                 

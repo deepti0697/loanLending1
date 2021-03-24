@@ -11,6 +11,7 @@ import UIKit
 
 class MoreViewController: UIViewController {
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
+    
     @IBOutlet weak private var aTableView: UITableView!
     
     override func viewDidLoad() {
@@ -158,26 +159,23 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
       openFqs()
           
         case 5:
-//                openTermAndCondition()
+                openTermAndCondition()
         break
         // Personel Info
         case 6:
-                openTermAndCondition()
+            openPrivacyPolicy()
         break
         case 7:
-            openPrivacyPolicy()
-        case 8:
             displayAlert()
-     
-        
-        
+       
+             
         default:
             break
         }
     }
     func displayAlert() {
        
-        let alert = UIAlertController(title: kAppName, message: "Are you sure you want to log out", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: kAppName, message: "Are you sure you want to Sign out", preferredStyle: UIAlertController.Style.alert)
         alert.addAction((UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
         })))
@@ -188,8 +186,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     func logoutAction() {
-        
-               
+                       
         UserDefaults.standard.removeObject(forKey: ServiceKeys.user_id)
         UserDefaults.standard.removeObject(forKey: ServiceKeys.token)
 //        panel?.closeLeft()

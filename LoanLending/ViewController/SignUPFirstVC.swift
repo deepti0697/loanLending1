@@ -8,7 +8,7 @@
 import UIKit
 
 class SignUPFirstVC: UIViewController {
-
+    
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     @IBOutlet weak var femaleImageView: UIImageView!
     @IBOutlet weak var maleImageView: UIImageView!
@@ -27,17 +27,17 @@ class SignUPFirstVC: UIViewController {
     var isMaleButtonSelected: Bool = true {
         didSet {
             if isMaleButtonSelected {
-               
+                
                 self.femaleImageView.image = #imageLiteral(resourceName: "Uncheck-1")
                 self.maleImageView.image = #imageLiteral(resourceName: "check@1")
-
+                
             } else {
                 self.femaleImageView.image = #imageLiteral(resourceName: "check@1")
                 self.maleImageView.image = #imageLiteral(resourceName: "Uncheck-1")
             }
         }
     }
-        
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class SignUPFirstVC: UIViewController {
         let color = UIColor.white
         let placeholder = companyNameTxt.placeholder ?? "" //There should be a placeholder set in storyboard or elsewhere string or pass empty
         companyNameTxt.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : color])
-       
+        
         let placeholder2 = fullNameTxt.placeholder ?? "" //There should be a placeholder set in storyboard or elsewhere string or pass empty
         fullNameTxt.attributedPlaceholder = NSAttributedString(string: placeholder2, attributes: [NSAttributedString.Key.foregroundColor : color])
         let placeholder3 = staffIdTxt.placeholder ?? "" //There should be a placeholder set in storyboard or elsewhere string or pass empty
@@ -88,14 +88,14 @@ class SignUPFirstVC: UIViewController {
         isMaleButtonSelected = true
         
     }
-   
+    
     @IBAction func backButtonAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nexAction(_ sender: Any) {
-      
-        if   self.fullNameTxt.text?.trimmingCharacters(in: .whitespaces).count != 0 {
+        if self.staffIdTxt.text?.trimmingCharacters(in: .whitespaces).count != 0 {
+            if   self.fullNameTxt.text?.trimmingCharacters(in: .whitespaces).count != 0 {
                 openViewController(controller: SignupSecondVC.self, storyBoard: .mainStoryBoard, handler: { (vc) in
                     vc.staffID = self.staffIdTxt.text ?? ""
                     vc.companyName = self.companyNameTxt.text ?? ""
@@ -106,7 +106,7 @@ class SignUPFirstVC: UIViewController {
                         vc.gender = "female"
                     }
                     vc.fullName = self.fullNameTxt.text ?? ""
-            })
+                })
             }
             else{
                 AppManager.init().showAlertSingle(kAppName, message:  "Please enter full name".localized(lang), buttonTitle: "Ok") {
@@ -114,29 +114,31 @@ class SignUPFirstVC: UIViewController {
             }
         }
         
-       
+        else {
+            AppManager.init().showAlertSingle(kAppName, message:  "Please enter staff id".localized(lang), buttonTitle: "Ok") {
+            }
         }
-    
-
+    }
+}
 
 extension SignUPFirstVC:UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == staffIdTxt {
-           textField.resignFirstResponder()
+            textField.resignFirstResponder()
             fullNameTxt.becomeFirstResponder()
         } else if textField == fullNameTxt {
-           textField.resignFirstResponder()
-         companyNameTxt.becomeFirstResponder()
+            textField.resignFirstResponder()
+            companyNameTxt.becomeFirstResponder()
         }
         else if textField == companyNameTxt {
             textField.resignFirstResponder()
         }
-       return true
-//      }
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if (string == " ") {
-//            return false
-//        }
-//        return true
+        return true
+        //      }
+        //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        //        if (string == " ") {
+        //            return false
+        //        }
+        //        return true
     }
 }

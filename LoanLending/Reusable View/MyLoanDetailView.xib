@@ -46,6 +46,10 @@
                                     <color key="textColor" red="0.27450980390000002" green="0.28235294119999998" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="Z4X-Nv-axS">
+                                    <rect key="frame" x="338" y="15" width="25" height="25"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P51-hA-sr7">
                                     <rect key="frame" x="338" y="15" width="25" height="25"/>
                                     <constraints>
@@ -53,7 +57,7 @@
                                         <constraint firstAttribute="height" constant="25" id="eJi-ks-gew"/>
                                     </constraints>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" image="close">
+                                    <state key="normal">
                                         <color key="titleColor" red="0.23529411759999999" green="0.3921568627" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -160,6 +164,7 @@
                             <constraints>
                                 <constraint firstItem="P51-hA-sr7" firstAttribute="top" secondItem="HTI-sb-Hf2" secondAttribute="top" constant="15" id="07D-Y8-epg"/>
                                 <constraint firstItem="gwk-4m-wah" firstAttribute="leading" secondItem="QJg-NU-UxI" secondAttribute="leading" id="2u4-tH-3Zv"/>
+                                <constraint firstItem="Z4X-Nv-axS" firstAttribute="trailing" secondItem="P51-hA-sr7" secondAttribute="trailing" id="CBe-up-lD1"/>
                                 <constraint firstItem="DAC-LQ-gUf" firstAttribute="top" secondItem="MN9-40-FUr" secondAttribute="bottom" constant="5" id="CLs-tw-JeB"/>
                                 <constraint firstItem="qjJ-qa-q0v" firstAttribute="leading" secondItem="2GQ-60-6Qh" secondAttribute="leading" id="Dvh-7n-GB0"/>
                                 <constraint firstAttribute="trailing" secondItem="P51-hA-sr7" secondAttribute="trailing" constant="10" id="FRk-dy-W46"/>
@@ -174,6 +179,7 @@
                                 <constraint firstItem="qjJ-qa-q0v" firstAttribute="centerY" secondItem="DJF-bx-ei1" secondAttribute="centerY" id="XzC-qK-Vd3"/>
                                 <constraint firstItem="c83-Sk-4dE" firstAttribute="leading" secondItem="HTI-sb-Hf2" secondAttribute="leading" constant="25" id="Y1Q-3h-hS6"/>
                                 <constraint firstItem="9Tq-fO-Enp" firstAttribute="centerY" secondItem="iyQ-sg-IYf" secondAttribute="centerY" id="Yhi-Ez-9k6"/>
+                                <constraint firstItem="Z4X-Nv-axS" firstAttribute="bottom" secondItem="P51-hA-sr7" secondAttribute="bottom" id="Zh1-ag-bhk"/>
                                 <constraint firstItem="Pc4-wn-Dro" firstAttribute="centerY" secondItem="gwk-4m-wah" secondAttribute="centerY" id="Zl6-SR-ACz"/>
                                 <constraint firstItem="MN9-40-FUr" firstAttribute="centerX" secondItem="HTI-sb-Hf2" secondAttribute="centerX" id="Zxb-nZ-bX0"/>
                                 <constraint firstItem="QoX-wj-k85" firstAttribute="top" secondItem="QJg-NU-UxI" secondAttribute="bottom" constant="15" id="acr-AE-d1b"/>
@@ -184,9 +190,11 @@
                                 <constraint firstItem="Ziy-Ha-aif" firstAttribute="leading" secondItem="2GQ-60-6Qh" secondAttribute="leading" id="hkm-Pu-bhj"/>
                                 <constraint firstItem="QJg-NU-UxI" firstAttribute="top" secondItem="c83-Sk-4dE" secondAttribute="bottom" constant="15" id="j0T-Rq-S6e"/>
                                 <constraint firstItem="Jme-lv-MhI" firstAttribute="leading" secondItem="2GQ-60-6Qh" secondAttribute="leading" id="l6Z-vr-4aM"/>
+                                <constraint firstItem="Z4X-Nv-axS" firstAttribute="top" secondItem="P51-hA-sr7" secondAttribute="top" id="m0U-U4-phf"/>
                                 <constraint firstItem="c83-Sk-4dE" firstAttribute="top" secondItem="DAC-LQ-gUf" secondAttribute="bottom" constant="25" id="m2v-XG-ccV"/>
                                 <constraint firstItem="DJF-bx-ei1" firstAttribute="leading" secondItem="c83-Sk-4dE" secondAttribute="leading" id="mDp-kS-NOW"/>
                                 <constraint firstItem="Pc4-wn-Dro" firstAttribute="leading" secondItem="2GQ-60-6Qh" secondAttribute="leading" id="o47-yF-Bfu"/>
+                                <constraint firstItem="Z4X-Nv-axS" firstAttribute="leading" secondItem="P51-hA-sr7" secondAttribute="leading" id="qVW-MS-jDf"/>
                                 <constraint firstItem="Jme-lv-MhI" firstAttribute="centerY" secondItem="wDo-wf-mv5" secondAttribute="centerY" id="sh2-mE-Nbv"/>
                                 <constraint firstItem="QJg-NU-UxI" firstAttribute="leading" secondItem="c83-Sk-4dE" secondAttribute="leading" id="sum-aT-hdZ"/>
                                 <constraint firstItem="gwk-4m-wah" firstAttribute="top" secondItem="DJF-bx-ei1" secondAttribute="bottom" constant="15" id="w3y-RU-5r5"/>
@@ -221,6 +229,9 @@
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                             <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
@@ -252,7 +263,7 @@
         </view>
     </objects>
     <resources>
-        <image name="close" width="10" height="10"/>
+        <image name="close" width="24" height="24"/>
         <image name="flag@1" width="20" height="13.5"/>
     </resources>
 </document>

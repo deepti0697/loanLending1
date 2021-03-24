@@ -11,7 +11,7 @@ import SwiftyJSON
 import Photos
 
 class User{
-  
+    
     var country_code  : String!
     var language:String!
     var staffId:String!
@@ -24,7 +24,6 @@ class User{
     var id   : String!
     var verificationId:String!
     var email:String!
-   
     var password:String!
     var token:String!
     var status:String!
@@ -32,8 +31,8 @@ class User{
     var isArchived:String!
     var created_at:String!
     var updated_at:String!
-   
-
+    
+    
     init() { }
     
     init(fromJson json: JSON!){
@@ -41,8 +40,8 @@ class User{
             return
         }
         
-      
-       
+        
+        
         email               = json["email"].stringValue
         mobile              = json["mobile"].stringValue
         token               = json["token"].stringValue
@@ -73,11 +72,11 @@ class User{
 class LanguageDTo {
     
     
-           
+    
     var currency: String!
     var code                 : String!
     var id                    : String!
-   
+    
     var name             : String!
     
     init() {
@@ -115,7 +114,7 @@ class MyLoanSection {
             let sortByData = MyLoanList(fromJson: value)
             self.loans.append(sortByData)
         }
-}
+    }
 }
 
 class LoanHistory {
@@ -137,7 +136,7 @@ class LoanHistory {
         status = parseData["status"].stringValue
         updated_at = parseData["updated_at"].stringValue
         lender = MyLender(fromJson: getLenderData)
-}
+    }
 }
 class MyLoanType {
     var id :String!
@@ -149,8 +148,8 @@ class MyLoanType {
         }
         id = parseData["id"].stringValue
         fr_name = parseData["fr_name"].stringValue
-    
-}
+        
+    }
 }
 class MyLender {
     var name:String!
@@ -159,8 +158,8 @@ class MyLender {
     var id:String!
     var email:String!
     var interest:String!
-  
-  
+    
+    
     init(fromJson parseData: JSON!){
         
         if parseData?.isEmpty ?? false{
@@ -172,7 +171,7 @@ class MyLender {
         id = parseData["id"].stringValue
         email = parseData["email"].stringValue
         interest = parseData["interest"].stringValue
-}
+    }
 }
 class MyLoanList {
     var id: String!
@@ -218,41 +217,23 @@ class MyLoanList {
         isArchived = parseData["isArchived"].stringValue
         created_at = parseData["created_at"].stringValue
         updated_at = parseData["updated_at"].stringValue
-       
+        
         lender = MyLender(fromJson: getLenderData)
         
-  
+        
         loan_type = LoanType(fromJson: getLoanData)
-           
-        }
+        
     }
+}
 
 class LoanList {
     
     var id: String!
     var name:String!
-    var email:String!
-    var country_code:String!
-    var contact_number:String!
-    var contact_name:String!
-    var address:String!
-    var website:String!
-    var interest_type:String!
-    var min_tenure:String!
-    var max_tenure:String!
-    var automatic_thresholds:String!
-    var bank:String!
-    var password:String!
-    var interest:String!
-    var processingFee:String!
     var logo:String!
-    var status:String!
-    var isArchived:String!
-    var created_at:String!
-    var updated_at:String!
-    var description:String!
-    
-    var loanTypes = [LoanType]()
+   
+//
+//    var loanTypes = [LoanType]()
     init() {
         
     }
@@ -262,50 +243,79 @@ class LoanList {
         if parseData?.isEmpty ?? false{
             return
         }
-        let sortData = parseData["loanTypes"].arrayValue
+    
         id          = parseData["id"].stringValue
         name        = parseData["name"].stringValue
-        email       = parseData["email"].stringValue
-        country_code = parseData["country_code"].stringValue
-        contact_number = parseData["contact_number"].stringValue
-        contact_name  = parseData["contact_name"].stringValue
-        address      = parseData["address"].stringValue
-        website     = parseData["website"].stringValue
-        interest_type  = parseData["interest_type"].stringValue
-        min_tenure   = parseData["min_tenure"].stringValue
-        max_tenure   = parseData["max_tenure"].stringValue
-        automatic_thresholds = parseData["automatic_thresholds"].stringValue
-        bank  = parseData["bank"].stringValue
-        password  = parseData["password"].stringValue
-        interest  = parseData["interest"].stringValue
-        processingFee = parseData["processingFee"].stringValue
-        logo = parseData["logo"].stringValue
-        status = parseData["status"].stringValue
-        isArchived = parseData["isArchived"].stringValue
-        created_at = parseData["created_at"].stringValue
-        created_at = parseData["created_at"].stringValue
-        description = parseData["description"].stringValue
-        for value in sortData {
-            let sortByData = LoanType(fromJson: value)
-            self.loanTypes.append(sortByData)
-        }
+        logo       = parseData["logo"].stringValue
+        
     }
 }
 
-   class LoanType {
+class LoanType {
+    var name:String!
+    
+    var min_amount:String!
+    var max_amount:String!
+    var interest_type:String!
+    var min_tenure:String!
+    var max_tenure:String!
+    var interest:String!
+    var processingFee:String!
+    var loan_type: productLoanDetail?
     var id:String!
+//   var purposeMarrige = [PurposeMarrige]()
+    
+    init() {
+        
+    }
+    
+    init(fromJson parseData: JSON!){
+        
+        if parseData?.isEmpty ?? false{
+            return
+        }
+        name = parseData["name"].stringValue
+        min_amount = parseData["min_amount"].stringValue
+        max_amount = parseData["max_amount"].stringValue
+//        let purposeM = parseData["purposes"].arrayValue
+        let loantype = parseData["loan_type"]
+        id          = parseData["id"].stringValue
+        interest_type  = parseData["interest_type"].stringValue
+        min_tenure = parseData["min_tenure"].stringValue
+        max_tenure = parseData["max_tenure"].stringValue
+        interest = parseData["interest"].stringValue
+        processingFee = parseData["processingFee"].stringValue
+//        loan_type = parseData["loan_type"].stringValue
+        loan_type = productLoanDetail(fromJson: loantype)
+        id = parseData["id"].stringValue
+//        for value in purposeM {
+//            let sortByData = PurposeMarrige(fromJson: value)
+//            self.purposeMarrige.append(sortByData)
+//        }
+    }
+}
+class PurposeMarrige {
+    var value:String!
+    var name:String!
+    init(fromJson parseData: JSON!){
+        
+        if parseData?.isEmpty ?? false{
+            return
+        }
+        value = parseData["value"].stringValue
+        name = parseData["name"].stringValue
+}
+}
+class productLoanDetail {
+    var id : String!
+   
     var name:String!
     var fr_name:String!
     var status:String!
     var isArchived:String!
     var created_at:String!
     var updated_at:String!
-    var logo:String!
-    
-    init() {
-        
-    }
-    
+    var image:String!
     init(fromJson parseData: JSON!){
         
         if parseData?.isEmpty ?? false{
@@ -318,10 +328,9 @@ class LoanList {
         isArchived  = parseData["isArchived"].stringValue
         created_at  = parseData["created_at"].stringValue
         updated_at  = parseData["updated_at"].stringValue
-        logo        = parseData["image"].stringValue
+        image        = parseData["image"].stringValue
+    }
 }
-}
-
 class CategoryDTo {
     
     var id               : String!
@@ -332,7 +341,7 @@ class CategoryDTo {
     var subcat_name:String!
     
     init(fromJson parseData: JSON!){
-      
+        
         if parseData.isEmpty{
             return
         }
@@ -399,14 +408,14 @@ struct mediamodel {
     var mediaisimage:Bool!
     
     init(mediaassest: PHAsset? = nil,thumbnail: UIImage? = nil,mediaurl:URL? = nil,mediaisvideo:Bool = false,mediaisimage:Bool = false)
-        
+    
     {
         self.mediaassest = mediaassest
         self.thumbnail = thumbnail
         self.mediaurl = mediaurl
         self.mediaisvideo = mediaisvideo
         self.mediaisimage = mediaisimage
-       
+        
     }
 }
 
@@ -455,7 +464,7 @@ struct similarPrdModel{
 
 struct prdDetailModel{
     
-
+    
     var mediaRecord = [mediaRecordModel]()
     var prdRecord = [prdRecordModel]()
     
@@ -479,7 +488,7 @@ struct prdDetailModel{
             prdRecord.append(model)
         }
         
-
+        
     }
 }
 
@@ -488,16 +497,16 @@ struct mediaRecordModel {
     
     var media_type: String!
     var product_image: String!
-
+    
     init(fromJson parseData: JSON!){
         
         if parseData.isEmpty{
             return
         }
-
+        
         media_type = parseData["media_type"].stringValue
         product_image = parseData["product_image"].stringValue
-
+        
     }
 }
 
@@ -523,7 +532,7 @@ struct prdRecordModel {
         if parseData.isEmpty{
             return
         }
-       
+        
         sellersince = parseData["sellersince"].stringValue
         sellercountrycode = parseData["sellercountrycode"].stringValue
         sellername = parseData["sellername"].stringValue
@@ -536,7 +545,7 @@ struct prdRecordModel {
         price = parseData["price"].stringValue
         description = parseData["description"].stringValue
         selleremail = parseData["selleremail"].stringValue
-
+        
     }
 }
 
@@ -687,10 +696,10 @@ struct myAdsModel{
     var total_like:String!
     var total_view:String!
     var created_at:String!
-     var expiry_date:String!
-     var file_name:String!
-     var productstatus:String!
-     var tradestatus:String!
+    var expiry_date:String!
+    var file_name:String!
+    var productstatus:String!
+    var tradestatus:String!
     
     
     init(fromJson parseData: JSON!){

@@ -20,6 +20,8 @@ class CalculateEMIViewController: UIViewController {
     @IBOutlet weak var tenureSlider: UISlider!
     @IBOutlet weak var interestSlider: UISlider!
    
+    @IBOutlet weak var maximumLbl: UILabel!
+    @IBOutlet weak var minimumLbl: UILabel!
     @IBOutlet weak var maximumSliderLabel: UILabel!
     @IBOutlet weak var minmumSliderLabel: UILabel!
     @IBOutlet weak var doneOutltLoc: UIButton!
@@ -31,7 +33,7 @@ class CalculateEMIViewController: UIViewController {
     @IBOutlet weak var loanEmiLbl: UILabel!
     //    var slider = MDCSlider()
     @IBOutlet weak var loanEMILocLbl: UILabel!
-    var getLoanData:LoanList?
+    var getLoanData:LoanType?
     @IBOutlet weak var totalAmountPaybleLocLbl: UILabel!
     @IBOutlet weak var totalInterstPayableLocLbl: UILabel!
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
@@ -49,6 +51,15 @@ class CalculateEMIViewController: UIViewController {
         tenureSlider.minimumValue = Float(self.getLoanData?.min_tenure ?? "") ?? 0.0
         tenureSlider.maximumValue = Float(self.getLoanData?.max_tenure ?? "") ?? 0.0
         tenure = Int(Float(self.getLoanData?.min_tenure ?? "") ?? 0.0)
+        if let loaninfos = getLoanData?.min_amount {
+            self.loanAmountSlider.minimumValue = Float(loaninfos) ?? 0.0
+            self.loanAmountSlider.value = Float(loaninfos) ?? 0.0
+            self.minimumLbl.text = loaninfos
+        }
+        if let loaninfos = getLoanData?.max_amount {
+            self.loanAmountSlider.maximumValue = Float(loaninfos) ??  0.0
+            self.maximumLbl.text = loaninfos
+        }
     }
     
     func setuplocalizable(){
@@ -67,7 +78,7 @@ class CalculateEMIViewController: UIViewController {
         lbl_Interest.layer.cornerRadius = 5
         
         lbl_LoanAmount.backgroundColor = UIColor(red: 37/255, green: 193/255, blue: 255/255, alpha: 1)
-        lbl_LoanAmount.frame = CGRect(x: 0,y: 32,width: 100,height: 25)
+        lbl_LoanAmount.frame = CGRect(x: 0,y: 32,width: 80,height: 25)
         
         lbl_LoanAmount.setTitleColor(.white, for: .normal)
 //        lbl_Distance.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
@@ -124,10 +135,15 @@ class CalculateEMIViewController: UIViewController {
     @IBAction func distancesSliderValueChanged(_ sender: UISlider) {
         let currentValue = Int(sender.value)
         print(currentValue)
+        let interval = 500
+      
+//
         self.lbl_LoanAmount.isHidden = false
-        let x = Int(round(sender.value))
-        lbl_LoanAmount.setTitle("₵\(x)", for: .normal)
-        self.loanAmount = (x)
+        let incomeValue = Int(sender.value / Float(interval) ) * interval
+//        let x = Int(round(sender.value))
+        lbl_LoanAmount.setTitle("₵\(incomeValue)", for: .normal)
+        self.loanAmount = (incomeValue)
+        sender.value = Float(incomeValue)
         lbl_LoanAmount.center = setUISliderThumbValueWithLabel(slider: sender)
         setupEMI()
 
@@ -163,7 +179,8 @@ class CalculateEMIViewController: UIViewController {
                 let getC = (intrest/1200)
                 let processing = Double(self.getLoanData?.processingFee ?? "") ?? 0.0
                 let totalPV = (Double(loanAmount) * processing)/100
-                self.pmt(rate: Double(getC).round(to: 2), nper: Double(tenure), pv: Double(totalPV).round(to: 2))
+                let finalPrincipalAmout = totalPV + Double(loanAmount)
+                self.pmt(rate: getC, nper: Double(tenure), pv: Double(finalPrincipalAmout))
 //                calculateTotalPayment(Double(loanEmi.round(to: 2)), loanTenure: (tenure))
         }
         }
@@ -171,7 +188,7 @@ class CalculateEMIViewController: UIViewController {
                 if let intrest = Double(self.getLoanData?.interest ?? "0") {
         //            let getC = (intrest/1200)
                     let processing = self.getLoanData?.processingFee ?? ""
-                    calculateFaltMethod(intRate: intrest, pv: Double(loanAmount).round(to: 2), tenure: Double(tenure), processingFee: Double(processing) ?? 0.0)
+                    calculateFaltMethod(intRate: intrest, pv: Double(loanAmount).rounded(toPlaces: 2), tenure: Double(tenure), processingFee: Double(processing) ?? 0.0)
                     
                    
                 }
@@ -203,10 +220,10 @@ class CalculateEMIViewController: UIViewController {
 extension CalculateEMIViewController {
     
     func pmt(rate : Double, nper : Double, pv : Double, fv : Double = 0, type : Double = 0)   {
-        self.loanEmi = ((pv * pvif(rate: rate, nper: nper) - fv) / ((1.0 + rate * type) * fvifa(rate: rate, nper: nper)).round(to: 2))
-    self.loanEmiLbl.text = "₵\(Int(self.loanEmi))"
-    self.totalAmountLbl.text = "₵\((loanEmi * Double(tenure)).round(to: 2))"
-    self.totalInterestLbl.text = "₵\(((loanEmi * Double(tenure)) - pv).round(to: 2))"
+        self.loanEmi = ((pv * pvif(rate: rate, nper: nper) - fv) / ((1.0 + rate * type) * fvifa(rate: rate, nper: nper)).rounded(toPlaces: 2))
+        self.loanEmiLbl.text = "₵\((self.loanEmi).rounded(toPlaces: 2))"
+        self.totalAmountLbl.text = "₵\((loanEmi * Double(tenure)).rounded(toPlaces: 2))"
+        self.totalInterestLbl.text = "₵\(((loanEmi * Double(tenure)) - pv).rounded(toPlaces: 2))"
     
     }
     
@@ -230,14 +247,14 @@ extension CalculateEMIViewController {
         let interestRateVal = intRate / 1200
         let getPocessingFee = (pv * processingFee)/100
         let fPV = pv + getPocessingFee
-        let getInterest = (fPV * interestRateVal).round(to: 2)
-        let getPrincipalTenure = (fPV / tenure).round(to: 2)
-        self.loanEmiLbl.text = "₵\((getInterest + getPrincipalTenure).round(to: 2))"
+        let getInterest = (fPV * interestRateVal).rounded(toPlaces: 2)
+        let getPrincipalTenure = (fPV / tenure).rounded(toPlaces: 2)
+        self.loanEmiLbl.text = "₵\((getInterest + getPrincipalTenure).rounded(toPlaces: 2))"
         
        
         let totalAmountPayable = (getInterest + getPrincipalTenure) * tenure
-        self.totalAmountLbl.text = "₵f.text\((totalAmountPayable).round(to: 2))"
-        self.totalInterestLbl.text = "₵\((totalAmountPayable - fPV).round(to: 2))"
+        self.totalAmountLbl.text = "₵f.text\((totalAmountPayable).rounded(toPlaces: 2))"
+        self.totalInterestLbl.text = "₵\((totalAmountPayable - fPV).rounded(toPlaces: 2))"
         
 
     }

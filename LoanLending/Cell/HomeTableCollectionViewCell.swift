@@ -10,7 +10,7 @@ import SDWebImage
 class HomeTableCollectionViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.calculateEMIOtlt.setTitle("Calculate Monthly Repayment".localized(lang), for: .normal)
+        self.calculateEMIOtlt.setTitle("View Details".localized(lang), for: .normal)
     }
     var lang = AppHelper.getStringForKey(ServiceKeys.languageType)
     var calulateEMI: (() -> Void) = { }
@@ -30,8 +30,8 @@ class HomeTableCollectionViewCell: UITableViewCell {
     
     func configureCell(response:LoanList) {
         self.bankNamelbl.text = response.name
-        self.rateOfIneterest.text = "\(response.interest ?? "")% Rate of Interest"
-        self.processingFeeLbl.text = "Processing fee: ₵\(response.processingFee ?? "")"
+//        self.rateOfIneterest.text = "\(response.interest ?? "")% Rate of Interest"
+//        self.processingFeeLbl.text = "Processing fee: ₵\(response.processingFee ?? "")"
         if let imageStr = response.logo{
             print(imageStr)
            

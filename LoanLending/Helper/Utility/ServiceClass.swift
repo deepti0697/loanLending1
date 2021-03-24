@@ -721,15 +721,15 @@ class ServiceClass: NSObject {
     
     
     
-    func hitServiceForHomeLoan(_ params:[String : Any], completion:@escaping completionBlockType)
+    func hitServiceForHomeLoan(_ params:[String : Any],loanID:String, completion:@escaping completionBlockType)
     {
-        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.loan_Types)"
+        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.loanProduct)/\(loanID)"
         let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
         self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
     func hitServiceForHomeLoanData(_ params:[String : Any],loanType:String?, completion:@escaping completionBlockType)
     {
-        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.loan_lender)?loan_type=\(loanType ?? "")"
+        let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.loan_lender)"
         let headers: HTTPHeaders = [ "os" : OS,"version":ios_version, "Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token)]
         self.hitGetServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
     }
@@ -825,6 +825,15 @@ class ServiceClass: NSObject {
               let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.check_Mobile_Registered)"
              
               let headers: HTTPHeaders = [ "Content-Type" : "application/json", "accept": "application/json",]
+              
+               self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
+          }
+    
+    func hitSeriviceForLoanRequest(_ params:[String : Any], completion:@escaping completionBlockType)
+          {
+              let urlString = "\(ServiceUrls.baseUrl)\(ServiceUrls.loan_Request)"
+             
+        let headers: HTTPHeaders = [ "Content-Type" : "application/json", "accept": "application/json","Authorization": "Bearer " + AppHelper.getStringForKey(ServiceKeys.token), "os" : "IOS","version":"1"]
               
                self.hitServiceWithUrlString(urlString: urlString, parameters: params as [String : AnyObject], headers: headers, completion: completion)
           }

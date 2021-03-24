@@ -89,7 +89,9 @@ struct ServiceUrls
     static let FAQ = "faq/"
     static let termsAndCondition = "mobile/terms_of_use/"
     static let privac_policy = "mobile/privacy_policy/"
-    static let baseUrl = "http://14.98.110.246:7010/api"
+  
+    static let baseUrl = "http://192.168.1.134:7010/api"
+//        "http://14.98.110.246:7010/api"
     static let regiser_New_User = "/auth/register"
     static let loan_Request = "/loan/request"
     static let check_Mobile_Registered = "/auth/email-mobile-exists"
@@ -101,7 +103,7 @@ struct ServiceUrls
     static let verify_OTP = "/auth/verify-otp"
     static let send_OTP = "/auth/send-otp"
     static let appData = "/auth/appdata"
-   
+   static let loanProduct = "/lender/loan_products"
     static let loan_Types  = "/lender/loan_types"
     static let loan_lender = "/lender"
     static let my_loan_list = "/loan/my_loans"
